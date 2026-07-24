@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Casa de Vídeo Produções — Produtora Audiovisual em São Paulo</title>
+<meta name="description" content="Casa de Vídeo Produções Ltda — Produtora audiovisual especializada em filmes institucionais, comerciais, documentários e captação de imagens em São Paulo."/>
+<meta property="og:title" content="Casa de Vídeo Produções — Produtora Audiovisual em São Paulo"/>
+<meta property="og:description" content="Produtora audiovisual especializada em filmes institucionais, comerciais, documentários e captação de imagens."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://static.wixstatic.com/media/122a37_34869b3ab9ff4b8db6a3d9fcdf65c584~mv2.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+
+<!-- Webflow template CSS — inclui todas as classes do UNIT01 + @font-face corretos -->
+<link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin="anonymous"/>
+<link href="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24/css/unit01.shared.8d6e8bce1.css" rel="stylesheet" type="text/css"/>
+
+<!-- GSAP + Webflow JS (animações do template) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+
+<!-- Webflow JS (nav collapse, background video, etc.) -->
+<script src="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24/js/unit01.shared.6e08a65e7.js" defer></script>
+
+<style>
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Item 1: Mouseover contraste no menu ── */
+.link-fixed-nav:hover .navlink-text,
+.link-fixed-nav:hover .button-text-small,
+.link-fixed-nav.w--current .navlink-text,
+.cta-small:hover .button-text-small {
+  color: #0e0e0e !important;
+}
+
+/* ── Centralização perfeita do Logo do Menu Topo com o Logo Hero ── */
+.nav-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+.brand-nav {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
+  z-index: 10 !important;
+}
+.cdv-logo-nav {
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+/* ── Hero Headline & Rotating Logo (Sobreposto e deslocado para baixo igual à referência) ── */
+.headline-home-b .text-line h1 {
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.headline-home-b .text-line.hero-second-line {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(20px, 4vw, 50px) !important;
+}
+.headline-home-b .home-b-placeholder {
+  position: relative !important;
+  z-index: 5 !important;
+  width: clamp(110px, 15vw, 185px) !important;
+  height: clamp(110px, 15vw, 185px) !important;
+  min-width: clamp(110px, 15vw, 185px) !important;
+  min-height: clamp(110px, 15vw, 185px) !important;
+  margin: 0 !important;
+  pointer-events: none !important;
+}
+.headline-home-b .home-b-placeholder img.rotating {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 50% !important;
+  background: #0d0d0d !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* ── Item 4: Esconder imagens flutuantes de serviços ── */
+.service-hover-image {
+  display: none !important;
+}
+
+/* ── Item 5: Redes sociais no topo com hover colorido estilo template ── */
+.right-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-social-link.facebook:hover {
+  background-color: #1877F2 !important;
+  color: #ffffff !important;
+}
+.nav-social-link.vimeo:hover {
+  background-color: #1AB7EA !important;
+  color: #ffffff !important;
+}
+.nav-social-link.instagram .instagram-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.nav-social-link.instagram:hover .instagram-bg {
+  opacity: 1 !important;
+}
+
+/* ── Item 6: Ajustar espaçamento inferior do site ── */
+#contato {
+  padding-bottom: 40px !important;
+}
+.cdv-footer-main {
+  padding: 48px 5vw 32px !important;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.cdv-footer-top {
+  margin-bottom: 40px !important;
+}
+
+/* ── WhatsApp float ── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 9999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  opacity: 0;
+  transform: scale(0.8) translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+  pointer-events: none;
+}
+.whatsapp-float.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: all;
+}
+.whatsapp-float:hover {
+  box-shadow: 0 8px 32px rgba(37,211,102,0.65);
+  transform: scale(1.1) translateY(-2px);
+}
+.whatsapp-float svg { width: 28px; height: 28px; fill: white; }
+
+/* ── Rotating animation ── */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.rotating { animation: spin-slow 12s linear infinite; }
+
+/* ── Overrides para conteúdo do cliente ── */
+.cdv-logo-nav { height: 48px; width: auto; object-fit: contain; }
+
+/* Item 3: Showreel Container 16:9 ── */
+.cdv-showreel-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: #000;
+}
+.cdv-showreel-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* image scale on hover para cards de projeto */
+.card-project .image-wrap-project img,
+.card-project .image-wrap-project .video-cover {
+  transition: transform 0.6s ease;
+}
+.card-project:hover .image-wrap-project img,
+.card-project:hover .image-wrap-project .video-cover {
+  transform: scale(1.04);
+}
+
+/* stats strip */
+.cdv-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.cdv-stat {
+  padding: 48px 40px;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.cdv-stat:last-child { border-right: none; }
+.cdv-stat-num {
+  font-family: SCHABO, 'Schabo Condensed', sans-serif;
+  font-size: clamp(48px, 5vw, 80px);
+  color: #f5c500;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.cdv-stat-label {
+  font-family: 'Geist Mono Variable', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+/* policy cards */
+.cdv-policies {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 64px;
+}
+.cdv-policy-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 48px 40px;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: border-color 0.3s, background 0.3s;
+}
+.cdv-policy-card:hover {
+  border-color: #f5c500;
+  background: rgba(245,197,0,0.04);
+}
+.cdv-policy-icon { font-size: 28px; margin-bottom: 20px; }
+.cdv-policy-card h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0 0 16px;
+}
+.cdv-policy-card p {
+  font-family: 'Geist Mono Variable', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin: 0 0 28px;
+}
+.cdv-policy-link {
+  font-family: 'Geist Mono Variable', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #f5c500;
+}
+
+/* contact section */
+.cdv-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.cdv-contact-item {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.cdv-contact-icon { color: #f5c500; flex-shrink: 0; margin-top: 2px; }
+.cdv-contact-label {
+  font-family: 'Geist Mono Variable', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 4px;
+}
+.cdv-contact-value {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.cdv-contact-value a { color: inherit; text-decoration: none; }
+.cdv-contact-value a:hover { color: #f5c500; }
+.cdv-social-row { display: flex; gap: 12px; margin-top: 36px; }
+.cdv-social-btn {
+  width: 42px; height: 42px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; color: inherit;
+  transition: border-color 0.2s, color 0.2s;
+}
+.cdv-social-btn:hover { border-color: #f5c500; color: #f5c500; }
+.cdv-map {
+  border-radius: 2px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  height: 380px;
+}
+.cdv-map iframe { width: 100%; height: 100%; border: none; filter: grayscale(90%) invert(88%) contrast(75%); }
+
+/* section label override */
+.cdv-section-label {
+  font-family: 'Geist Mono Variable', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #f5c500;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cdv-section-label::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: #f5c500;
+  display: block;
+}
+
+/* image zoom container */
+.img-zoom { overflow: hidden; }
+.img-zoom img { transition: transform 0.7s ease; display: block; width: 100%; height: 100%; object-fit: cover; }
+.img-zoom:hover img { transform: scale(1.06); }
+
+/* Galeria de imagens (Scroll Lateral - Posições e Alturas Alternadas como na Referência) */
+.cdv-gallery-track-wrap::-webkit-scrollbar {
+  display: none;
+}
+.cdv-gallery-card {
+  width: 320px;
+  flex: 0 0 320px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  background: #181818;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  user-select: none;
+}
+.cdv-gallery-card:nth-child(1)  { height: 380px; transform: translateY(70px); }
+.cdv-gallery-card:nth-child(2)  { height: 480px; transform: translateY(0px); }
+.cdv-gallery-card:nth-child(3)  { height: 410px; transform: translateY(45px); }
+.cdv-gallery-card:nth-child(4)  { height: 460px; transform: translateY(115px); }
+.cdv-gallery-card:nth-child(5)  { height: 400px; transform: translateY(25px); }
+.cdv-gallery-card:nth-child(6)  { height: 490px; transform: translateY(85px); }
+.cdv-gallery-card:nth-child(7)  { height: 420px; transform: translateY(10px); }
+.cdv-gallery-card:nth-child(8)  { height: 465px; transform: translateY(65px); }
+.cdv-gallery-card:nth-child(9)  { height: 390px; transform: translateY(105px); }
+.cdv-gallery-card:nth-child(10) { height: 475px; transform: translateY(15px); }
+.cdv-gallery-card:nth-child(11) { height: 410px; transform: translateY(80px); }
+.cdv-gallery-card:nth-child(12) { height: 485px; transform: translateY(35px); }
+.cdv-gallery-card:nth-child(13) { height: 430px; transform: translateY(95px); }
+.cdv-gallery-card:nth-child(14) { height: 450px; transform: translateY(20px); }
+
+.cdv-gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+  display: block;
+  pointer-events: none;
+}
+.cdv-gallery-card:hover {
+  border-color: #f5c500;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.6);
+  z-index: 2;
+}
+.cdv-gallery-card:hover img {
+  transform: scale(1.06);
+}
+#galeriaPrevBtn:hover, #galeriaNextBtn:hover {
+  background: #f5c500 !important;
+  color: #0e0e0e !important;
+  border-color: #f5c500 !important;
+}
+
+/* ── Novo Rodapé Estilo Template UNIT01® ── */
+.footer.cdv-footer-unit01 {
+  padding-top: 80px;
+  padding-bottom: 60px;
+  background: #0e0e0e;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 10;
+}
+.cdv-footer-unit01 .footer-halves {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  gap: 40px !important;
+  flex-wrap: wrap !important;
+}
+.cdv-footer-brand-wrap {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.cdv-footer-brand-wrap img.footer-logo.left {
+  width: auto !important;
+  height: 120px !important;
+  max-height: 120px !important;
+  object-fit: contain !important;
+  border-radius: 50% !important;
+  background: #0d0d0d !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6) !important;
+  display: block !important;
+}
+.cdv-footer-unit01 .right-footer {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  text-align: right !important;
+  gap: 24px !important;
+}
+.cdv-footer-unit01 .link-list-footer {
+  justify-content: flex-end !important;
+}
+.cdv-footer-unit01 .footer-bottom-tile {
+  align-items: flex-end !important;
+  text-align: right !important;
+}
+
+/* Lightbox Modal (Imagem Ampliada) */
+.cdv-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(10, 10, 10, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.cdv-lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.cdv-lightbox-content {
+  max-width: 92vw;
+  max-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.cdv-lightbox-content img {
+  max-width: 90vw;
+  max-height: 86vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 24px 72px rgba(0,0,0,0.85);
+  transform: scale(0.92);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cdv-lightbox.active .cdv-lightbox-content img {
+  transform: scale(1);
+}
+.cdv-lightbox-close {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10001;
+}
+.cdv-lightbox-close:hover {
+  background: #f5c500;
+  color: #000;
+  border-color: #f5c500;
+}
+.cdv-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10001;
+}
+.cdv-lightbox-nav.prev { left: 24px; }
+.cdv-lightbox-nav.next { right: 24px; }
+.cdv-lightbox-nav:hover {
+  background: #f5c500;
+  color: #000;
+  border-color: #f5c500;
+}
+
+@media (max-width: 980px) {
+  .cdv-stats-strip { grid-template-columns: 1fr 1fr; }
+  .cdv-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .cdv-policies { grid-template-columns: 1fr; }
+  .cdv-contact-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 600px) {
+  .cdv-stats-strip { grid-template-columns: 1fr; }
+  .cdv-map { height: 260px; }
+  .cdv-lightbox-nav { display: none; }
+}
+
+/* ── Preloader / Intro Animation Styles ── */
+#cdvPreloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #0e0e0e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#preloaderLogo {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #0d0d0d;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.95);
+  filter: blur(30px);
+  opacity: 0;
+  transform: scale(0.6) rotate(-180deg);
+}
+
+/* ── Navegação Fixa com Espaçamento Fiel ao Template ── */
+.master-navigation {
+  position: fixed !important;
+  inset: 0% 0% auto !important;
+  z-index: 9999 !important;
+  opacity: 0;
+  transform: translateY(-30px);
+  visibility: visible !important;
+}
+.navbar.w-nav {
+  position: relative !important;
+  width: 100% !important;
+  padding: 32px 48px !important;
+  background: linear-gradient(180deg, rgba(14,14,14,0.95) 0%, rgba(14,14,14,0.4) 70%, transparent 100%) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.nav-wrapper {
+  position: relative !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.left-nav, .right-nav, .nav-menu.w-nav-menu, .brand-nav, .menu-inner-sticky, .nav-link-wrap, .link-fixed-nav {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.left-nav, .right-nav {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.headline-home-b .text-line h1 {
+  opacity: 0;
+  transform: translateY(60px);
+}
+.headline-home-b .home-b-placeholder {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.home-b-bottom-tile {
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+/* ── Animação Infinita do Marquee (Letreiro) ── */
+.marquee {
+  display: flex !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  white-space: nowrap !important;
+}
+.marquee-text {
+  display: flex !important;
+  flex-shrink: 0 !important;
+  width: max-content !important;
+  animation: marquee-scroll-infinite 56s linear infinite !important;
+  will-change: transform;
+  gap: 0 !important;
+}
+.single-text-marquee {
+  display: flex !important;
+  flex-shrink: 0 !important;
+  align-items: center !important;
+  gap: clamp(24px, 3.5vw, 60px) !important;
+  padding-right: clamp(24px, 3.5vw, 60px) !important;
+}
+.marquee-text-border {
+  white-space: nowrap !important;
+}
+@keyframes marquee-scroll-infinite {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.3333%, 0, 0);
+  }
+}
+@media (max-width: 768px) {
+  .headline-home-b .text-line.hero-second-line {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+}
+
+/* ── Proporções e Destaque dos Projetos (Desktop) ── */
+@media (min-width: 769px) {
+  /* Showreel principal com 85% de largura e centralizado */
+  .project._1 {
+    width: 100% !important;
+    max-width: 85% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .project._1.reverse {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  /* Segundo projeto reduzido para o padrão (49.5%) e alinhado à direita */
+  .project._2 {
+    width: 100% !important;
+    max-width: 49.5% !important;
+  }
+  .project._2.reverse {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* ── Marca d'água de Fundo (Quem Somos) ── */
+.gsap-home-b {
+  width: 275px !important;
+  filter: grayscale(100%) !important;
+  opacity: 0.5 !important;
+}
+
+@media (max-width: 991px) {
+  .gsap-home-b {
+    width: 160px !important;
+  }
+}
+
+@media (max-width: 479px) {
+  .gsap-home-b {
+    width: 130px !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════
+     PRELOADER / ANIMAÇÃO DE ENTRADA
+═══════════════════════════════════════════ -->
+<div id="cdvPreloader">
+  <img id="preloaderLogo" src="https://static.wixstatic.com/media/09c962_478482e1544c47bebf02b17ca340b554~mv2.png" alt="Casa de Vídeo Produções"/>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     NAVIGATION — estrutura exata do template
+═══════════════════════════════════════════ -->
+<div class="master-navigation">
+  <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+    <div class="nav-wrapper">
+
+      <!-- ESQUERDA: hamburger + links -->
+      <div class="left-nav">
+        <div class="menu-button w-nav-button">
+          <div class="nav-menu-button">
+            <div class="menu-open">
+              <img src="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24/687f7ebbac430a51615b5f84_Interface.svg" loading="lazy" alt="" class="icon-menu"/>
+            </div>
+            <div class="menu-close">
+              <div class="icon-close w-embed">
+                <svg width="100%" height="100%" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M98.5347 91.4605C98.9994 91.9251 99.368 92.4764 99.6194 93.0837C99.8707 93.6904 100 94.341 100 94.9976C100 95.6549 99.8707 96.3056 99.6194 96.9122C99.368 97.5188 98.9994 98.0708 98.5347 98.5354C98.0708 98.9994 97.5188 99.3681 96.9122 99.6194C96.3049 99.8707 95.6549 100 94.9976 100C94.341 100 93.6903 99.8707 93.083 99.6194C92.4764 99.3681 91.9251 98.9994 91.4605 98.5354L50.0001 57.0686L8.53981 98.5354C7.60166 99.4734 6.32926 100 5.00253 100C3.67574 100 2.40336 99.4734 1.4652 98.5354C0.527052 97.5968 0 96.3249 0 94.9976C0 93.671 0.527052 92.3984 1.4652 91.4605L42.9317 50.0001L1.4652 8.53981C0.527052 7.60166 0 6.32926 0 5.00252C0 3.67579 0.527052 2.40335 1.4652 1.4652C2.40336 0.527045 3.67574 0 5.00253 0C6.32926 0 7.60166 0.527045 8.53981 1.4652L50.0001 42.9318L91.4605 1.4652C92.3984 0.527045 93.671 0 94.9976 0C96.3242 0 97.5968 0.527045 98.5347 1.4652C99.4734 2.40335 100 3.67579 100 5.00252C100 6.32926 99.4734 7.60166 98.5347 8.53981L57.0685 50.0001L98.5347 91.4605Z" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav role="navigation" class="nav-menu w-nav-menu">
+          <div class="menu-inner-sticky">
+            <div class="nav-link-wrap">
+              <a href="#quem-somos" button="" class="link-fixed-nav w-inline-block">
+                <div class="button-text-mask-small"><div button-text="" class="button-text-small navlink-text">Quem Somos</div></div>
+              </a>
+            </div>
+            <div class="nav-link-wrap">
+              <a href="#projetos" button="" class="link-fixed-nav w-inline-block">
+                <div class="button-text-mask-small"><div button-text="" class="button-text-small navlink-text">Projetos</div></div>
+              </a>
+            </div>
+            <div class="nav-link-wrap">
+              <a href="#servicos" button="" class="link-fixed-nav w-inline-block">
+                <div class="button-text-mask-small"><div button-text="" class="button-text-small navlink-text">Serviços</div></div>
+              </a>
+            </div>
+            <div class="nav-link-wrap">
+              <a href="#politicas" button="" class="link-fixed-nav w-inline-block">
+                <div class="button-text-mask-small"><div button-text="" class="button-text-small navlink-text">Políticas</div></div>
+              </a>
+            </div>
+            <div class="nav-link-wrap">
+              <a href="#galeria" button="" class="link-fixed-nav w-inline-block">
+                <div class="button-text-mask-small"><div button-text="" class="button-text-small navlink-text">Galeria</div></div>
+              </a>
+            </div>
+            <!-- Mobile menu items -->
+            <div class="menu-mobile">
+              <a href="#quem-somos" class="link-menu-mobile w-inline-block"><div class="text-h3">Quem Somos</div></a>
+              <a href="#projetos" class="link-menu-mobile w-inline-block"><div class="text-h3">Projetos</div></a>
+              <a href="#servicos" class="link-menu-mobile w-inline-block"><div class="text-h3">Serviços</div></a>
+              <a href="#politicas" class="link-menu-mobile w-inline-block"><div class="text-h3">Políticas</div></a>
+              <a href="#galeria" class="link-menu-mobile w-inline-block"><div class="text-h3">Galeria</div></a>
+              <a href="#contato" class="link-menu-mobile w-inline-block"><div class="text-h3">Briefing</div></a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- CENTRO: Logo (Item 7: ao clicar vai para o Home/topo) -->
+      <a href="index.html" class="brand-nav w-nav-brand" aria-label="Casa de Vídeo">
+        <img loading="lazy" src="https://static.wixstatic.com/media/09c962_478482e1544c47bebf02b17ca340b554~mv2.png" alt="Logo Casa de Vídeo" class="nav-logo cdv-logo-nav"/>
+      </a>
+
+      <!-- DIREITA: sociais + CTA (Item 5: Facebook, Vimeo e Instagram com hover colorido) -->
+      <div class="right-nav">
+        <!-- Facebook -->
+        <a href="http://www.facebook.com/casadevideo" target="_blank" rel="noopener" class="nav-social-link facebook w-inline-block" aria-label="Facebook Casa de Vídeo">
+          <div class="icon-social w-embed">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="-3 -3 30 30" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+          </div>
+        </a>
+        <!-- Vimeo -->
+        <a href="https://vimeo.com/casadevideo" target="_blank" rel="noopener" class="nav-social-link vimeo w-inline-block" aria-label="Vimeo Casa de Vídeo">
+          <div class="icon-social w-embed">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="-3 -3 30 30" fill="currentColor">
+              <path d="M22 7.42c-.09 2-1.48 4.73-4.17 8.2C15.04 19.2 12.72 21 10.76 21c-1.19 0-2.19-1.1-3.01-3.28L6.19 12.2C5.56 10.02 4.89 8.93 4.19 8.93c-.15 0-.68.32-1.59.97l-.95-1.22c1-.88 1.99-1.76 2.96-2.64C5.94 8.89 6.94 8.29 7.6 8.24c1.57-.15 2.54.92 2.9 3.22.39 2.47.66 4 .82 4.62.45 2.07.95 3.1 1.49 3.1.42 0 1.06-.67 1.91-2 .85-1.34 1.3-2.36 1.36-3.06.12-1.16-.33-1.74-1.36-1.74-.49 0-1 .11-1.51.34.99-3.27 2.9-4.86 5.71-4.77 2.09.06 3.07 1.41 2.94 4.05z"/>
+            </svg>
+          </div>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/casadevideo" target="_blank" rel="noopener" class="nav-social-link instagram w-inline-block" aria-label="Instagram Casa de Vídeo">
+          <div class="icon-social w-embed">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="none">
+              <g clip-path="url(#clip0_insta)">
+                <path d="M15.9875 4.70404C15.95 3.8539 15.8125 3.26944 15.6156 2.76299C15.4124 2.22541 15.0999 1.74412 14.6904 1.34401C14.2903 0.937683 13.8058 0.621948 13.2744 0.421957C12.7651 0.22502 12.1836 0.0875415 11.3335 0.0500586C10.477 0.00940124 10.2051 0 8.03281 0C5.86051 0 5.58861 0.00940124 4.73529 0.0468842C3.88515 0.0843671 3.30069 0.221967 2.79436 0.418783C2.25666 0.621948 1.77537 0.934509 1.37526 1.34401C0.968933 1.74412 0.65332 2.22858 0.453207 2.75994C0.25627 3.26944 0.118792 3.85073 0.0813086 4.70087C0.0406512 5.55736 0.03125 5.82926 0.03125 8.00156C0.03125 10.1739 0.0406512 10.4458 0.0781342 11.2991C0.115617 12.1492 0.253217 12.7337 0.450155 13.2401C0.65332 13.7777 0.968933 14.259 1.37526 14.6591C1.77537 15.0654 2.25983 15.3812 2.79119 15.5812C3.30069 15.7781 3.88198 15.9156 4.73224 15.9531C5.58544 15.9907 5.85746 16 8.02976 16C10.2021 16 10.474 15.9907 11.3273 15.9531C12.1774 15.9156 12.7619 15.7781 13.2682 15.5812C14.3435 15.1654 15.1936 14.3153 15.6094 13.2401C15.8062 12.7306 15.9438 12.1492 15.9813 11.2991C16.0187 10.4458 16.0281 10.1739 16.0281 8.00156C16.0281 5.82926 16.025 5.55736 15.9875 4.70404ZM14.5467 11.2366C14.5122 12.018 14.381 12.4399 14.2716 12.7212C14.0027 13.4183 13.4495 13.9715 12.7525 14.2403C12.4712 14.3497 12.0462 14.481 11.2678 14.5153C10.4239 14.5529 10.1708 14.5622 8.03599 14.5622C5.90117 14.5622 5.6449 14.5529 4.80403 14.5153C4.02263 14.481 3.60067 14.3497 3.31937 14.2403C2.9725 14.1121 2.65676 13.909 2.40049 13.6433C2.13481 13.3838 1.93165 13.0713 1.80345 12.7244C1.69405 12.4431 1.5628 12.018 1.52849 11.2397C1.49089 10.3958 1.48161 10.1426 1.48161 8.00779C1.48161 5.87297 1.49089 5.6167 1.52849 4.77596C1.5628 3.99455 1.69405 3.5726 1.80345 3.29129C1.93165 2.9443 2.13481 2.62869 2.40366 2.37229C2.66299 2.10661 2.97555 1.90345 3.32254 1.77537C3.60385 1.66597 4.02898 1.53472 4.80721 1.50029C5.65112 1.46281 5.90435 1.45341 8.03904 1.45341C10.177 1.45341 10.4301 1.46281 11.271 1.50029C12.0524 1.53472 12.4744 1.66597 12.7557 1.77537C13.1025 1.90345 13.4183 2.10661 13.6745 2.37229C13.9402 2.63174 14.1434 2.9443 14.2716 3.29129C14.381 3.5726 14.5122 3.99761 14.5467 4.77596C14.5841 5.61987 14.5935 5.87297 14.5935 8.00779C14.5935 10.1426 14.5841 10.3927 14.5467 11.2366Z" fill="currentColor"/>
+                <path d="M8.03205 3.89062C5.76293 3.89062 3.92188 5.73156 3.92188 8.0008C3.92188 10.27 5.76293 12.111 8.03205 12.111C10.3013 12.111 12.1422 10.27 12.1422 8.0008C12.1422 5.73156 10.3013 3.89062 8.03205 3.89062ZM8.03205 10.667C6.55996 10.667 5.36588 9.47301 5.36588 8.0008C5.36588 6.52859 6.55996 5.33463 8.03205 5.33463C9.50426 5.33463 10.6982 6.52859 10.6982 8.0008C10.6982 9.47301 9.50426 10.667 8.03205 10.667Z" fill="currentColor"/>
+                <path d="M13.2629 3.72907C13.2629 4.25896 12.8333 4.68861 12.3033 4.68861C11.7734 4.68861 11.3438 4.25896 11.3438 3.72907C11.3438 3.19906 11.7734 2.76953 12.3033 2.76953C12.8333 2.76953 13.2629 3.19906 13.2629 3.72907Z" fill="currentColor"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_insta">
+                  <rect width="100%" height="100%" fill="currentColor"/>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <img src="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24/68776db1e1b5806af83f16f0_Insta.png" loading="lazy" alt="" class="instagram-bg"/>
+        </a>
+
+        <!-- Botão Contato -->
+        <a href="#contato" button="" class="cta-small w-inline-block" id="nav-cta">
+          <div class="button-text-mask-small"><div button-text="" class="button-text-small">Iniciar Briefing</div></div>
+          <div class="button-icon-wrap">
+            <div button-icon="" class="icon-button left w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="none">
+                <path d="M3.33594 7.9987L12.0026 7.9987M8.0026 3.33203L12.6693 7.9987L8.0026 12.6654" stroke="currentColor" stroke-linecap="square"/>
+              </svg>
+            </div>
+            <div button-icon="" class="icon-button w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="none">
+                <path d="M3.33594 7.9987L12.0026 7.9987M8.0026 3.33203L12.6693 7.9987L8.0026 12.6654" stroke="currentColor" stroke-linecap="square"/>
+              </svg>
+            </div>
+          </div>
+          <div button-bg="" class="button-bg"></div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  <div class="nav-blur-bg"><div class="overlay-nav-bg"></div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     BG GRID LINES
+═══════════════════════════════════════════ -->
+<div class="master-bg-grid">
+  <div class="w-layout-grid bg-grid">
+    <div class="line-bg"></div><div class="line-bg"></div><div class="line-bg"></div>
+    <div class="line-bg"></div><div class="line-bg"></div>
+  </div>
+</div>
+
+<!-- GRAIN VIDEO (fundo animado do template) -->
+<div data-poster-url="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24%2F68769065c37fb5cc9e2a0917_Grain-poster-00001.jpg"
+     data-video-urls="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24%2F68769065c37fb5cc9e2a0917_Grain-transcode.mp4,https://cdn.prod.website-files.com/6873f64b566572b04fea0b24%2F68769065c37fb5cc9e2a0917_Grain-transcode.webm"
+     data-autoplay="true" data-loop="true" data-wf-ignore="true"
+     class="grain w-background-video w-background-video-atom">
+  <video id="grain-video" autoplay loop style="background-image:url(&quot;https://cdn.prod.website-files.com/6873f64b566572b04fea0b24%2F68769065c37fb5cc9e2a0917_Grain-poster-00001.jpg&quot;)" muted playsinline data-wf-ignore="true" data-object-fit="cover">
+    <source src="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24%2F68769065c37fb5cc9e2a0917_Grain-transcode.mp4" data-wf-ignore="true"/>
+    <source src="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24%2F68769065c37fb5cc9e2a0917_Grain-transcode.webm" data-wf-ignore="true"/>
+  </video>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     HERO — estrutura fiel ao Home B
+═══════════════════════════════════════════ -->
+<section class="section hero-home-b">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="master-hero-home-b">
+      <div class="headline-home-b">
+        <div class="text-line">
+          <h1>PRODUÇÃO</h1>
+        </div>
+        <div class="text-line hero-second-line">
+          <h1>AUDIOVISUAL</h1>
+          <div class="home-b-placeholder">
+            <!-- Ícone rotativo do cliente -->
+            <img src="https://static.wixstatic.com/media/09c962_478482e1544c47bebf02b17ca340b554~mv2.png" loading="lazy" alt="Casa de Vídeo" class="rotating"/>
+          </div>
+        </div>
+      </div>
+      <div class="home-b-bottom-tile">
+        <div class="text-wrap-bottom-home-b">
+          <div class="label-small">// EST. 1996</div>
+          <div class="label-small">SÃO PAULO — SP</div>
+        </div>
+        <div class="text-wrap-bottom-home-b">
+          <div class="home-b-last-text">
+            <div class="label-small">Mais de<br/>25 anos de história</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT HALVES
+═══════════════════════════════════════════ -->
+<section class="section" id="quem-somos">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="w-layout-grid home-b-about-halves">
+      <div class="text-h3">A Casa de Vídeo Produções é especialista em audiovisual.</div>
+      <div class="text-h5">Há mais de 25 anos transformamos ideias em filmes institucionais, comerciais, documentários e coberturas de evento de alto impacto. Com estúdio próprio no Pacaembú, em São Paulo, reunimos diretores, cinegrafistas e editores comprometidos com cada detalhe da sua comunicação.</div>
+    </div>
+  </div>
+
+  <!-- ── MARQUEE ── -->
+  <div class="sticky-marquee">
+    <div class="marquee">
+      <div class="marquee-text">
+        <!-- Bloco 1 -->
+        <div class="single-text-marquee">
+          <div class="marquee-text-border text-h1">FILMES</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">DOCUMENTÁRIOS</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">SÉRIES</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">INSTITUCIONAIS</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">PUBLICIDADE</div>
+          <div class="marquee-text-border text-h1">/</div>
+        </div>
+        <!-- Bloco 2 -->
+        <div class="single-text-marquee">
+          <div class="marquee-text-border text-h1">FILMES</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">DOCUMENTÁRIOS</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">SÉRIES</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">INSTITUCIONAIS</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">PUBLICIDADE</div>
+          <div class="marquee-text-border text-h1">/</div>
+        </div>
+        <!-- Bloco 3 -->
+        <div class="single-text-marquee">
+          <div class="marquee-text-border text-h1">FILMES</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">DOCUMENTÁRIOS</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">SÉRIES</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">INSTITUCIONAIS</div>
+          <div class="marquee-text-border text-h1">/</div>
+          <div class="marquee-text-border text-h1">PUBLICIDADE</div>
+          <div class="marquee-text-border text-h1">/</div>
+        </div>
+      </div>
+      <div class="overlay-marquee"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       PROJECTS — layout fiel ao template
+  ═══════════════════════════════════════════ -->
+  <div class="w-layout-blockcontainer main-container w-container" id="projetos">
+    <div class="master-projects">
+
+      <!-- Projeto 1: Showreel 2024 (Item 3: Player Vimeo inline 16:9) -->
+      <div class="project _1 reverse w-dyn-list">
+        <div role="list" class="w-dyn-items">
+          <div role="listitem" class="w-dyn-item">
+            <div class="card-project w-inline-block" style="cursor: default;">
+              <div class="cdv-showreel-wrapper">
+                <iframe src="https://player.vimeo.com/video/189202205?title=0&byline=0&portrait=0&color=f5c500" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen 
+                        title="Showreel Casa de Vídeo 2024">
+                </iframe>
+              </div>
+              <div class="text-wrap-project-card" style="margin-top: 16px;">
+                <div class="text-h5">Showreel 2024 — Casa de Vídeo</div>
+                <div class="project-card-bottom-tile">
+                  <div class="tag-wrap-project">
+                    <div class="tag-wrap"><div class="label text-light-64">Direção</div><div class="label text-light-64">,</div></div>
+                    <div class="tag-wrap"><div class="label text-light-64">Captação</div><div class="label text-light-64">,</div></div>
+                    <div class="tag-wrap"><div class="label text-light-64">Edição</div></div>
+                  </div>
+                  <a href="https://vimeo.com/189202205" target="_blank" rel="noopener" class="label text-light-64 text-underline">Abrir no Vimeo ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projeto 2 -->
+      <div class="project _2 reverse w-dyn-list">
+        <div role="list" class="w-dyn-items">
+          <div role="listitem" class="w-dyn-item">
+            <a href="https://vimeo.com/casadevideo" target="_blank" class="card-project w-inline-block">
+              <div class="image-wrap-project _2 img-zoom">
+                <img src="https://static.wixstatic.com/media/122a37_34f1d9d378b2416f9da9d6d29e64255a~mv2.jpg" loading="lazy" alt="Filme Institucional" class="image-cover"/>
+                <div cms-overlay="" class="overlay-dark-48"></div>
+              </div>
+              <div class="text-wrap-project-card">
+                <div class="text-h5">Filme Institucional</div>
+                <div class="project-card-bottom-tile">
+                  <div class="tag-wrap-project">
+                    <div class="tag-wrap"><div class="label text-light-64">Corporativo</div><div class="label text-light-64">,</div></div>
+                    <div class="tag-wrap"><div class="label text-light-64">Produção</div></div>
+                  </div>
+                  <div class="label text-light-64 text-underline">Ver projeto</div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projetos 3+4 em bloco -->
+      <div class="project-block-1">
+        <div class="project _3 w-dyn-list">
+          <div role="list" class="w-dyn-items">
+            <div role="listitem" class="w-dyn-item">
+              <a href="https://vimeo.com/casadevideo" target="_blank" class="card-project w-inline-block">
+                <div class="image-wrap-project _3 img-zoom">
+                  <img src="https://static.wixstatic.com/media/09c962_51e61d8850884b77bc22b5ba5046a592~mv2.jpg" loading="lazy" alt="Comercial" class="image-cover"/>
+                  <div cms-overlay="" class="overlay-dark-48"></div>
+                </div>
+                <div class="text-wrap-project-card">
+                  <div class="text-h5">Comercial</div>
+                  <div class="project-card-bottom-tile">
+                    <div class="tag-wrap-project">
+                      <div class="tag-wrap"><div class="label text-light-64">Publicidade</div><div class="label text-light-64">,</div></div>
+                      <div class="tag-wrap"><div class="label text-light-64">Motion</div></div>
+                    </div>
+                    <div class="label text-light-64 text-underline">Ver projeto</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project _4 w-dyn-list">
+          <div role="list" class="w-dyn-items">
+            <div role="listitem" class="w-dyn-item">
+              <a href="https://vimeo.com/casadevideo" target="_blank" class="card-project w-inline-block">
+                <div class="image-wrap-project img-zoom">
+                  <img src="https://static.wixstatic.com/media/09c962_4c2e0e01d83c4aeb962b7f5b74bb086d~mv2.jpg" loading="lazy" alt="Documentário" class="image-cover"/>
+                  <div cms-overlay="" class="overlay-dark-48"></div>
+                </div>
+                <div class="text-wrap-project-card">
+                  <div class="text-h5">Documentário</div>
+                  <div class="project-card-bottom-tile">
+                    <div class="tag-wrap-project">
+                      <div class="tag-wrap"><div class="label text-light-64">Roteiro</div><div class="label text-light-64">,</div></div>
+                      <div class="tag-wrap"><div class="label text-light-64">Pós-produção</div></div>
+                    </div>
+                    <div class="label text-light-64 text-underline">Ver projeto</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SERVIÇOS — (Item 4: Apenas texto, sem fotos sobrepostas)
+═══════════════════════════════════════════ -->
+<section class="section" id="servicos">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="master-services-home-b">
+      <div class="text-large">Serviços</div>
+      <div class="services-list-home-b">
+
+        <div class="service-item-home-b">
+          <div class="side-text-services"><div class="label-small">// 01</div></div>
+          <div class="text-wrap-service-middle"><div class="service-text">Filmes Institucionais</div></div>
+          <div class="side-text-services"><div class="label-small">Corporativo</div></div>
+        </div>
+
+        <div class="service-item-home-b">
+          <div class="side-text-services"><div class="label-small">// 02</div></div>
+          <div class="text-wrap-service-middle"><div class="service-text">Comerciais & Publicidade</div></div>
+          <div class="side-text-services"><div class="label-small">Advertising</div></div>
+        </div>
+
+        <div class="service-item-home-b">
+          <div class="side-text-services"><div class="label-small">// 03</div></div>
+          <div class="text-wrap-service-middle"><div class="service-text">Documentários</div></div>
+          <div class="side-text-services"><div class="label-small">Conteúdo</div></div>
+        </div>
+
+        <div class="service-item-home-b">
+          <div class="side-text-services"><div class="label-small">// 04</div></div>
+          <div class="text-wrap-service-middle"><div class="service-text">Motion Design</div></div>
+          <div class="side-text-services"><div class="label-small">VFX / 2D</div></div>
+        </div>
+
+        <div class="service-item-home-b">
+          <div class="side-text-services"><div class="label-small">// 05</div></div>
+          <div class="text-wrap-service-middle"><div class="service-text">Cobertura de Eventos</div></div>
+          <div class="side-text-services"><div class="label-small">Ao Vivo</div></div>
+        </div>
+
+        <div class="service-item-home-b">
+          <div class="side-text-services"><div class="label-small">// 06</div></div>
+          <div class="text-wrap-service-middle"><div class="service-text">Edição & Pós-Produção</div></div>
+          <div class="side-text-services"><div class="label-small">Post</div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     ABOUT SECTION — estrutura Home-B about
+═══════════════════════════════════════════ -->
+<section class="section home-b-about-section">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="w-layout-grid home-b-about-grid">
+      <div class="left-home-b-about">
+        <div class="label text-light-64">
+          Mais de 25 anos criando histórias<br/>
+          que impactam e transformam.<br/>
+          // Est. 1996 · Pacaembú, São Paulo
+        </div>
+        <div class="home-b-about-bottom">
+          <img src="https://static.wixstatic.com/media/09c962_478482e1544c47bebf02b17ca340b554~mv2.png" loading="lazy" alt="Casa de Vídeo" class="gsap-home-b"/>
+          <h3 class="no-margins">A Casa de Vídeo é uma produtora audiovisual com estúdio próprio, equipe especializada e décadas de experiência em projetos que comunicam com clareza e presença.</h3>
+          <a href="#contato" button="" data-wf--cta-small--variant="base" class="cta-small w-inline-block">
+            <div class="button-text-mask-small"><div button-text="" class="button-text-small">Seu roteiro começa aqui</div></div>
+            <div button-bg="" class="button-bg"></div>
+          </a>
+        </div>
+      </div>
+      <div class="about-image-home-a img-zoom">
+        <img src="https://static.wixstatic.com/media/09c962_2bb7758896974fe1a730e4f1b752f58a~mv2.jpg" loading="lazy" alt="Estúdio Casa de Vídeo" class="image-cover"/>
+        <div class="about-image-info">
+          <div class="label-small">Estúdio Casa de Vídeo</div>
+          <div class="label-small text-light-88">PACAEMBÚ — SÃO PAULO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     STATS STRIP
+═══════════════════════════════════════════ -->
+<div class="cdv-stats-strip">
+  <div class="cdv-stat">
+    <div class="cdv-stat-num">+25</div>
+    <div class="cdv-stat-label">Anos de Experiência</div>
+  </div>
+  <div class="cdv-stat">
+    <div class="cdv-stat-num">500+</div>
+    <div class="cdv-stat-label">Projetos Realizados</div>
+  </div>
+  <div class="cdv-stat">
+    <div class="cdv-stat-num">100+</div>
+    <div class="cdv-stat-label">Clientes Atendidos</div>
+  </div>
+  <div class="cdv-stat">
+    <div class="cdv-stat-num">4K</div>
+    <div class="cdv-stat-label">Qualidade de Captação</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     POLÍTICAS — estrutura slider/journal do template
+═══════════════════════════════════════════ -->
+<section class="section slider-home-b-section" id="politicas">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="headline-home-a-journal">
+      <div class="left-home-a-journal">
+        <h3 class="no-margins">RESPONSABILIDADE</h3>
+        <div class="label text-light-64">POLÍTICAS:<br/>CASA DE VÍDEO</div>
+      </div>
+    </div>
+    <div class="cdv-policies">
+      <a href="carta-compromisso.html" class="cdv-policy-card" id="link-carta">
+        <div class="cdv-policy-icon">🛡️</div>
+        <h3>Carta Compromisso em Saúde Ocupacional</h3>
+        <p>Segurança e bem-estar no trabalho como prioridade em todos os nossos projetos e atividades. Segurança do Trabalho e Meio Ambiente.</p>
+        <div class="cdv-policy-link">Ler documento →</div>
+      </a>
+      <a href="politica-trabalhista.html" class="cdv-policy-card" id="link-politica">
+        <div class="cdv-policy-icon">⚖️</div>
+        <h3>Política de Práticas Trabalhistas e Direitos Humanos</h3>
+        <p>Compromisso com práticas éticas, respeito aos direitos humanos e valorização de cada colaborador e parceiro.</p>
+        <div class="cdv-policy-link">Ler documento →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     GALERIA DE IMAGENS (Scroll Lateral)
+═══════════════════════════════════════════ -->
+<section class="section" id="galeria" style="padding-top: 100px; padding-bottom: 120px; overflow: hidden; position: relative;">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <div class="cdv-section-label" style="margin-bottom: 16px;">// Bastidores & Produções</div>
+        <h2 class="text-h3" style="margin: 0;">Galeria de <em>Imagens</em></h2>
+      </div>
+      <div style="display: flex; gap: 12px;">
+        <button id="galeriaPrevBtn" aria-label="Anterior" style="width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.06); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button id="galeriaNextBtn" aria-label="Próximo" style="width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.06); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cdv-gallery-track-wrap" style="width: 100%; overflow-x: auto; scroll-behavior: smooth; padding-left: max(5vw, calc((100vw - 1200px) / 2)); padding-right: 5vw; padding-bottom: 32px; cursor: grab; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
+    <div class="cdv-gallery-track" style="display: flex; gap: 28px; width: max-content; padding-top: 10px; padding-bottom: 30px;">
+      <div class="cdv-gallery-card"><img src="Galeria/1.avif" alt="Bastidores Casa de Vídeo 1" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/2.avif" alt="Bastidores Casa de Vídeo 2" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/3.avif" alt="Bastidores Casa de Vídeo 3" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/4.avif" alt="Bastidores Casa de Vídeo 4" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/5.avif" alt="Bastidores Casa de Vídeo 5" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/6.avif" alt="Bastidores Casa de Vídeo 6" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/7.avif" alt="Bastidores Casa de Vídeo 7" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/8.avif" alt="Bastidores Casa de Vídeo 8" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/9.avif" alt="Bastidores Casa de Vídeo 9" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/10.avif" alt="Bastidores Casa de Vídeo 10" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/11.avif" alt="Bastidores Casa de Vídeo 11" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/12.avif" alt="Bastidores Casa de Vídeo 12" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/13.avif" alt="Bastidores Casa de Vídeo 13" loading="lazy"/></div>
+      <div class="cdv-gallery-card"><img src="Galeria/14.avif" alt="Bastidores Casa de Vídeo 14" loading="lazy"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX MODAL (Ampliação de imagem) -->
+<div id="galleryLightbox" class="cdv-lightbox" aria-hidden="true">
+  <button id="lightboxClose" class="cdv-lightbox-close" aria-label="Fechar">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <button id="lightboxPrev" class="cdv-lightbox-nav prev" aria-label="Anterior">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button id="lightboxNext" class="cdv-lightbox-nav next" aria-label="Próximo">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <div class="cdv-lightbox-content">
+    <img id="lightboxImg" src="" alt="Imagem ampliada"/>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CONTATO
+═══════════════════════════════════════════ -->
+<section class="section" id="contato" style="background: #111;">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="cdv-section-label">// Briefing</div>
+    <h2 class="text-h3" style="margin-bottom: 64px;">Vamos escrever<br/><em>seu roteiro?</em></h2>
+    <div class="cdv-contact-grid">
+      <div>
+        <div class="cdv-contact-item">
+          <div class="cdv-contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+          </div>
+          <div>
+            <div class="cdv-contact-label">Endereço</div>
+            <div class="cdv-contact-value">Rua Almirante Pereira Guimarães, 475<br/>Pacaembú — São Paulo, SP</div>
+          </div>
+        </div>
+        <div class="cdv-contact-item">
+          <div class="cdv-contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="cdv-contact-label">Telefone / WhatsApp</div>
+            <div class="cdv-contact-value"><a href="https://api.whatsapp.com/send?phone=551138662535&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener">+55 (11) 3866-2535</a></div>
+          </div>
+        </div>
+        <div class="cdv-contact-item">
+          <div class="cdv-contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <div class="cdv-contact-label">E-mail</div>
+            <div class="cdv-contact-value"><a href="mailto:contato@casadevideo.com.br">contato@casadevideo.com.br</a></div>
+          </div>
+        </div>
+        <div class="cdv-contact-item">
+          <div class="cdv-contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
+          </div>
+          <div>
+            <div class="cdv-contact-label">Site</div>
+            <div class="cdv-contact-value"><a href="https://www.casadevideo.com.br" target="_blank" rel="noopener">www.casadevideo.com.br</a></div>
+          </div>
+        </div>
+        <div class="cdv-social-row">
+          <a href="http://www.facebook.com/casadevideo" target="_blank" rel="noopener" class="cdv-social-btn" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://vimeo.com/casadevideo" target="_blank" rel="noopener" class="cdv-social-btn" aria-label="Vimeo">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7.42c-.09 2-1.48 4.73-4.17 8.2C15.04 19.2 12.72 21 10.76 21c-1.19 0-2.19-1.1-3.01-3.28L6.19 12.2C5.56 10.02 4.89 8.93 4.19 8.93c-.15 0-.68.32-1.59.97l-.95-1.22c1-.88 1.99-1.76 2.96-2.64C5.94 8.89 6.94 8.29 7.6 8.24c1.57-.15 2.54.92 2.9 3.22.39 2.47.66 4 .82 4.62.45 2.07.95 3.1 1.49 3.1.42 0 1.06-.67 1.91-2 .85-1.34 1.3-2.36 1.36-3.06.12-1.16-.33-1.74-1.36-1.74-.49 0-1 .11-1.51.34.99-3.27 2.9-4.86 5.71-4.77 2.09.06 3.07 1.41 2.94 4.05z"/></svg>
+          </a>
+          <a href="https://instagram.com/casadevideo" target="_blank" rel="noopener" class="cdv-social-btn" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="cdv-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2!2d-46.6651!3d-23.5425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5786cb5f0ab1%3A0x4b9f1d8c3cbcda3a!2sRua%20Almirante%20Pereira%20Guimar%C3%A3es%2C%20475%20-%20Paca%C3%AAmbu%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização Casa de Vídeo">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     FOOTER — estrutura Webflow UNIT01 com tipografia gigante CASA DE VÍDEO®
+═══════════════════════════════════════════ -->
+<footer class="footer cdv-footer-unit01" role="contentinfo">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div class="footer-halves" style="align-items: flex-end;">
+      <!-- LADO ESQUERDO: Logo oficial da empresa -->
+      <div class="cdv-footer-brand-wrap">
+        <a href="index.html" class="w-inline-block" aria-label="Casa de Vídeo Home">
+          <img src="https://static.wixstatic.com/media/09c962_478482e1544c47bebf02b17ca340b554~mv2.png" alt="Casa de Vídeo — Criação" class="footer-logo left" style="height: 110px; width: auto; object-fit: contain; border-radius: 50%; background: #0d0d0d; box-shadow: 0 8px 24px rgba(0,0,0,0.6); display: block;"/>
+        </a>
+      </div>
+
+      <!-- LADO DIREITO: Botões de navegação em pílula + Copyright e links de Políticas -->
+      <div class="right-footer">
+        <div class="link-list-footer" style="gap: 8px; flex-wrap: wrap;">
+          <a href="#quem-somos" button="" class="cta-small light-16 footer-cta w-inline-block">
+            <div class="button-text-mask-small"><div button-text="" class="button-text-small light-16">Quem Somos</div></div>
+            <div button-bg="" class="button-bg light-16"></div>
+          </a>
+          <a href="#projetos" button="" class="cta-small light-16 footer-cta w-inline-block">
+            <div class="button-text-mask-small"><div button-text="" class="button-text-small light-16">Projetos</div></div>
+            <div button-bg="" class="button-bg light-16"></div>
+          </a>
+          <a href="#servicos" button="" class="cta-small light-16 footer-cta w-inline-block">
+            <div class="button-text-mask-small"><div button-text="" class="button-text-small light-16">Serviços</div></div>
+            <div button-bg="" class="button-bg light-16"></div>
+          </a>
+          <a href="#galeria" button="" class="cta-small light-16 footer-cta w-inline-block">
+            <div class="button-text-mask-small"><div button-text="" class="button-text-small light-16">Galeria</div></div>
+            <div button-bg="" class="button-bg light-16"></div>
+          </a>
+          <a href="#contato" button="" class="cta-small light-16 footer-cta w-inline-block">
+            <div class="button-text-mask-small"><div button-text="" class="button-text-small light-16">Iniciar Briefing</div></div>
+            <div button-bg="" class="button-bg light-16"></div>
+          </a>
+        </div>
+        <div class="footer-bottom-tile">
+          <div class="footer-top-text">
+            <div class="label-small text-light-48">
+              © 2025 Casa de Vídeo Produções Ltda — EPP.<br/>
+              Rua Almirante Pereira Guimarães, 475 — Pacaembú, São Paulo - SP.<br/>
+              Todos os direitos reservados.
+            </div>
+          </div>
+          <div class="footer-bottom-link-list">
+            <a href="carta-compromisso.html" class="link-footer w-inline-block"><div class="label-small">Carta Compromisso</div></a>
+            <div class="label-small text-light-48"><strong>·</strong></div>
+            <a href="politica-trabalhista.html" class="link-footer w-inline-block"><div class="label-small">Práticas Trabalhistas</div></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     WHATSAPP FLOAT
+═══════════════════════════════════════════ -->
+<a href="https://api.whatsapp.com/send?phone=551138662535&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
+   target="_blank" rel="noopener"
+   class="whatsapp-float" id="whatsappFloat"
+   aria-label="Fale conosco pelo WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════ -->
+<script>
+  // ── WhatsApp float on scroll ──
+  const wa = document.getElementById('whatsappFloat');
+  window.addEventListener('scroll', () => {
+    wa.classList.toggle('visible', window.scrollY > 80);
+  }, { passive: true });
+
+  // ── Smooth scroll interno ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const tgt = document.querySelector(this.getAttribute('href'));
+      if (!tgt) return;
+      e.preventDefault();
+      tgt.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // ── Preloader & Animação de Entrada Cinematográfica (3.0s Giro + Sequência) ──
+  const introTl = gsap.timeline();
+
+  // 1. O logo gira 360° e ganha definição lentamente por 3.0 segundos
+  introTl.to("#preloaderLogo", {
+    duration: 3.0,
+    filter: "blur(0px)",
+    opacity: 1,
+    scale: 1,
+    rotation: 360,
+    ease: "power2.out"
+  })
+  // 2. O fundo do preloader se dissolve enquanto o texto SOBE diretamente atrás do logo
+  .to("#cdvPreloader", {
+    duration: 1.0,
+    opacity: 0,
+    ease: "power2.inOut",
+    onComplete: () => {
+      const preloader = document.getElementById('cdvPreloader');
+      if (preloader) preloader.style.display = 'none';
+    }
+  }, "+=0.1")
+  // 3. O texto monumental PRODUÇÃO / AUDIO VISUAL sobe de trás do logo
+  .to(".headline-home-b .text-line h1", {
+    duration: 1.2,
+    y: 0,
+    opacity: 1,
+    stagger: 0.18,
+    ease: "power3.out"
+  }, "-=0.9")
+  // 4. Logo rotativo do centro se revela no eixo exato
+  .to(".headline-home-b .home-b-placeholder", {
+    duration: 1.0,
+    scale: 1,
+    opacity: 1,
+    ease: "back.out(1.4)"
+  }, "-=0.8")
+  // 5. O cabeçalho / menu superior desce em posição definitiva com destaque total
+  .to(".master-navigation", {
+    duration: 1.0,
+    y: 0,
+    opacity: 1,
+    ease: "power2.out"
+  }, "-=0.4")
+  // 6. Detalhes do rodapé do Hero (EST. 1996)
+  .to(".home-b-bottom-tile", {
+    duration: 0.8,
+    y: 0,
+    opacity: 1,
+    ease: "power2.out"
+  }, "-=0.6");
+
+  // ── GSAP ScrollTrigger animations ──
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Stats counter animation
+  document.querySelectorAll('.cdv-stat-num').forEach(el => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 80%' },
+      y: 30, opacity: 0, duration: 0.6, ease: 'power2.out'
+    });
+  });
+
+  // Project cards stagger
+  gsap.utils.toArray('.card-project').forEach((card, i) => {
+    gsap.from(card, {
+      scrollTrigger: { trigger: card, start: 'top 85%' },
+      y: 60, opacity: 0, duration: 0.7, delay: i * 0.1, ease: 'power2.out'
+    });
+  });
+
+  // Service items stagger
+  gsap.utils.toArray('.service-item-home-b').forEach((item, i) => {
+    gsap.from(item, {
+      scrollTrigger: { trigger: item, start: 'top 88%' },
+      x: -40, opacity: 0, duration: 0.5, delay: i * 0.08, ease: 'power2.out'
+    });
+  });
+
+  // About image parallax
+  const aboutImg = document.querySelector('.about-image-home-a');
+  if (aboutImg) {
+    gsap.to(aboutImg, {
+      scrollTrigger: { trigger: aboutImg, start: 'top bottom', end: 'bottom top', scrub: 1.5 },
+      y: -60, ease: 'none'
+    });
+  }
+
+  // Policy cards
+  gsap.utils.toArray('.cdv-policy-card').forEach((card, i) => {
+    gsap.from(card, {
+      scrollTrigger: { trigger: card, start: 'top 85%' },
+      y: 40, opacity: 0, duration: 0.6, delay: i * 0.15, ease: 'power2.out'
+    });
+  });
+
+  // Galeria drag & scroll controls + Lightbox
+  const trackWrap = document.querySelector('.cdv-gallery-track-wrap');
+  const prevBtn = document.getElementById('galeriaPrevBtn');
+  const nextBtn = document.getElementById('galeriaNextBtn');
+  const galleryCards = Array.from(document.querySelectorAll('.cdv-gallery-card'));
+
+  let isDown = false;
+  let isMoved = false;
+  let startX;
+  let scrollLeft;
+
+  if (trackWrap && prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      trackWrap.scrollBy({ left: -360, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+      trackWrap.scrollBy({ left: 360, behavior: 'smooth' });
+    });
+
+    trackWrap.addEventListener('mousedown', (e) => {
+      isDown = true;
+      isMoved = false;
+      trackWrap.style.cursor = 'grabbing';
+      startX = e.pageX - trackWrap.offsetLeft;
+      scrollLeft = trackWrap.scrollLeft;
+    });
+    trackWrap.addEventListener('mouseleave', () => {
+      isDown = false;
+      trackWrap.style.cursor = 'grab';
+    });
+    trackWrap.addEventListener('mouseup', () => {
+      isDown = false;
+      trackWrap.style.cursor = 'grab';
+    });
+    trackWrap.addEventListener('mousemove', (e) => {
+      if(!isDown) return;
+      const x = e.pageX - trackWrap.offsetLeft;
+      const walk = (x - startX) * 1.8;
+      if (Math.abs(x - startX) > 5) {
+        isMoved = true;
+      }
+      trackWrap.scrollLeft = scrollLeft - walk;
+    });
+  }
+
+  // Lightbox Modal System
+  const lightbox = document.getElementById('galleryLightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lbClose = document.getElementById('lightboxClose');
+  const lbPrev = document.getElementById('lightboxPrev');
+  const lbNext = document.getElementById('lightboxNext');
+  let currentLbIndex = 0;
+
+  function openLightbox(index) {
+    currentLbIndex = index;
+    const imgEl = galleryCards[currentLbIndex].querySelector('img');
+    if (!imgEl) return;
+    lightboxImg.src = imgEl.src;
+    lightboxImg.alt = imgEl.alt;
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function showNextLb() {
+    currentLbIndex = (currentLbIndex + 1) % galleryCards.length;
+    const imgEl = galleryCards[currentLbIndex].querySelector('img');
+    if (imgEl) lightboxImg.src = imgEl.src;
+  }
+
+  function showPrevLb() {
+    currentLbIndex = (currentLbIndex - 1 + galleryCards.length) % galleryCards.length;
+    const imgEl = galleryCards[currentLbIndex].querySelector('img');
+    if (imgEl) lightboxImg.src = imgEl.src;
+  }
+
+  galleryCards.forEach((card, idx) => {
+    card.addEventListener('click', (e) => {
+      if (isMoved) return; // Se arrastou, não abre lightbox
+      openLightbox(idx);
+    });
+  });
+
+  if (lbClose) lbClose.addEventListener('click', closeLightbox);
+  if (lbNext) lbNext.addEventListener('click', (e) => { e.stopPropagation(); showNextLb(); });
+  if (lbPrev) lbPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrevLb(); });
+
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('cdv-lightbox-content')) {
+        closeLightbox();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox || !lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNextLb();
+    if (e.key === 'ArrowLeft') showPrevLb();
+  });
+
+  // Clique no Logo do Topo na Home: Rolar suavemente ao topo com animação moderna
+  const brandLogo = document.querySelector('.brand-nav');
+  if (brandLogo) {
+    brandLogo.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.gsap && window.ScrollToPlugin) {
+        gsap.to(window, { duration: 1.2, scrollTo: 0, ease: 'power3.inOut' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+
+  // Galeria GSAP entrance stagger
+  gsap.utils.toArray('.cdv-gallery-card').forEach((card, i) => {
+    gsap.from(card, {
+      scrollTrigger: { trigger: '#galeria', start: 'top 80%' },
+      y: 80, opacity: 0, duration: 0.8, delay: i * 0.05, ease: 'power3.out'
+    });
+  });
+</script>
+
+</body>
+</html>
