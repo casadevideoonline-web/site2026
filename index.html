@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Casa de Vídeo Produções — Produtora Audiovisual em São Paulo</title>
+<link rel="icon" type="image/png" href="Documentos/logo.png"/>
 <meta name="description" content="Casa de Vídeo Produções Ltda — Produtora audiovisual especializada em filmes institucionais, comerciais, documentários e captação de imagens em São Paulo."/>
 <meta property="og:title" content="Casa de Vídeo Produções — Produtora Audiovisual em São Paulo"/>
 <meta property="og:description" content="Produtora audiovisual especializada em filmes institucionais, comerciais, documentários e captação de imagens."/>
@@ -38,6 +39,16 @@
 .cta-small:hover .button-text-small {
   color: #0e0e0e !important;
 }
+#nav-cta:hover {
+  background-color: transparent !important;
+  border-color: #f5c500 !important;
+}
+#nav-cta:hover .button-text-small {
+  color: #f5c500 !important;
+}
+#nav-cta:hover .button-bg {
+  opacity: 0 !important;
+}
 
 /* ── Centralização perfeita do Logo do Menu Topo com o Logo Hero ── */
 .nav-wrapper {
@@ -48,22 +59,26 @@
   align-items: center !important;
 }
 .brand-nav {
-  position: absolute !important;
-  left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%) !important;
+  position: relative !important;
   margin: 0 !important;
   z-index: 10 !important;
 }
 .cdv-logo-nav {
   display: block !important;
-  margin: 0 auto !important;
 }
 
 /* ── Hero Headline & Rotating Logo (Sobreposto e deslocado para baixo igual à referência) ── */
+.headline-home-b .text-line {
+  position: relative;
+  z-index: 1;
+}
+.headline-home-b .text-line.hero-first-line {
+  z-index: 2;
+}
 .headline-home-b .text-line h1 {
   text-transform: uppercase;
   letter-spacing: -0.01em;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.95));
 }
 .headline-home-b .text-line.hero-second-line {
   position: relative !important;
@@ -91,9 +106,29 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85) !important;
 }
 
-/* ── Item 4: Esconder imagens flutuantes de serviços ── */
+/* ── Item 4: Esconder imagens flutuantes de serviços e adicionar sombra aos textos ── */
 .service-hover-image {
   display: none !important;
+}
+.service-item-home-b {
+  min-height: max-content !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+.text-wrap-service-middle {
+  position: relative !important;
+  padding-top: 24px !important;
+  padding-bottom: 40px !important;
+  overflow: hidden !important;
+}
+.service-text {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.95)) !important;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.95) !important;
+  line-height: 1 !important;
+  letter-spacing: -0.01em !important;
+  position: relative !important;
+  z-index: 10 !important;
+  display: block !important;
 }
 
 /* ── Item 5: Redes sociais no topo com hover colorido estilo template ── */
@@ -102,8 +137,8 @@
   align-items: center;
   gap: 8px;
 }
-.nav-social-link.facebook:hover {
-  background-color: #1877F2 !important;
+.nav-social-link.linkedin:hover {
+  background-color: #0A66C2 !important;
   color: #ffffff !important;
 }
 .nav-social-link.vimeo:hover {
@@ -316,9 +351,9 @@
 .cdv-map {
   border-radius: 2px; overflow: hidden;
   border: 1px solid rgba(255,255,255,.08);
-  height: 380px;
+  height: 310px;
 }
-.cdv-map iframe { width: 100%; height: 100%; border: none; filter: grayscale(90%) invert(88%) contrast(75%); }
+.cdv-map iframe { width: 100%; height: 100%; border: none; display: block; }
 
 /* section label override */
 .cdv-section-label {
@@ -699,6 +734,10 @@
     width: 130px !important;
   }
 }
+.service-item-home-b {
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
 </style>
 </head>
 
@@ -708,7 +747,7 @@
      PRELOADER / ANIMAÇÃO DE ENTRADA
 ═══════════════════════════════════════════ -->
 <div id="cdvPreloader">
-  <img id="preloaderLogo" src="https://static.wixstatic.com/media/09c962_478482e1544c47bebf02b17ca340b554~mv2.png" alt="Casa de Vídeo Produções"/>
+  <img id="preloaderLogo" src="Documentos/logo.png" alt="Casa de Vídeo Produções"/>
 </div>
 
 <!-- ═══════════════════════════════════════════
@@ -718,85 +757,13 @@
   <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
     <div class="nav-wrapper">
 
-      <!-- ESQUERDA: hamburger + links -->
-      <div class="left-nav">
-        <div class="menu-button w-nav-button">
-          <div class="nav-menu-button">
-            <div class="menu-open">
-              <img src="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24/687f7ebbac430a51615b5f84_Interface.svg" loading="lazy" alt="" class="icon-menu"/>
-            </div>
-            <div class="menu-close">
-              <div class="icon-close w-embed">
-                <svg width="100%" height="100%" viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M98.5347 91.4605C98.9994 91.9251 99.368 92.4764 99.6194 93.0837C99.8707 93.6904 100 94.341 100 94.9976C100 95.6549 99.8707 96.3056 99.6194 96.9122C99.368 97.5188 98.9994 98.0708 98.5347 98.5354C98.0708 98.9994 97.5188 99.3681 96.9122 99.6194C96.3049 99.8707 95.6549 100 94.9976 100C94.341 100 93.6903 99.8707 93.083 99.6194C92.4764 99.3681 91.9251 98.9994 91.4605 98.5354L50.0001 57.0686L8.53981 98.5354C7.60166 99.4734 6.32926 100 5.00253 100C3.67574 100 2.40336 99.4734 1.4652 98.5354C0.527052 97.5968 0 96.3249 0 94.9976C0 93.671 0.527052 92.3984 1.4652 91.4605L42.9317 50.0001L1.4652 8.53981C0.527052 7.60166 0 6.32926 0 5.00252C0 3.67579 0.527052 2.40335 1.4652 1.4652C2.40336 0.527045 3.67574 0 5.00253 0C6.32926 0 7.60166 0.527045 8.53981 1.4652L50.0001 42.9318L91.4605 1.4652C92.3984 0.527045 93.671 0 94.9976 0C96.3242 0 97.5968 0.527045 98.5347 1.4652C99.4734 2.40335 100 3.67579 100 5.00252C100 6.32926 99.4734 7.60166 98.5347 8.53981L57.0685 50.0001L98.5347 91.4605Z" fill="currentColor"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-        <nav role="navigation" class="nav-menu w-nav-menu">
-          <div class="menu-inner-sticky">
-            <div class="nav-link-wrap">
-              <a href="#quem-somos" button="" class="link-fixed-nav w-inline-block">
-                <div class="button-text-mask-small"><div button-text="" class="button-text-small navlink-text">Quem Somos</div></div>
-              </a>
-            </div>
-            <div class="nav-link-wrap">
-              <a href="#projetos" button="" class="link-fixed-nav w-inline-block">
-                <div class="button-text-mask-small"><div button-text="" class="button-text-small navlink-text">Projetos</div></div>
-              </a>
-            </div>
-            <div class="nav-link-wrap">
-              <a href="#servicos" button="" class="link-fixed-nav w-inline-block">
-                <div class="button-text-mask-small"><div button-text="" class="button-text-small navlink-text">Serviços</div></div>
-              </a>
-            </div>
-            <div class="nav-link-wrap">
-              <a href="#politicas" button="" class="link-fixed-nav w-inline-block">
-                <div class="button-text-mask-small"><div button-text="" class="button-text-small navlink-text">Políticas</div></div>
-              </a>
-            </div>
-            <div class="nav-link-wrap">
-              <a href="#galeria" button="" class="link-fixed-nav w-inline-block">
-                <div class="button-text-mask-small"><div button-text="" class="button-text-small navlink-text">Galeria</div></div>
-              </a>
-            </div>
-            <!-- Mobile menu items -->
-            <div class="menu-mobile">
-              <a href="#quem-somos" class="link-menu-mobile w-inline-block"><div class="text-h3">Quem Somos</div></a>
-              <a href="#projetos" class="link-menu-mobile w-inline-block"><div class="text-h3">Projetos</div></a>
-              <a href="#servicos" class="link-menu-mobile w-inline-block"><div class="text-h3">Serviços</div></a>
-              <a href="#politicas" class="link-menu-mobile w-inline-block"><div class="text-h3">Políticas</div></a>
-              <a href="#galeria" class="link-menu-mobile w-inline-block"><div class="text-h3">Galeria</div></a>
-              <a href="#contato" class="link-menu-mobile w-inline-block"><div class="text-h3">Briefing</div></a>
-            </div>
-          </div>
-        </nav>
-      </div>
-
-      <!-- CENTRO: Logo (Item 7: ao clicar vai para o Home/topo) -->
+      <!-- ESQUERDA: Logo (ao clicar vai para o Home/topo) -->
       <a href="index.html" class="brand-nav w-nav-brand" aria-label="Casa de Vídeo">
-        <img loading="lazy" src="https://static.wixstatic.com/media/09c962_478482e1544c47bebf02b17ca340b554~mv2.png" alt="Logo Casa de Vídeo" class="nav-logo cdv-logo-nav"/>
+        <img loading="lazy" src="Documentos/logo.png" alt="Logo Casa de Vídeo" class="nav-logo cdv-logo-nav"/>
       </a>
 
-      <!-- DIREITA: sociais + CTA (Item 5: Facebook, Vimeo e Instagram com hover colorido) -->
+      <!-- DIREITA: sociais + CTA (Instagram, LinkedIn e Vimeo com hover colorido) -->
       <div class="right-nav">
-        <!-- Facebook -->
-        <a href="http://www.facebook.com/casadevideo" target="_blank" rel="noopener" class="nav-social-link facebook w-inline-block" aria-label="Facebook Casa de Vídeo">
-          <div class="icon-social w-embed">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="-3 -3 30 30" fill="currentColor">
-              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
-            </svg>
-          </div>
-        </a>
-        <!-- Vimeo -->
-        <a href="https://vimeo.com/casadevideo" target="_blank" rel="noopener" class="nav-social-link vimeo w-inline-block" aria-label="Vimeo Casa de Vídeo">
-          <div class="icon-social w-embed">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="-3 -3 30 30" fill="currentColor">
-              <path d="M22 7.42c-.09 2-1.48 4.73-4.17 8.2C15.04 19.2 12.72 21 10.76 21c-1.19 0-2.19-1.1-3.01-3.28L6.19 12.2C5.56 10.02 4.89 8.93 4.19 8.93c-.15 0-.68.32-1.59.97l-.95-1.22c1-.88 1.99-1.76 2.96-2.64C5.94 8.89 6.94 8.29 7.6 8.24c1.57-.15 2.54.92 2.9 3.22.39 2.47.66 4 .82 4.62.45 2.07.95 3.1 1.49 3.1.42 0 1.06-.67 1.91-2 .85-1.34 1.3-2.36 1.36-3.06.12-1.16-.33-1.74-1.36-1.74-.49 0-1 .11-1.51.34.99-3.27 2.9-4.86 5.71-4.77 2.09.06 3.07 1.41 2.94 4.05z"/>
-            </svg>
-          </div>
-        </a>
         <!-- Instagram -->
         <a href="https://www.instagram.com/casadevideo" target="_blank" rel="noopener" class="nav-social-link instagram w-inline-block" aria-label="Instagram Casa de Vídeo">
           <div class="icon-social w-embed">
@@ -814,6 +781,22 @@
             </svg>
           </div>
           <img src="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24/68776db1e1b5806af83f16f0_Insta.png" loading="lazy" alt="" class="instagram-bg"/>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/company/casadevideo" target="_blank" rel="noopener" class="nav-social-link linkedin w-inline-block" aria-label="LinkedIn Casa de Vídeo">
+          <div class="icon-social w-embed">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="-10 -10 44 44" fill="currentColor">
+              <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+            </svg>
+          </div>
+        </a>
+        <!-- Vimeo -->
+        <a href="https://vimeo.com/casadevideo" target="_blank" rel="noopener" class="nav-social-link vimeo w-inline-block" aria-label="Vimeo Casa de Vídeo">
+          <div class="icon-social w-embed">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="-3 -3 30 30" fill="currentColor">
+              <path d="M22 7.42c-.09 2-1.48 4.73-4.17 8.2C15.04 19.2 12.72 21 10.76 21c-1.19 0-2.19-1.1-3.01-3.28L6.19 12.2C5.56 10.02 4.89 8.93 4.19 8.93c-.15 0-.68.32-1.59.97l-.95-1.22c1-.88 1.99-1.76 2.96-2.64C5.94 8.89 6.94 8.29 7.6 8.24c1.57-.15 2.54.92 2.9 3.22.39 2.47.66 4 .82 4.62.45 2.07.95 3.1 1.49 3.1.42 0 1.06-.67 1.91-2 .85-1.34 1.3-2.36 1.36-3.06.12-1.16-.33-1.74-1.36-1.74-.49 0-1 .11-1.51.34.99-3.27 2.9-4.86 5.71-4.77 2.09.06 3.07 1.41 2.94 4.05z"/>
+            </svg>
+          </div>
         </a>
 
         <!-- Botão Contato -->
@@ -868,14 +851,14 @@
   <div class="w-layout-blockcontainer main-container w-container">
     <div class="master-hero-home-b">
       <div class="headline-home-b">
-        <div class="text-line">
+        <div class="text-line hero-first-line">
           <h1>PRODUÇÃO</h1>
         </div>
         <div class="text-line hero-second-line">
           <h1>AUDIOVISUAL</h1>
           <div class="home-b-placeholder">
             <!-- Ícone rotativo do cliente -->
-            <img src="https://static.wixstatic.com/media/09c962_478482e1544c47bebf02b17ca340b554~mv2.png" loading="lazy" alt="Casa de Vídeo" class="rotating"/>
+            <img src="Documentos/logo.png" loading="lazy" alt="Casa de Vídeo" class="rotating"/>
           </div>
         </div>
       </div>
@@ -895,12 +878,50 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     ABOUT HALVES
+     PROJECTS — layout fiel ao template
 ═══════════════════════════════════════════ -->
 <section class="section" id="quem-somos">
+
+  <div class="w-layout-blockcontainer main-container w-container" id="projetos">
+    <div class="master-projects">
+
+      <!-- Projeto 1: Showreel 2024 (Item 3: Player Vimeo inline 16:9) -->
+      <div class="project _1 reverse w-dyn-list">
+        <div role="list" class="w-dyn-items">
+          <div role="listitem" class="w-dyn-item">
+            <div class="card-project w-inline-block" style="cursor: default;">
+              <div class="cdv-showreel-wrapper">
+                <iframe src="https://player.vimeo.com/video/189202205?title=0&byline=0&portrait=0&color=f5c500" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen 
+                        title="Showreel Casa de Vídeo 2024">
+                </iframe>
+              </div>
+              <div class="text-wrap-project-card" style="margin-top: 16px;">
+                <div class="text-h5">Showreel 2024 — Casa de Vídeo</div>
+                <div class="project-card-bottom-tile">
+                  <div class="tag-wrap-project">
+                    <div class="tag-wrap"><div class="label text-light-64">Direção</div><div class="label text-light-64">,</div></div>
+                    <div class="tag-wrap"><div class="label text-light-64">Captação</div><div class="label text-light-64">,</div></div>
+                    <div class="tag-wrap"><div class="label text-light-64">Edição</div></div>
+                  </div>
+                  <a href="https://vimeo.com/189202205" target="_blank" rel="noopener" class="label text-light-64 text-underline">Abrir no Vimeo ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <!-- ── ABOUT HALVES ── -->
   <div class="w-layout-blockcontainer main-container w-container">
     <div class="w-layout-grid home-b-about-halves">
-      <div class="text-h3">A Casa de Vídeo Produções é especialista em audiovisual.</div>
+      <div class="text-h3">A Casa de Vídeo é especialista em audiovisual.</div>
       <div class="text-h5">Há mais de 25 anos transformamos ideias em filmes institucionais, comerciais, documentários e coberturas de evento de alto impacto. Com estúdio próprio no Pacaembú, em São Paulo, reunimos diretores, cinegrafistas e editores comprometidos com cada detalhe da sua comunicação.</div>
     </div>
   </div>
@@ -953,114 +974,6 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       PROJECTS — layout fiel ao template
-  ═══════════════════════════════════════════ -->
-  <div class="w-layout-blockcontainer main-container w-container" id="projetos">
-    <div class="master-projects">
-
-      <!-- Projeto 1: Showreel 2024 (Item 3: Player Vimeo inline 16:9) -->
-      <div class="project _1 reverse w-dyn-list">
-        <div role="list" class="w-dyn-items">
-          <div role="listitem" class="w-dyn-item">
-            <div class="card-project w-inline-block" style="cursor: default;">
-              <div class="cdv-showreel-wrapper">
-                <iframe src="https://player.vimeo.com/video/189202205?title=0&byline=0&portrait=0&color=f5c500" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen 
-                        title="Showreel Casa de Vídeo 2024">
-                </iframe>
-              </div>
-              <div class="text-wrap-project-card" style="margin-top: 16px;">
-                <div class="text-h5">Showreel 2024 — Casa de Vídeo</div>
-                <div class="project-card-bottom-tile">
-                  <div class="tag-wrap-project">
-                    <div class="tag-wrap"><div class="label text-light-64">Direção</div><div class="label text-light-64">,</div></div>
-                    <div class="tag-wrap"><div class="label text-light-64">Captação</div><div class="label text-light-64">,</div></div>
-                    <div class="tag-wrap"><div class="label text-light-64">Edição</div></div>
-                  </div>
-                  <a href="https://vimeo.com/189202205" target="_blank" rel="noopener" class="label text-light-64 text-underline">Abrir no Vimeo ↗</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Projeto 2 -->
-      <div class="project _2 reverse w-dyn-list">
-        <div role="list" class="w-dyn-items">
-          <div role="listitem" class="w-dyn-item">
-            <a href="https://vimeo.com/casadevideo" target="_blank" class="card-project w-inline-block">
-              <div class="image-wrap-project _2 img-zoom">
-                <img src="https://static.wixstatic.com/media/122a37_34f1d9d378b2416f9da9d6d29e64255a~mv2.jpg" loading="lazy" alt="Filme Institucional" class="image-cover"/>
-                <div cms-overlay="" class="overlay-dark-48"></div>
-              </div>
-              <div class="text-wrap-project-card">
-                <div class="text-h5">Filme Institucional</div>
-                <div class="project-card-bottom-tile">
-                  <div class="tag-wrap-project">
-                    <div class="tag-wrap"><div class="label text-light-64">Corporativo</div><div class="label text-light-64">,</div></div>
-                    <div class="tag-wrap"><div class="label text-light-64">Produção</div></div>
-                  </div>
-                  <div class="label text-light-64 text-underline">Ver projeto</div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Projetos 3+4 em bloco -->
-      <div class="project-block-1">
-        <div class="project _3 w-dyn-list">
-          <div role="list" class="w-dyn-items">
-            <div role="listitem" class="w-dyn-item">
-              <a href="https://vimeo.com/casadevideo" target="_blank" class="card-project w-inline-block">
-                <div class="image-wrap-project _3 img-zoom">
-                  <img src="https://static.wixstatic.com/media/09c962_51e61d8850884b77bc22b5ba5046a592~mv2.jpg" loading="lazy" alt="Comercial" class="image-cover"/>
-                  <div cms-overlay="" class="overlay-dark-48"></div>
-                </div>
-                <div class="text-wrap-project-card">
-                  <div class="text-h5">Comercial</div>
-                  <div class="project-card-bottom-tile">
-                    <div class="tag-wrap-project">
-                      <div class="tag-wrap"><div class="label text-light-64">Publicidade</div><div class="label text-light-64">,</div></div>
-                      <div class="tag-wrap"><div class="label text-light-64">Motion</div></div>
-                    </div>
-                    <div class="label text-light-64 text-underline">Ver projeto</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="project _4 w-dyn-list">
-          <div role="list" class="w-dyn-items">
-            <div role="listitem" class="w-dyn-item">
-              <a href="https://vimeo.com/casadevideo" target="_blank" class="card-project w-inline-block">
-                <div class="image-wrap-project img-zoom">
-                  <img src="https://static.wixstatic.com/media/09c962_4c2e0e01d83c4aeb962b7f5b74bb086d~mv2.jpg" loading="lazy" alt="Documentário" class="image-cover"/>
-                  <div cms-overlay="" class="overlay-dark-48"></div>
-                </div>
-                <div class="text-wrap-project-card">
-                  <div class="text-h5">Documentário</div>
-                  <div class="project-card-bottom-tile">
-                    <div class="tag-wrap-project">
-                      <div class="tag-wrap"><div class="label text-light-64">Roteiro</div><div class="label text-light-64">,</div></div>
-                      <div class="tag-wrap"><div class="label text-light-64">Pós-produção</div></div>
-                    </div>
-                    <div class="label text-light-64 text-underline">Ver projeto</div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════
@@ -1104,68 +1017,27 @@
 
         <div class="service-item-home-b">
           <div class="side-text-services"><div class="label-small">// 06</div></div>
-          <div class="text-wrap-service-middle"><div class="service-text">Edição & Pós-Produção</div></div>
+          <div class="text-wrap-service-middle"><div class="service-text">Edição &nbsp;&amp;&nbsp; Pós-Produção</div></div>
           <div class="side-text-services"><div class="label-small">Post</div></div>
         </div>
 
+        <div class="service-item-home-b">
+          <div class="side-text-services"><div class="label-small">// 07</div></div>
+          <div class="text-wrap-service-middle"><div class="service-text">Vídeos com IA</div></div>
+          <div class="side-text-services"><div class="label-small">Tecnologia / IA</div></div>
+        </div>
+
+        <div class="service-item-home-b">
+          <div class="side-text-services"><div class="label-small">// 08</div></div>
+          <div class="text-wrap-service-middle"><div class="service-text">Conte<span>ú</span>do para Redes Sociais</div></div>
+          <div class="side-text-services"><div class="label-small">Social Media</div></div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     ABOUT SECTION — estrutura Home-B about
-═══════════════════════════════════════════ -->
-<section class="section home-b-about-section">
-  <div class="w-layout-blockcontainer main-container w-container">
-    <div class="w-layout-grid home-b-about-grid">
-      <div class="left-home-b-about">
-        <div class="label text-light-64">
-          Mais de 25 anos criando histórias<br/>
-          que impactam e transformam.<br/>
-          // Est. 1996 · Pacaembú, São Paulo
-        </div>
-        <div class="home-b-about-bottom">
-          <img src="https://static.wixstatic.com/media/09c962_478482e1544c47bebf02b17ca340b554~mv2.png" loading="lazy" alt="Casa de Vídeo" class="gsap-home-b"/>
-          <h3 class="no-margins">A Casa de Vídeo é uma produtora audiovisual com estúdio próprio, equipe especializada e décadas de experiência em projetos que comunicam com clareza e presença.</h3>
-          <a href="#contato" button="" data-wf--cta-small--variant="base" class="cta-small w-inline-block">
-            <div class="button-text-mask-small"><div button-text="" class="button-text-small">Seu roteiro começa aqui</div></div>
-            <div button-bg="" class="button-bg"></div>
-          </a>
-        </div>
-      </div>
-      <div class="about-image-home-a img-zoom">
-        <img src="https://static.wixstatic.com/media/09c962_2bb7758896974fe1a730e4f1b752f58a~mv2.jpg" loading="lazy" alt="Estúdio Casa de Vídeo" class="image-cover"/>
-        <div class="about-image-info">
-          <div class="label-small">Estúdio Casa de Vídeo</div>
-          <div class="label-small text-light-88">PACAEMBÚ — SÃO PAULO</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     STATS STRIP
-═══════════════════════════════════════════ -->
-<div class="cdv-stats-strip">
-  <div class="cdv-stat">
-    <div class="cdv-stat-num">+25</div>
-    <div class="cdv-stat-label">Anos de Experiência</div>
-  </div>
-  <div class="cdv-stat">
-    <div class="cdv-stat-num">500+</div>
-    <div class="cdv-stat-label">Projetos Realizados</div>
-  </div>
-  <div class="cdv-stat">
-    <div class="cdv-stat-num">100+</div>
-    <div class="cdv-stat-label">Clientes Atendidos</div>
-  </div>
-  <div class="cdv-stat">
-    <div class="cdv-stat-num">4K</div>
-    <div class="cdv-stat-label">Qualidade de Captação</div>
-  </div>
-</div>
 
 <!-- ═══════════════════════════════════════════
      POLÍTICAS — estrutura slider/journal do template
@@ -1204,14 +1076,6 @@
       <div>
         <div class="cdv-section-label" style="margin-bottom: 16px;">// Bastidores & Produções</div>
         <h2 class="text-h3" style="margin: 0;">Galeria de <em>Imagens</em></h2>
-      </div>
-      <div style="display: flex; gap: 12px;">
-        <button id="galeriaPrevBtn" aria-label="Anterior" style="width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.06); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button id="galeriaNextBtn" aria-label="Próximo" style="width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.06); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
       </div>
     </div>
   </div>
@@ -1288,35 +1152,29 @@
             <div class="cdv-contact-value"><a href="mailto:contato@casadevideo.com.br">contato@casadevideo.com.br</a></div>
           </div>
         </div>
-        <div class="cdv-contact-item">
-          <div class="cdv-contact-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/></svg>
-          </div>
-          <div>
-            <div class="cdv-contact-label">Site</div>
-            <div class="cdv-contact-value"><a href="https://www.casadevideo.com.br" target="_blank" rel="noopener">www.casadevideo.com.br</a></div>
-          </div>
-        </div>
         <div class="cdv-social-row">
-          <a href="http://www.facebook.com/casadevideo" target="_blank" rel="noopener" class="cdv-social-btn" aria-label="Facebook">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          <a href="https://instagram.com/casadevideo" target="_blank" rel="noopener" class="cdv-social-btn" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/casadevideo" target="_blank" rel="noopener" class="cdv-social-btn" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="-10 -10 44 44" fill="currentColor">
+              <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+            </svg>
           </a>
           <a href="https://vimeo.com/casadevideo" target="_blank" rel="noopener" class="cdv-social-btn" aria-label="Vimeo">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7.42c-.09 2-1.48 4.73-4.17 8.2C15.04 19.2 12.72 21 10.76 21c-1.19 0-2.19-1.1-3.01-3.28L6.19 12.2C5.56 10.02 4.89 8.93 4.19 8.93c-.15 0-.68.32-1.59.97l-.95-1.22c1-.88 1.99-1.76 2.96-2.64C5.94 8.89 6.94 8.29 7.6 8.24c1.57-.15 2.54.92 2.9 3.22.39 2.47.66 4 .82 4.62.45 2.07.95 3.1 1.49 3.1.42 0 1.06-.67 1.91-2 .85-1.34 1.3-2.36 1.36-3.06.12-1.16-.33-1.74-1.36-1.74-.49 0-1 .11-1.51.34.99-3.27 2.9-4.86 5.71-4.77 2.09.06 3.07 1.41 2.94 4.05z"/></svg>
-          </a>
-          <a href="https://instagram.com/casadevideo" target="_blank" rel="noopener" class="cdv-social-btn" aria-label="Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
         </div>
       </div>
       <div class="cdv-map">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2!2d-46.6651!3d-23.5425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5786cb5f0ab1%3A0x4b9f1d8c3cbcda3a!2sRua%20Almirante%20Pereira%20Guimar%C3%A3es%2C%20475%20-%20Paca%C3%AAmbu%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
-          allowfullscreen=""
+          id="cdv-google-map"
+          src="https://maps.google.com/maps?q=-23.53826,-46.66078&z=17&t=k&output=embed"
+          allowfullscreen
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Localização Casa de Vídeo">
-        </iframe>
+          title="Casa de Vídeo — Rua Almirante Pereira Guimarães, 475, Pacaembú"
+        ></iframe>
       </div>
     </div>
   </div>
@@ -1331,7 +1189,7 @@
       <!-- LADO ESQUERDO: Logo oficial da empresa -->
       <div class="cdv-footer-brand-wrap">
         <a href="index.html" class="w-inline-block" aria-label="Casa de Vídeo Home">
-          <img src="https://static.wixstatic.com/media/09c962_478482e1544c47bebf02b17ca340b554~mv2.png" alt="Casa de Vídeo — Criação" class="footer-logo left" style="height: 110px; width: auto; object-fit: contain; border-radius: 50%; background: #0d0d0d; box-shadow: 0 8px 24px rgba(0,0,0,0.6); display: block;"/>
+          <img src="Documentos/logo.png" alt="Casa de Vídeo — Criação" class="footer-logo left" style="height: 110px; width: auto; object-fit: contain; border-radius: 50%; background: #0d0d0d; box-shadow: 0 8px 24px rgba(0,0,0,0.6); display: block;"/>
         </a>
       </div>
 
@@ -1508,36 +1366,32 @@
 
   // Galeria drag & scroll controls + Lightbox
   const trackWrap = document.querySelector('.cdv-gallery-track-wrap');
-  const prevBtn = document.getElementById('galeriaPrevBtn');
-  const nextBtn = document.getElementById('galeriaNextBtn');
   const galleryCards = Array.from(document.querySelectorAll('.cdv-gallery-card'));
 
   let isDown = false;
   let isMoved = false;
   let startX;
   let scrollLeft;
+  let autoScrollActive = true;
+  let scrollSpeed = 0.8; // Velocidade do scroll automático (pixels por frame)
 
-  if (trackWrap && prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => {
-      trackWrap.scrollBy({ left: -360, behavior: 'smooth' });
-    });
-    nextBtn.addEventListener('click', () => {
-      trackWrap.scrollBy({ left: 360, behavior: 'smooth' });
-    });
-
+  if (trackWrap) {
     trackWrap.addEventListener('mousedown', (e) => {
       isDown = true;
       isMoved = false;
+      autoScrollActive = false;
       trackWrap.style.cursor = 'grabbing';
       startX = e.pageX - trackWrap.offsetLeft;
       scrollLeft = trackWrap.scrollLeft;
     });
     trackWrap.addEventListener('mouseleave', () => {
       isDown = false;
+      autoScrollActive = true;
       trackWrap.style.cursor = 'grab';
     });
     trackWrap.addEventListener('mouseup', () => {
       isDown = false;
+      autoScrollActive = true;
       trackWrap.style.cursor = 'grab';
     });
     trackWrap.addEventListener('mousemove', (e) => {
@@ -1549,6 +1403,20 @@
       }
       trackWrap.scrollLeft = scrollLeft - walk;
     });
+
+
+    // Função de animação de scroll contínuo e automático
+    function autoScrollStep() {
+      if (autoScrollActive && !isDown) {
+        trackWrap.scrollLeft += scrollSpeed;
+        // Reseta o scroll para o início quando chega ao fim
+        if (trackWrap.scrollLeft >= trackWrap.scrollWidth - trackWrap.clientWidth - 1) {
+          trackWrap.scrollLeft = 0;
+        }
+      }
+      requestAnimationFrame(autoScrollStep);
+    }
+    requestAnimationFrame(autoScrollStep);
   }
 
   // Lightbox Modal System
@@ -1634,6 +1502,8 @@
       y: 80, opacity: 0, duration: 0.8, delay: i * 0.05, ease: 'power3.out'
     });
   });
+
+  // Mapa Google Maps — sem código adicional necessário (embed nativo)
 </script>
 
 </body>
