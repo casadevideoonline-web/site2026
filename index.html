@@ -222,13 +222,15 @@
   border: 1px solid rgba(255,255,255,0.12);
   background: #000;
 }
-.cdv-showreel-wrapper iframe {
+.cdv-showreel-wrapper iframe,
+.cdv-showreel-wrapper video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   border: none;
+  object-fit: cover;
 }
 
 /* image scale on hover para cards de projeto */
@@ -885,27 +887,25 @@
   <div class="w-layout-blockcontainer main-container w-container" id="projetos">
     <div class="master-projects">
 
-      <!-- Projeto 1: Showreel 2024 (Item 3: Player Vimeo inline 16:9) -->
+      <!-- Projeto 1: Reel 2026 (Vídeo MP4 HD) -->
       <div class="project _1 reverse w-dyn-list">
         <div role="list" class="w-dyn-items">
           <div role="listitem" class="w-dyn-item">
             <div class="card-project w-inline-block" style="cursor: default;">
               <div class="cdv-showreel-wrapper">
-                <iframe src="https://player.vimeo.com/video/189202205?title=0&byline=0&portrait=0&color=f5c500" 
-                        allow="autoplay; fullscreen; picture-in-picture" 
-                        allowfullscreen 
-                        title="Showreel Casa de Vídeo 2024">
-                </iframe>
+                <video controls autoplay muted loop playsinline poster="Documentos/logo.png">
+                  <source src="Documentos/reel_cv_2026 (1080p).mp4" type="video/mp4">
+                  Seu navegador não suporta a exibição de vídeos MP4.
+                </video>
               </div>
               <div class="text-wrap-project-card" style="margin-top: 16px;">
-                <div class="text-h5">Showreel 2024 — Casa de Vídeo</div>
+                <div class="text-h5">Reel 2026 — Casa de Vídeo</div>
                 <div class="project-card-bottom-tile">
                   <div class="tag-wrap-project">
                     <div class="tag-wrap"><div class="label text-light-64">Direção</div><div class="label text-light-64">,</div></div>
                     <div class="tag-wrap"><div class="label text-light-64">Captação</div><div class="label text-light-64">,</div></div>
                     <div class="tag-wrap"><div class="label text-light-64">Edição</div></div>
                   </div>
-                  <a href="https://vimeo.com/189202205" target="_blank" rel="noopener" class="label text-light-64 text-underline">Abrir no Vimeo ↗</a>
                 </div>
               </div>
             </div>
