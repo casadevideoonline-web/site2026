@@ -68,6 +68,26 @@
 }
 
 /* ── Hero Headline & Rotating Logo (Sobreposto e deslocado para baixo igual à referência) ── */
+.master-hero-home-b {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: clamp(24px, 3.5vh, 44px) !important;
+  height: 100% !important;
+}
+.hero-top-coords {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin-bottom: 0 !important;
+}
+.headline-home-b {
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 .headline-home-b .text-line {
   position: relative;
   z-index: 1;
@@ -79,6 +99,12 @@
   text-transform: uppercase;
   letter-spacing: -0.01em;
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.95));
+}
+.home-b-about-halves .text-h3 {
+  position: relative !important;
+  z-index: 10 !important;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.95)) !important;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.95) !important;
 }
 .headline-home-b .text-line.hero-second-line {
   position: relative !important;
@@ -112,23 +138,31 @@
 }
 .service-item-home-b {
   min-height: max-content !important;
-  overflow: hidden !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  overflow: visible !important;
   position: relative !important;
+  z-index: 5 !important;
 }
 .text-wrap-service-middle {
   position: relative !important;
-  padding-top: 24px !important;
-  padding-bottom: 40px !important;
-  overflow: hidden !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  overflow: visible !important;
 }
 .service-text {
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.95)) !important;
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.95) !important;
-  line-height: 1 !important;
+  line-height: 0.82 !important;
   letter-spacing: -0.01em !important;
   position: relative !important;
   z-index: 10 !important;
   display: block !important;
+}
+.service-text-top-line {
+  position: relative !important;
+  z-index: 2 !important;
+  display: inline-block !important;
 }
 
 /* ── Item 5: Redes sociais no topo com hover colorido estilo template ── */
@@ -852,6 +886,10 @@
 <section class="section hero-home-b">
   <div class="w-layout-blockcontainer main-container w-container">
     <div class="master-hero-home-b">
+      <div class="hero-top-coords">
+        <div class="label-small">23.5485° S, 46.6735° W</div>
+        <div class="label-small">PACAEMBU - SÃO PAULO — BRASIL</div>
+      </div>
       <div class="headline-home-b">
         <div class="text-line hero-first-line">
           <h1>PRODUÇÃO</h1>
@@ -866,12 +904,11 @@
       </div>
       <div class="home-b-bottom-tile">
         <div class="text-wrap-bottom-home-b">
-          <div class="label-small">// EST. 1996</div>
-          <div class="label-small">SÃO PAULO — SP</div>
+          <div class="label-small">// .1990 | .2026</div>
         </div>
         <div class="text-wrap-bottom-home-b">
           <div class="home-b-last-text">
-            <div class="label-small">Mais de<br/>25 anos de história</div>
+            <div class="label-small">Mais de 35 anos de história</div>
           </div>
         </div>
       </div>
@@ -900,11 +937,10 @@
               </div>
               <div class="text-wrap-project-card" style="margin-top: 16px;">
                 <div class="text-h5">Reel 2026 — Casa de Vídeo</div>
-                <div class="project-card-bottom-tile">
-                  <div class="tag-wrap-project">
-                    <div class="tag-wrap"><div class="label text-light-64">Direção</div><div class="label text-light-64">,</div></div>
-                    <div class="tag-wrap"><div class="label text-light-64">Captação</div><div class="label text-light-64">,</div></div>
-                    <div class="tag-wrap"><div class="label text-light-64">Edição</div></div>
+                <div class="project-card-bottom-tile" style="margin-top: 8px;">
+                  <div class="tag-wrap-project" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+                    <div class="tag-wrap"><div class="label" style="font-size: 14px; font-weight: 700; color: #ffffff;">DA IDEIA À ENTREGA</div></div>
+                    <div class="tag-wrap"><div class="label text-light-64">CRIAÇÃO, PRODUÇÃO E FINALIZAÇÃO</div></div>
                   </div>
                 </div>
               </div>
@@ -921,8 +957,12 @@
   <!-- ── ABOUT HALVES ── -->
   <div class="w-layout-blockcontainer main-container w-container">
     <div class="w-layout-grid home-b-about-halves">
-      <div class="text-h3">A Casa de Vídeo é especialista em audiovisual.</div>
-      <div class="text-h5">Há mais de 25 anos transformamos ideias em filmes institucionais, comerciais, documentários e coberturas de evento de alto impacto. Com estúdio próprio no Pacaembú, em São Paulo, reunimos diretores, cinegrafistas e editores comprometidos com cada detalhe da sua comunicação.</div>
+      <div class="text-h3">CONTAMOS HISTÓRIAS<br/>EM VÍDEO</div>
+      <div class="text-h5">
+        Fundada há mais de 35 anos, a Casa de Vídeo é uma produtora completa: cria, produz e finaliza projetos audiovisuais do conceito à entrega.<br/><br/>
+        Já filmamos em todos os estados do Brasil e ao redor do mundo. Com os maiores nomes da dramaturgia, da música e da TV, com as principais marcas do mercado corporativo, do chão de fábrica ao CEO. Em estúdio, em evento, em plantação, em obra, em cozinha, onde a história estivesse.<br/><br/>
+        São 35 anos. É muita história.
+      </div>
     </div>
   </div>
 
@@ -1017,7 +1057,7 @@
 
         <div class="service-item-home-b">
           <div class="side-text-services"><div class="label-small">// 06</div></div>
-          <div class="text-wrap-service-middle"><div class="service-text">Edição &nbsp;&amp;&nbsp; Pós-Produção</div></div>
+          <div class="text-wrap-service-middle"><div class="service-text"><span class="service-text-top-line">EDIÇÃO &amp; PÓS-</span><br/>PRODUÇÃO</div></div>
           <div class="side-text-services"><div class="label-small">Post</div></div>
         </div>
 
@@ -1068,14 +1108,14 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     GALERIA DE IMAGENS (Scroll Lateral)
+     BASTIDORES (Scroll Lateral)
 ═══════════════════════════════════════════ -->
 <section class="section" id="galeria" style="padding-top: 100px; padding-bottom: 120px; overflow: hidden; position: relative;">
   <div class="w-layout-blockcontainer main-container w-container">
     <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 20px;">
       <div>
-        <div class="cdv-section-label" style="margin-bottom: 16px;">// Bastidores & Produções</div>
-        <h2 class="text-h3" style="margin: 0;">Galeria de <em>Imagens</em></h2>
+        <div class="cdv-section-label" style="margin-bottom: 16px;">// Produções</div>
+        <h2 class="text-h3" style="margin: 0; text-transform: uppercase;">BASTIDORES</h2>
       </div>
     </div>
   </div>
@@ -1122,7 +1162,7 @@
 <section class="section" id="contato" style="background: #111;">
   <div class="w-layout-blockcontainer main-container w-container">
     <div class="cdv-section-label">// Briefing</div>
-    <h2 class="text-h3" style="margin-bottom: 64px;">Vamos escrever<br/><em>seu roteiro?</em></h2>
+    <h2 class="text-h3" style="margin-bottom: 64px; text-transform: uppercase;">🎬 AÇÃO</h2>
     <div class="cdv-contact-grid">
       <div>
         <div class="cdv-contact-item">
@@ -1131,7 +1171,7 @@
           </div>
           <div>
             <div class="cdv-contact-label">Endereço</div>
-            <div class="cdv-contact-value">Rua Almirante Pereira Guimarães, 475<br/>Pacaembú — São Paulo, SP</div>
+            <div class="cdv-contact-value">Rua Flavio Queirós Morais, 378<br/>São Paulo, Brazil 01250-000</div>
           </div>
         </div>
         <div class="cdv-contact-item">
@@ -1169,11 +1209,11 @@
       <div class="cdv-map">
         <iframe
           id="cdv-google-map"
-          src="https://maps.google.com/maps?q=-23.53826,-46.66078&z=17&t=k&output=embed"
+          src="https://maps.google.com/maps?q=Rua%20Flavio%20Queir%C3%B3s%20Morais,%20378,%20S%C3%A3o%20Paulo,%20Brazil%2001250-000&t=k&z=17&ie=UTF8&iwloc=&output=embed"
           allowfullscreen
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Casa de Vídeo — Rua Almirante Pereira Guimarães, 475, Pacaembú"
+          title="Casa de Vídeo — Rua Flavio Queirós Morais, 378, São Paulo"
         ></iframe>
       </div>
     </div>
@@ -1209,7 +1249,7 @@
             <div button-bg="" class="button-bg light-16"></div>
           </a>
           <a href="#galeria" button="" class="cta-small light-16 footer-cta w-inline-block">
-            <div class="button-text-mask-small"><div button-text="" class="button-text-small light-16">Galeria</div></div>
+            <div class="button-text-mask-small"><div button-text="" class="button-text-small light-16">Bastidores</div></div>
             <div button-bg="" class="button-bg light-16"></div>
           </a>
           <a href="#contato" button="" class="cta-small light-16 footer-cta w-inline-block">
@@ -1221,7 +1261,7 @@
           <div class="footer-top-text">
             <div class="label-small text-light-48">
               © 2025 Casa de Vídeo Produções Ltda — EPP.<br/>
-              Rua Almirante Pereira Guimarães, 475 — Pacaembú, São Paulo - SP.<br/>
+              Rua Flavio Queirós Morais, 378, São Paulo, Brazil 01250-000.<br/>
               Todos os direitos reservados.
             </div>
           </div>
@@ -1312,8 +1352,8 @@
     opacity: 1,
     ease: "power2.out"
   }, "-=0.4")
-  // 6. Detalhes do rodapé do Hero (EST. 1996)
-  .to(".home-b-bottom-tile", {
+  // 6. Detalhes do rodapé do Hero (EST. 1996) e Coordenadas do Topo
+  .to([".home-b-bottom-tile", ".hero-top-coords"], {
     duration: 0.8,
     y: 0,
     opacity: 1,
