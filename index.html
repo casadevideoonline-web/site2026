@@ -1155,24 +1155,32 @@
   }
 }
 
-/* ── SEÇÃO POLÍTICAS: heading mobile ── */
+/* ── SEÇÃO POLÍTICAS: heading desktop & mobile ── */
+.left-home-a-journal {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: baseline !important;
+  gap: 24px !important;
+  width: 100% !important;
+}
+.left-home-a-journal .label {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
 @media (max-width: 767px) {
   .headline-home-a-journal {
+    display: flex !important;
     flex-direction: column !important;
     gap: 12px !important;
-    display: flex !important;
   }
-  .headline-home-a-journal .left-home-a-journal {
-    display: flex !important;
+  .left-home-a-journal {
     flex-direction: column !important;
     gap: 8px !important;
     align-items: flex-start !important;
   }
   .headline-home-a-journal h3 {
     font-size: clamp(24px, 7vw, 40px) !important;
-  }
-  .headline-home-a-journal .label {
-    white-space: nowrap !important;
   }
 }
 
