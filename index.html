@@ -873,24 +873,21 @@
     padding-left: 0 !important;
   }
 
-  /* Logo giratório no mobile: Alinhado à direita no fluxo (para não sobrepor o texto de histórico à esquerda) */
+  /* Logo giratório no mobile: Posição absoluta à direita, alinhado com a parte inferior da headline, sem empurrar ou alterar a posição dos textos */
   .headline-home-b .home-b-placeholder {
-    position: relative !important;
+    position: absolute !important;
     top: auto !important;
-    bottom: auto !important;
+    bottom: -65px !important;
     left: auto !important;
-    right: auto !important;
+    right: 0 !important;
     transform: none !important;
-    margin-top: 16px !important;
-    margin-bottom: 8px !important;
-    margin-left: auto !important;
-    margin-right: 0 !important;
+    margin: 0 !important;
     z-index: 10 !important;
     display: block !important;
-    width: clamp(75px, 20vw, 100px) !important;
-    height: clamp(75px, 20vw, 100px) !important;
-    min-width: clamp(75px, 20vw, 100px) !important;
-    min-height: clamp(75px, 20vw, 100px) !important;
+    width: clamp(75px, 20vw, 95px) !important;
+    height: clamp(75px, 20vw, 95px) !important;
+    min-width: clamp(75px, 20vw, 95px) !important;
+    min-height: clamp(75px, 20vw, 95px) !important;
   }
 
   /* Define distâncias verticais em relação ao título */
