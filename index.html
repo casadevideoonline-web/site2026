@@ -12,17 +12,24 @@
 <meta property="og:image" content="https://static.wixstatic.com/media/122a37_34869b3ab9ff4b8db6a3d9fcdf65c584~mv2.jpg"/>
 <meta name="twitter:card" content="summary_large_image"/>
 
-<!-- Webflow template CSS — inclui todas as classes do UNIT01 + @font-face corretos -->
-<link href="https://cdn.prod.website-files.com" rel="preconnect" crossorigin="anonymous"/>
-<link href="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24/css/unit01.shared.8d6e8bce1.css" rel="stylesheet" type="text/css"/>
+<!-- Assinatura Digital do Desenvolvedor -->
+<!--
+    Desenvolvido por b.rocket
+    Contato: berocket@berocket.com.br
+    Todos os direitos reservados.
+-->
+<meta name="author" content="b.rocket - berocket@berocket.com.br"/>
 
-<!-- GSAP + Webflow JS (animações do template) -->
+<!-- Base Styling -->
+<link href="css/style.css" rel="stylesheet" type="text/css"/>
+
+<!-- GSAP + Core JS (animações do site) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 
-<!-- Webflow JS (nav collapse, background video, etc.) -->
-<script src="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24/js/unit01.shared.6e08a65e7.js" defer></script>
+<!-- Core Scripts -->
+<script src="js/main.js" defer></script>
 
 <style>
 * {
@@ -194,6 +201,7 @@
 
 /* ── Item 6: Ajustar espaçamento inferior do site ── */
 #contato {
+  position: relative !important;
   padding-bottom: 40px !important;
 }
 .cdv-footer-main {
@@ -468,8 +476,8 @@
   border-color: #f5c500 !important;
 }
 
-/* ── Novo Rodapé Estilo Template UNIT01® ── */
-.footer.cdv-footer-unit01 {
+/* ── Novo Rodapé Estilo b.rocket ── */
+.footer.cdv-footer-rocket {
   padding-top: 80px;
   padding-bottom: 60px;
   background: #0e0e0e;
@@ -477,7 +485,7 @@
   position: relative;
   z-index: 10;
 }
-.cdv-footer-unit01 .footer-halves {
+.cdv-footer-rocket .footer-halves {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
@@ -500,7 +508,7 @@
   box-shadow: 0 8px 24px rgba(0,0,0,0.6) !important;
   display: block !important;
 }
-.cdv-footer-unit01 .right-footer {
+.cdv-footer-rocket .right-footer {
   flex: 1 1 auto !important;
   display: flex !important;
   flex-direction: column !important;
@@ -508,10 +516,10 @@
   text-align: right !important;
   gap: 24px !important;
 }
-.cdv-footer-unit01 .link-list-footer {
+.cdv-footer-rocket .link-list-footer {
   justify-content: flex-end !important;
 }
-.cdv-footer-unit01 .footer-bottom-tile {
+.cdv-footer-rocket .footer-bottom-tile {
   align-items: flex-end !important;
   text-align: right !important;
 }
@@ -782,18 +790,26 @@
 /* ── NAVEGAÇÃO MOBILE ── */
 @media (max-width: 767px) {
   .navbar.w-nav {
-    padding: 16px 20px !important;
+    padding: 16px 16px !important;
   }
 
-  /* Esconde os ícones sociais no mobile para não lotar o nav */
+  .right-nav {
+    gap: 6px !important;
+  }
+
+  /* Mostra os ícones sociais no mobile e ajusta seu tamanho */
   .right-nav .nav-social-link {
-    display: none !important;
+    display: flex !important;
+    width: 30px !important;
+    height: 30px !important;
+    flex-shrink: 0 !important;
   }
 
   /* Reduz o botão CTA no mobile */
   .right-nav .cta-small {
     font-size: 11px !important;
-    padding: 8px 14px !important;
+    padding: 8px 12px !important;
+    flex-shrink: 0 !important;
   }
 
   .cdv-logo-nav {
@@ -803,27 +819,102 @@
 
 /* ── HERO MOBILE ── */
 @media (max-width: 767px) {
-  .master-hero-home-b {
-    gap: 16px !important;
+  .hero-home-b {
+    height: auto !important;
+    min-height: 100vh !important;
+    padding-top: 80px !important;
+    padding-bottom: 40px !important;
+    display: flex !important;
+    align-items: center !important;
     justify-content: center !important;
   }
 
-  .hero-top-coords,
-  .home-b-bottom-tile {
+  .master-hero-home-b {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Super-específico para anular definitivamente o absolute e margens originais */
+  .section.hero-home-b .master-hero-home-b .hero-top-coords,
+  .section.hero-home-b .master-hero-home-b .home-b-bottom-tile {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
-    gap: 4px !important;
-    width: 100% !important;
+    gap: 3px !important;
     text-align: left !important;
+  }
+
+  /* Alinha a headline e suas linhas perfeitamente na mesma margem esquerda e define posição relativa para o posicionamento absoluto do logo */
+  .headline-home-b {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  .headline-home-b .text-line {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Desloca o logo giratório para baixo do rodapé, tirando-o do fluxo para não empurrar o rodapé */
+  .headline-home-b .home-b-placeholder {
+    position: absolute !important;
+    top: calc(100% + 45px) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    z-index: 10 !important;
+  }
+
+  /* Define distâncias verticais idênticas em relação ao título */
+  .section.hero-home-b .master-hero-home-b .hero-top-coords {
+    margin-bottom: 28px !important;
+  }
+
+  .section.hero-home-b .master-hero-home-b .home-b-bottom-tile {
+    margin-top: 28px !important;
+  }
+
+  /* Faz os wrappers sumirem no layout flex, garantindo comportamento igual */
+  .home-b-bottom-tile .text-wrap-bottom-home-b,
+  .home-b-bottom-tile .home-b-last-text {
+    display: contents !important;
+  }
+
+  /* Define margens pequenas apenas para afastar do título */
+  .hero-top-coords {
+    margin-bottom: 12px !important;
+  }
+
+  .home-b-bottom-tile {
+    margin-top: 16px !important;
   }
 
   .hero-top-coords .label-small,
   .home-b-bottom-tile .label-small {
     font-size: 9px !important;
-    letter-spacing: 1px !important;
+    letter-spacing: 1.5px !important;
+    line-height: 1.4 !important;
     text-align: left !important;
+    opacity: 0.75 !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .text-wrap-bottom-home-b {
@@ -935,39 +1026,57 @@
 
 /* ── FOOTER MOBILE ── */
 @media (max-width: 767px) {
-  .footer.cdv-footer-unit01 {
-    padding-top: 48px !important;
+  .footer.cdv-footer-rocket {
+    padding-top: 40px !important;
     padding-bottom: 40px !important;
   }
 
-  .cdv-footer-unit01 .footer-halves {
-    flex-direction: column !important;
+  .cdv-footer-rocket .footer-halves {
+    flex-direction: row !important;
+    justify-content: space-between !important;
     align-items: center !important;
-    text-align: center !important;
-    gap: 32px !important;
+    gap: 16px !important;
   }
 
-  .cdv-footer-unit01 .right-footer {
-    align-items: center !important;
-    text-align: center !important;
+  .cdv-footer-rocket .right-footer {
+    align-items: flex-end !important;
+    text-align: right !important;
+    width: auto !important;
+    flex: 1 1 auto !important;
   }
 
-  .cdv-footer-unit01 .link-list-footer {
-    justify-content: center !important;
-    gap: 8px !important;
+  /* Eliminar os botões de navegação no mobile */
+  .cdv-footer-rocket .link-list-footer {
+    display: none !important;
   }
 
-  .cdv-footer-unit01 .footer-bottom-tile {
-    align-items: center !important;
-    text-align: center !important;
+  /* Mantém o texto de copyright visível no mobile */
+  .cdv-footer-rocket .footer-top-text {
+    display: block !important;
+    text-align: right !important;
   }
 
-  .cdv-footer-unit01 .footer-bottom-link-list {
-    justify-content: center !important;
+  /* Oculta os links secundários de políticas no mobile */
+  .cdv-footer-rocket .footer-bottom-link-list {
+    display: none !important;
+  }
+
+  .cdv-footer-rocket .footer-bottom-tile {
+    align-items: flex-end !important;
+    text-align: right !important;
+    margin-top: 0 !important;
   }
 
   .cdv-footer-brand-wrap img.footer-logo.left {
-    height: 80px !important;
+    height: 60px !important;
+    width: auto !important;
+  }
+
+  .cdv-footer-rocket .label-small {
+    font-size: 9px !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0.8px !important;
+    text-align: right !important;
   }
 }
 
@@ -1365,7 +1474,7 @@
 
         <div class="service-item-home-b">
           <div class="side-text-services"><div class="label-small">// 08</div></div>
-          <div class="text-wrap-service-middle"><div class="service-text">Conte<span>ú</span>do para Redes Sociais</div></div>
+          <div class="text-wrap-service-middle"><div class="service-text">Conteúdo para Redes Sociais</div></div>
           <div class="side-text-services"><div class="label-small">Social Media</div></div>
         </div>
 
@@ -1514,12 +1623,24 @@
       </div>
     </div>
   </div>
+
+  <!-- ═══════════════════════════════════════════
+       WHATSAPP FLOAT (Movido para dentro do #contato para controle de stickiness/pinning)
+       ═══════════════════════════════════════════ -->
+  <a href="https://api.whatsapp.com/send?phone=551138662535&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
+     target="_blank" rel="noopener"
+     class="whatsapp-float" id="whatsappFloat"
+     aria-label="Fale conosco pelo WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
 </section>
 
 <!-- ═══════════════════════════════════════════
-     FOOTER — estrutura Webflow UNIT01 com tipografia gigante CASA DE VÍDEO®
+     FOOTER — estrutura b.rocket com tipografia gigante CASA DE VÍDEO®
 ═══════════════════════════════════════════ -->
-<footer class="footer cdv-footer-unit01" role="contentinfo">
+<footer class="footer cdv-footer-rocket" role="contentinfo">
   <div class="w-layout-blockcontainer main-container w-container">
     <div class="footer-halves" style="align-items: flex-end;">
       <!-- LADO ESQUERDO: Logo oficial da empresa -->
@@ -1573,26 +1694,76 @@
 </footer>
 
 <!-- ═══════════════════════════════════════════
-     WHATSAPP FLOAT
-═══════════════════════════════════════════ -->
-<a href="https://api.whatsapp.com/send?phone=551138662535&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
-   target="_blank" rel="noopener"
-   class="whatsapp-float" id="whatsappFloat"
-   aria-label="Fale conosco pelo WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-
-<!-- ═══════════════════════════════════════════
      SCRIPTS
 ═══════════════════════════════════════════ -->
 <script>
-  // ── WhatsApp float on scroll ──
+  console.log(
+    "%cDesenvolvido por b.rocket %c(berocket@berocket.com.br)",
+    "color: #f5c500; font-weight: bold; font-size: 14px; font-family: sans-serif;",
+    "color: #888; font-size: 12px; font-family: sans-serif;"
+  );
+
+  // ── WhatsApp float on scroll & pin to contact section ──
   const wa = document.getElementById('whatsappFloat');
-  window.addEventListener('scroll', () => {
+  const contatoSection = document.getElementById('contato');
+  const contactGrid = document.querySelector('.cdv-contact-grid');
+  const socialRow = document.querySelector('.cdv-social-row');
+
+  function updateWhatsAppPosition() {
+    if (!wa || !contatoSection || !contactGrid || !socialRow) return;
+
+    // Exibe/oculta baseado no scroll inicial
     wa.classList.toggle('visible', window.scrollY > 80);
-  }, { passive: true });
+
+    const isMobile = window.innerWidth <= 767;
+    const contatoRect = contatoSection.getBoundingClientRect();
+    const gridRect = contactGrid.getBoundingClientRect();
+    const socialRect = socialRow.getBoundingClientRect();
+    const H = window.innerHeight;
+
+    // Configurações de espaçamento do botão
+    const buttonHeight = wa.offsetHeight || 56;
+    const bottomSpacing = isMobile ? 20 : 32;
+
+    if (isMobile) {
+      // Mobile: Para abaixo da lista de contatos / redes sociais (acima do mapa)
+      if (socialRect.bottom <= H - bottomSpacing) {
+        wa.classList.add('pinned');
+        const topOffset = socialRect.bottom - contatoRect.top - buttonHeight;
+        wa.style.position = 'absolute';
+        wa.style.top = `${topOffset}px`;
+        wa.style.bottom = 'auto';
+      } else {
+        wa.classList.remove('pinned');
+        wa.style.position = '';
+        wa.style.top = '';
+        wa.style.bottom = '';
+      }
+    } else {
+      // Desktop: Para alinhado com o título "AÇÃO" (acima do mapa)
+      const titleEl = contatoSection.querySelector('h2.text-h3');
+      const titleRect = titleEl ? titleEl.getBoundingClientRect() : gridRect;
+      const titleCenter = titleRect.top + titleRect.height / 2;
+      const buttonCenterViewport = H - bottomSpacing - buttonHeight / 2;
+
+      if (titleCenter <= buttonCenterViewport) {
+        wa.classList.add('pinned');
+        const topOffset = titleCenter - contatoRect.top - buttonHeight / 2;
+        wa.style.position = 'absolute';
+        wa.style.top = `${topOffset}px`;
+        wa.style.bottom = 'auto';
+      } else {
+        wa.classList.remove('pinned');
+        wa.style.position = '';
+        wa.style.top = '';
+        wa.style.bottom = '';
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateWhatsAppPosition, { passive: true });
+  window.addEventListener('resize', updateWhatsAppPosition, { passive: true });
+  updateWhatsAppPosition();
 
   // ── Smooth scroll interno ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {

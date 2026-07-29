@@ -1,0 +1,9 @@
+/* TEAM */
+Developer: b.rocket
+Contact: berocket@berocket.com.br
+Site: https://berocket.com.br
+
+/* SITE */
+Last update: 2026-07-29
+Standards: HTML5, CSS3, ES6 JavaScript, GSAP, ScrollTrigger
+Software: VS Code
