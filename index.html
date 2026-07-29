@@ -1913,6 +1913,26 @@
   let scrollSpeed = 0.8; // Velocidade do scroll automático (pixels por frame)
 
   if (trackWrap) {
+    // Permitir rolagem com a roda do mouse (mouse wheel) na horizontal
+    trackWrap.addEventListener('wheel', (e) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        trackWrap.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+
+    trackWrap.addEventListener('mouseenter', () => {
+      autoScrollActive = false;
+    });
+
+    trackWrap.addEventListener('touchstart', () => {
+      autoScrollActive = false;
+    }, { passive: true });
+
+    trackWrap.addEventListener('touchend', () => {
+      autoScrollActive = true;
+    }, { passive: true });
+
     trackWrap.addEventListener('mousedown', (e) => {
       isDown = true;
       isMoved = false;
