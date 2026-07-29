@@ -822,11 +822,12 @@
   .hero-home-b {
     height: auto !important;
     min-height: 100vh !important;
-    padding-top: 80px !important;
-    padding-bottom: 40px !important;
+    padding-top: 70px !important;
+    padding-bottom: 120px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    position: relative !important;
   }
 
   .master-hero-home-b {
@@ -837,6 +838,7 @@
     gap: 0 !important;
     height: auto !important;
     min-height: 0 !important;
+    width: 100% !important;
   }
 
   /* Super-específico para anular definitivamente o absolute e margens originais */
@@ -871,38 +873,30 @@
     padding-left: 0 !important;
   }
 
-  /* Desloca o logo giratório para baixo do rodapé, tirando-o do fluxo para não empurrar o rodapé */
+  /* Posiciona o logo giratório na parte inferior do hero, centralizado na tela */
   .headline-home-b .home-b-placeholder {
     position: absolute !important;
-    top: calc(100% + 45px) !important;
+    top: auto !important;
+    bottom: -95px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     margin: 0 !important;
     z-index: 10 !important;
   }
 
-  /* Define distâncias verticais idênticas em relação ao título */
+  /* Define distâncias verticais em relação ao título */
   .section.hero-home-b .master-hero-home-b .hero-top-coords {
-    margin-bottom: 28px !important;
+    margin-bottom: 20px !important;
   }
 
   .section.hero-home-b .master-hero-home-b .home-b-bottom-tile {
-    margin-top: 28px !important;
+    margin-top: 20px !important;
   }
 
   /* Faz os wrappers sumirem no layout flex, garantindo comportamento igual */
   .home-b-bottom-tile .text-wrap-bottom-home-b,
   .home-b-bottom-tile .home-b-last-text {
     display: contents !important;
-  }
-
-  /* Define margens pequenas apenas para afastar do título */
-  .hero-top-coords {
-    margin-bottom: 12px !important;
-  }
-
-  .home-b-bottom-tile {
-    margin-top: 16px !important;
   }
 
   .hero-top-coords .label-small,
@@ -1492,7 +1486,7 @@
     <div class="headline-home-a-journal">
       <div class="left-home-a-journal">
         <h3 class="no-margins">RESPONSABILIDADE</h3>
-        <div class="label text-light-64">POLÍTICAS:<br/>CASA DE VÍDEO</div>
+        <div class="label text-light-64">POLÍTICAS: CASA DE VÍDEO</div>
       </div>
     </div>
     <div class="cdv-policies">
@@ -1576,7 +1570,7 @@
           </div>
           <div>
             <div class="cdv-contact-label">Endereço</div>
-            <div class="cdv-contact-value">Rua Flavio Queirós Morais, 378<br/>São Paulo, Brazil 01250-000</div>
+            <div class="cdv-contact-value">Rua Flavio Queirós Morais, 378<br/>São Paulo, Brazil</div>
           </div>
         </div>
         <div class="cdv-contact-item">
@@ -1678,7 +1672,7 @@
           <div class="footer-top-text">
             <div class="label-small text-light-48">
               © 2025 Casa de Vídeo Produções Ltda — EPP.<br/>
-              Rua Flavio Queirós Morais, 378, São Paulo, Brazil 01250-000.<br/>
+              Rua Flavio Queirós Morais, 378, São Paulo, Brazil.<br/>
               Todos os direitos reservados.
             </div>
           </div>
