@@ -823,7 +823,7 @@
     height: auto !important;
     min-height: 100vh !important;
     padding-top: 70px !important;
-    padding-bottom: 120px !important;
+    padding-bottom: 40px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -860,7 +860,7 @@
     text-align: left !important;
   }
 
-  /* Alinha a headline e suas linhas perfeitamente na mesma margem esquerda e define posição relativa para o posicionamento absoluto do logo */
+  /* Alinha a headline e suas linhas perfeitamente na mesma margem esquerda */
   .headline-home-b {
     margin-left: 0 !important;
     padding-left: 0 !important;
@@ -873,15 +873,24 @@
     padding-left: 0 !important;
   }
 
-  /* Posiciona o logo giratório na parte inferior do hero, centralizado na tela */
+  /* Logo giratório no mobile: Alinhado à direita no fluxo (para não sobrepor o texto de histórico à esquerda) */
   .headline-home-b .home-b-placeholder {
-    position: absolute !important;
+    position: relative !important;
     top: auto !important;
-    bottom: -95px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    margin: 0 !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    margin-top: 16px !important;
+    margin-bottom: 8px !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
     z-index: 10 !important;
+    display: block !important;
+    width: clamp(75px, 20vw, 100px) !important;
+    height: clamp(75px, 20vw, 100px) !important;
+    min-width: clamp(75px, 20vw, 100px) !important;
+    min-height: clamp(75px, 20vw, 100px) !important;
   }
 
   /* Define distâncias verticais em relação ao título */
@@ -890,7 +899,7 @@
   }
 
   .section.hero-home-b .master-hero-home-b .home-b-bottom-tile {
-    margin-top: 20px !important;
+    margin-top: 16px !important;
   }
 
   /* Faz os wrappers sumirem no layout flex, garantindo comportamento igual */
@@ -1172,15 +1181,27 @@
   .headline-home-a-journal {
     display: flex !important;
     flex-direction: column !important;
-    gap: 12px !important;
-  }
-  .left-home-a-journal {
-    flex-direction: column !important;
     gap: 8px !important;
     align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+  .left-home-a-journal {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
   }
   .headline-home-a-journal h3 {
     font-size: clamp(24px, 7vw, 40px) !important;
+    text-align: left !important;
+    margin: 0 !important;
+  }
+  .left-home-a-journal .label {
+    white-space: nowrap !important;
+    text-align: left !important;
   }
 }
 
