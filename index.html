@@ -774,6 +774,294 @@
   padding-top: 24px !important;
   padding-bottom: 24px !important;
 }
+
+/* ══════════════════════════════════════════
+   MOBILE RESPONSIVE — Correções UX Completas
+══════════════════════════════════════════ */
+
+/* ── NAVEGAÇÃO MOBILE ── */
+@media (max-width: 767px) {
+  .navbar.w-nav {
+    padding: 16px 20px !important;
+  }
+
+  /* Esconde os ícones sociais no mobile para não lotar o nav */
+  .right-nav .nav-social-link {
+    display: none !important;
+  }
+
+  /* Reduz o botão CTA no mobile */
+  .right-nav .cta-small {
+    font-size: 11px !important;
+    padding: 8px 14px !important;
+  }
+
+  .cdv-logo-nav {
+    height: 36px !important;
+  }
+}
+
+/* ── HERO MOBILE ── */
+@media (max-width: 767px) {
+  .master-hero-home-b {
+    gap: 16px !important;
+  }
+
+  .hero-top-coords {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+
+  .hero-top-coords .label-small {
+    font-size: 9px !important;
+    letter-spacing: 1px !important;
+  }
+
+  .home-b-bottom-tile {
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+
+  /* Ajuste do segundo bloco de texto do hero para não sobrepor */
+  .text-wrap-bottom-home-b {
+    display: block !important;
+  }
+}
+
+/* ── GALERIA: Desativa translateY alternado no mobile para evitar sobreposição ── */
+@media (max-width: 767px) {
+  .cdv-gallery-track-wrap {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Normaliza altura e remove offsets verticais para não cortar cards */
+  .cdv-gallery-card:nth-child(1),
+  .cdv-gallery-card:nth-child(2),
+  .cdv-gallery-card:nth-child(3),
+  .cdv-gallery-card:nth-child(4),
+  .cdv-gallery-card:nth-child(5),
+  .cdv-gallery-card:nth-child(6),
+  .cdv-gallery-card:nth-child(7),
+  .cdv-gallery-card:nth-child(8),
+  .cdv-gallery-card:nth-child(9),
+  .cdv-gallery-card:nth-child(10),
+  .cdv-gallery-card:nth-child(11),
+  .cdv-gallery-card:nth-child(12),
+  .cdv-gallery-card:nth-child(13),
+  .cdv-gallery-card:nth-child(14) {
+    height: 240px !important;
+    transform: translateY(0px) !important;
+    flex: 0 0 200px !important;
+    width: 200px !important;
+    border-radius: 12px !important;
+  }
+
+  .cdv-gallery-track {
+    align-items: center !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    gap: 16px !important;
+  }
+
+  /* Aumenta o padding inferior para não cortar a sombra */
+  #galeria {
+    padding-top: 64px !important;
+    padding-bottom: 80px !important;
+    overflow: visible !important;
+  }
+}
+
+/* ── STATS STRIP MOBILE ── */
+@media (max-width: 767px) {
+  .cdv-stats-strip {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .cdv-stat {
+    padding: 28px 20px !important;
+  }
+  .cdv-stat-num {
+    font-size: clamp(36px, 10vw, 56px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .cdv-stats-strip {
+    grid-template-columns: 1fr !important;
+  }
+  .cdv-stat {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+  }
+}
+
+/* ── POLÍTICAS MOBILE ── */
+@media (max-width: 767px) {
+  .cdv-policies {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-top: 32px !important;
+  }
+  .cdv-policy-card {
+    padding: 28px 24px !important;
+  }
+}
+
+/* ── CONTATO MOBILE ── */
+@media (max-width: 767px) {
+  .cdv-contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .cdv-map {
+    height: 220px !important;
+  }
+  #contato {
+    padding-top: 64px !important;
+  }
+  #contato h2.text-h3 {
+    margin-bottom: 40px !important;
+  }
+}
+
+/* ── FOOTER MOBILE ── */
+@media (max-width: 767px) {
+  .footer.cdv-footer-unit01 {
+    padding-top: 48px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .cdv-footer-unit01 .footer-halves {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 32px !important;
+  }
+
+  .cdv-footer-unit01 .right-footer {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .cdv-footer-unit01 .link-list-footer {
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  .cdv-footer-unit01 .footer-bottom-tile {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .cdv-footer-unit01 .footer-bottom-link-list {
+    justify-content: center !important;
+  }
+
+  .cdv-footer-brand-wrap img.footer-logo.left {
+    height: 80px !important;
+  }
+}
+
+/* ── SERVIÇOS MOBILE ── */
+@media (max-width: 767px) {
+  .service-item-home-b {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+
+  /* Itens de serviço: empilha em coluna para não sobrepor */
+  .service-item-home-b {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: baseline !important;
+    gap: 4px !important;
+  }
+
+  .text-wrap-service-middle {
+    flex: 1 1 100% !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+  }
+
+  .side-text-services {
+    flex: 0 0 auto !important;
+  }
+}
+
+/* ── SEÇÃO BASTIDORES MOBILE: evitar overflow oculto que corta cards ── */
+@media (max-width: 767px) {
+  .section#galeria {
+    overflow: visible !important;
+  }
+}
+
+/* ── WHATSAPP FLOAT MOBILE ── */
+@media (max-width: 479px) {
+  .whatsapp-float {
+    bottom: 20px !important;
+    right: 16px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .whatsapp-float svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+}
+
+/* ── HEADLINE HERO MOBILE: logo rotativo não sobrepõe texto ── */
+@media (max-width: 479px) {
+  .headline-home-b .home-b-placeholder {
+    width: clamp(80px, 22vw, 110px) !important;
+    height: clamp(80px, 22vw, 110px) !important;
+    min-width: clamp(80px, 22vw, 110px) !important;
+    min-height: clamp(80px, 22vw, 110px) !important;
+  }
+
+  .headline-home-b .text-line.hero-second-line {
+    gap: 10px !important;
+  }
+}
+
+/* ── SEÇÃO ABOUT HALVES MOBILE (grid de 2 colunas → 1) ── */
+@media (max-width: 767px) {
+  .home-b-about-halves {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
+
+/* ── PROJETOS MOBILE ── */
+@media (max-width: 767px) {
+  .project._1,
+  .project._1.reverse {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .master-projects {
+    gap: 24px !important;
+  }
+}
+
+/* ── SEÇÃO POLÍTICAS: heading mobile ── */
+@media (max-width: 767px) {
+  .headline-home-a-journal {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .headline-home-a-journal h3 {
+    font-size: clamp(24px, 7vw, 40px) !important;
+  }
+}
+
+/* ── MARQUEE: escala menor em mobile ── */
+@media (max-width: 479px) {
+  .single-text-marquee {
+    gap: 16px !important;
+    padding-right: 16px !important;
+  }
+}
 </style>
 </head>
 
