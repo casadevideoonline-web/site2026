@@ -1,1 +1,5 @@
 .DS_Store
+
+# artefatos de build (gerados por build_standalone.py no Mac)
+site_base64.txt
+site_completo_standalone.html
