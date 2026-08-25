@@ -30,6 +30,7 @@
 
 <!-- Core Scripts -->
 <script src="js/main.js" defer></script>
+<script src="js/linkedin-feed.js" defer></script>
 
 <style>
 * {
@@ -1209,6 +1210,207 @@
     padding-right: 16px !important;
   }
 }
+
+/* ── LINKEDIN FEED SECTION (SCROLL HORIZONTAL INFINITO) ── */
+.cdv-linkedin-section {
+  background-color: #0b0b0d;
+  padding: 100px 0 110px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.cdv-linkedin-track-wrap {
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-left: max(5vw, calc((100vw - 1200px) / 2));
+  padding-right: 5vw;
+  padding-bottom: 24px;
+  cursor: default;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.cdv-linkedin-track-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.cdv-linkedin-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.cdv-linkedin-card {
+  flex: 0 0 340px;
+  width: 340px;
+  background: rgba(18, 18, 22, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(12px);
+  position: relative;
+  cursor: default;
+}
+
+.cdv-linkedin-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(245, 197, 0, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(245, 197, 0, 0.12);
+}
+
+.cdv-linkedin-card-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cdv-linkedin-author-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cdv-linkedin-author-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #0d0d0d;
+  border: 1px solid rgba(245, 197, 0, 0.3);
+}
+
+.cdv-linkedin-author-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.cdv-linkedin-author-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+
+.cdv-linkedin-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #f5c500;
+  box-shadow: 0 0 8px #f5c500;
+  flex-shrink: 0;
+}
+
+.cdv-linkedin-media-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  background: #09090b;
+}
+
+.cdv-linkedin-media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.cdv-linkedin-card:hover .cdv-linkedin-media-img {
+  transform: scale(1.05);
+}
+
+.cdv-linkedin-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(18, 18, 22, 0.95) 0%, transparent 60%);
+}
+
+.cdv-linkedin-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  background: rgba(13, 13, 15, 0.85);
+  border: 1px solid rgba(245, 197, 0, 0.35);
+  color: #f5c500;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 4px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cdv-linkedin-card-body {
+  padding: 18px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.cdv-linkedin-post-text {
+  font-size: 13px;
+  color: #cccccc;
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cdv-linkedin-card-footer {
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cdv-linkedin-view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #f5c500;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.cdv-linkedin-view-link:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+@media (max-width: 767px) {
+  .cdv-linkedin-section {
+    padding: 64px 0 80px;
+  }
+  .cdv-linkedin-card {
+    flex: 0 0 280px;
+    width: 280px;
+  }
+  .cdv-linkedin-media-wrapper {
+    height: 180px;
+  }
+}
 </style>
 </head>
 
@@ -1661,6 +1863,149 @@
   </a>
 </section>
 
+
+<!-- ═══════════════════════════════════════════
+     FEED DO LINKEDIN — PUBLICAÇÕES DA EMPRESA
+═══════════════════════════════════════════ -->
+<section id="linkedin-feed" class="cdv-linkedin-section" aria-label="Publicações no LinkedIn">
+  <div class="w-layout-blockcontainer main-container w-container">
+    <div style="margin-bottom: 48px;">
+      <div class="cdv-section-label" style="margin-bottom: 16px;">// Conexão &amp; Bastidores</div>
+      <h2 class="text-h3" style="margin: 0; text-transform: uppercase;">ACOMPANHE NO LINKEDIN</h2>
+    </div>
+
+  <!-- Track de Scroll Horizontal -->
+  <div class="cdv-linkedin-track-wrap">
+    <div id="linkedin-posts-container" class="cdv-linkedin-track">
+
+      <!-- Post 1 -->
+      <div class="cdv-linkedin-card">
+        <div class="cdv-linkedin-card-badge">
+          <div class="cdv-linkedin-author-wrap">
+            <img src="Documentos/logo.png" alt="Casa de Vídeo" class="cdv-linkedin-author-avatar" />
+            <div class="cdv-linkedin-author-meta">
+              <span class="cdv-linkedin-author-name">Casa de Vídeo</span>
+            </div>
+          </div>
+          <span class="cdv-linkedin-badge-dot" title="Post Ativo"></span>
+        </div>
+        <div class="cdv-linkedin-media-wrapper">
+          <img src="Galeria/linkedin_post_1.jpg" alt="Publicação Casa de Vídeo" class="cdv-linkedin-media-img" loading="lazy" />
+          <div class="cdv-linkedin-media-overlay"></div>
+          <span class="cdv-linkedin-tag">ANDAV // FILME INSTITUCIONAL</span>
+        </div>
+        <div class="cdv-linkedin-card-body">
+          <p class="cdv-linkedin-post-text">Com o Distribuidor no presente, o Produtor planta o futuro. Ideia por trás do novo filme que fizemos para a Andav, associação que há 35 anos representa os distribuidores de insumos agropecuários do Brasil.</p>
+        </div>
+        <div class="cdv-linkedin-card-footer">
+          <a href="https://www.linkedin.com/posts/casadevideo_com-o-distribuidor-no-presente-o-produtor-activity-7495917427676024834-kv2x" target="_blank" rel="noopener noreferrer" class="cdv-linkedin-view-link">
+            <span>Ver no LinkedIn</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Post 2 -->
+      <div class="cdv-linkedin-card">
+        <div class="cdv-linkedin-card-badge">
+          <div class="cdv-linkedin-author-wrap">
+            <img src="Documentos/logo.png" alt="Casa de Vídeo" class="cdv-linkedin-author-avatar" />
+            <div class="cdv-linkedin-author-meta">
+              <span class="cdv-linkedin-author-name">Casa de Vídeo</span>
+            </div>
+          </div>
+          <span class="cdv-linkedin-badge-dot" title="Post Ativo"></span>
+        </div>
+        <div class="cdv-linkedin-media-wrapper">
+          <img src="Galeria/linkedin_post_2.jpg" alt="Publicação Casa de Vídeo" class="cdv-linkedin-media-img" loading="lazy" />
+          <div class="cdv-linkedin-media-overlay"></div>
+          <span class="cdv-linkedin-tag">DIREÇÃO ARTÍSTICA // EVENTOS</span>
+        </div>
+        <div class="cdv-linkedin-card-body">
+          <p class="cdv-linkedin-post-text">Um mês na cola do nosso diretor artístico Helder Peixoto em seu habitat natural: os eventos. Convenções, gravações em estúdio e transmissões ao vivo com atenção em tudo.</p>
+        </div>
+        <div class="cdv-linkedin-card-footer">
+          <a href="https://www.linkedin.com/posts/casadevideo_1-m%C3%AAs-na-cola-do-nosso-diretor-art%C3%ADstico-activity-7490784777919275009-kHxt" target="_blank" rel="noopener noreferrer" class="cdv-linkedin-view-link">
+            <span>Ver no LinkedIn</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Post 3 -->
+      <div class="cdv-linkedin-card">
+        <div class="cdv-linkedin-card-badge">
+          <div class="cdv-linkedin-author-wrap">
+            <img src="Documentos/logo.png" alt="Casa de Vídeo" class="cdv-linkedin-author-avatar" />
+            <div class="cdv-linkedin-author-meta">
+              <span class="cdv-linkedin-author-name">Casa de Vídeo</span>
+            </div>
+          </div>
+          <span class="cdv-linkedin-badge-dot" title="Post Ativo"></span>
+        </div>
+        <div class="cdv-linkedin-media-wrapper">
+          <img src="Galeria/linkedin_post_3.jpg" alt="Publicação Casa de Vídeo" class="cdv-linkedin-media-img" loading="lazy" />
+          <div class="cdv-linkedin-media-overlay"></div>
+          <span class="cdv-linkedin-tag">JOHNSON &amp; JOHNSON // EVENTO</span>
+        </div>
+        <div class="cdv-linkedin-card-body">
+          <p class="cdv-linkedin-post-text">Foi um privilégio estar ao lado da Johnson &amp; Johnson Innovative Medicine Brasil neste evento que celebra cultura, cuidado e aprendizado. Transformamos ideias em experiências autênticas.</p>
+        </div>
+        <div class="cdv-linkedin-card-footer">
+          <a href="https://www.linkedin.com/posts/casadevideo_encerramos-mais-uma-semana-de-conex%C3%A3o-e-virada-activity-7374152502524583936-d8lh" target="_blank" rel="noopener noreferrer" class="cdv-linkedin-view-link">
+            <span>Ver no LinkedIn</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Post 4 -->
+      <div class="cdv-linkedin-card">
+        <div class="cdv-linkedin-card-badge">
+          <div class="cdv-linkedin-author-wrap">
+            <img src="Documentos/logo.png" alt="Casa de Vídeo" class="cdv-linkedin-author-avatar" />
+            <div class="cdv-linkedin-author-meta">
+              <span class="cdv-linkedin-author-name">Casa de Vídeo</span>
+            </div>
+          </div>
+          <span class="cdv-linkedin-badge-dot" title="Post Ativo"></span>
+        </div>
+        <div class="cdv-linkedin-media-wrapper">
+          <img src="Galeria/linkedin_post_4.jpg" alt="Publicação Casa de Vídeo" class="cdv-linkedin-media-img" loading="lazy" />
+          <div class="cdv-linkedin-media-overlay"></div>
+          <span class="cdv-linkedin-tag">SHE TALKS 2025 // DIREÇÃO ARTÍSTICA</span>
+        </div>
+        <div class="cdv-linkedin-card-body">
+          <p class="cdv-linkedin-post-text">A Casa de Vídeo esteve por trás de todo o conteúdo em vídeo e direção artística do She Talks, importante evento que celebra a liderança feminina na indústria farmacêutica. 🎬</p>
+        </div>
+        <div class="cdv-linkedin-card-footer">
+          <a href="https://www.linkedin.com/posts/casadevideo_shetalks2025-lideranaexafeminina-industriafarmacaeautica-activity-7369470969578405888-0gxt" target="_blank" rel="noopener noreferrer" class="cdv-linkedin-view-link">
+            <span>Ver no LinkedIn</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════════════════════════════
      FOOTER — estrutura b.rocket com tipografia gigante CASA DE VÍDEO®
 ═══════════════════════════════════════════ -->
@@ -1691,6 +2036,10 @@
           </a>
           <a href="#galeria" button="" class="cta-small light-16 footer-cta w-inline-block">
             <div class="button-text-mask-small"><div button-text="" class="button-text-small light-16">Bastidores</div></div>
+            <div button-bg="" class="button-bg light-16"></div>
+          </a>
+          <a href="#linkedin-feed" button="" class="cta-small light-16 footer-cta w-inline-block">
+            <div class="button-text-mask-small"><div button-text="" class="button-text-small light-16">LinkedIn</div></div>
             <div button-bg="" class="button-bg light-16"></div>
           </a>
           <a href="#contato" button="" class="cta-small light-16 footer-cta w-inline-block">

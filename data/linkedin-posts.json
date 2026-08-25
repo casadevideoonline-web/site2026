@@ -1,5 +1,42 @@
 {
   "companyUrl": "https://www.linkedin.com/company/casadevideo",
-  "posts": [],
-  "updatedAt": "2026-08-25T16:59:39.335Z"
+  "updatedAt": "2026-08-25T17:20:00Z",
+  "posts": [
+    {
+      "id": "post-7495917427676024834",
+      "tag": "ANDAV // FILME INSTITUCIONAL",
+      "author": "Casa de Vídeo",
+      "image": "Galeria/linkedin_post_1.jpg",
+      "description": "Com o Distribuidor no presente, o Produtor planta o futuro. Ideia por trás do novo filme que fizemos para a Andav, associação que há 35 anos representa os distribuidores de insumos agropecuários do Brasil.",
+      "url": "https://www.linkedin.com/posts/casadevideo_com-o-distribuidor-no-presente-o-produtor-activity-7495917427676024834-kv2x",
+      "addedAt": "2026-08-25T17:00:00Z"
+    },
+    {
+      "id": "post-7490784777919275009",
+      "tag": "DIREÇÃO ARTÍSTICA // EVENTOS",
+      "author": "Casa de Vídeo",
+      "image": "Galeria/linkedin_post_2.jpg",
+      "description": "Um mês na cola do nosso diretor artístico Helder Peixoto em seu habitat natural: os eventos. Convenções, gravações em estúdio e transmissões ao vivo com atenção em tudo.",
+      "url": "https://www.linkedin.com/posts/casadevideo_1-m%C3%AAs-na-cola-do-nosso-diretor-art%C3%ADstico-activity-7490784777919275009-kHxt",
+      "addedAt": "2026-08-25T17:00:00Z"
+    },
+    {
+      "id": "post-7374152502524583936",
+      "tag": "JOHNSON & JOHNSON // EVENTO",
+      "author": "Casa de Vídeo",
+      "image": "Galeria/linkedin_post_3.jpg",
+      "description": "Foi um privilégio estar ao lado da Johnson & Johnson Innovative Medicine Brasil neste evento que celebra cultura, cuidado e aprendizado. Transformamos ideias em experiências autênticas.",
+      "url": "https://www.linkedin.com/posts/casadevideo_encerramos-mais-uma-semana-de-conex%C3%A3o-e-virada-activity-7374152502524583936-d8lh",
+      "addedAt": "2026-08-25T17:00:00Z"
+    },
+    {
+      "id": "post-7369470969578405888",
+      "tag": "SHE TALKS 2025 // DIREÇÃO ARTÍSTICA",
+      "author": "Casa de Vídeo",
+      "image": "Galeria/linkedin_post_4.jpg",
+      "description": "A Casa de Vídeo esteve por trás de todo o conteúdo em vídeo e direção artística do She Talks, importante evento que celebra a liderança feminina na indústria farmacêutica. 🎬",
+      "url": "https://www.linkedin.com/posts/casadevideo_shetalks2025-lideranaexafeminina-industriafarmacaeautica-activity-7369470969578405888-0gxt",
+      "addedAt": "2026-08-25T17:00:00Z"
+    }
+  ]
 }

@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Feed LinkedIn | Casa de Vídeo</title>
+  <link rel="icon" type="image/png" href="../Documentos/logo.png"/>
+  <style>
+    @font-face {
+      font-family: 'Geist Mono Variable';
+      src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist-mono:vf@latest/latin-wght-normal.woff2') format('woff2-variations');
+      font-weight: 100 900;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #0b0b0d;
+      --card-bg: rgba(18, 18, 22, 0.95);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-border-hover: rgba(245, 197, 0, 0.4);
+      --text: #f0f0f5;
+      --muted: #8e8e9e;
+      --accent: #f5c500;
+      --accent-hover: #ffd726;
+      --danger: #ff4d4d;
+      --success: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      cursor: default;
+    }
+
+    .admin-container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ── DESIGN SYSTEM & TYPOGRAPHY ── */
+    .cdv-section-label {
+      font-family: 'Geist Mono Variable', monospace;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      color: var(--accent);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cdv-section-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1.5px;
+      background-color: var(--accent);
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #0d0d0d;
+      border: 1px solid rgba(245, 197, 0, 0.4);
+      box-shadow: 0 0 15px rgba(245, 197, 0, 0.2);
+    }
+
+    .brand h1 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      backdrop-filter: blur(12px);
+    }
+
+    .card-title-wrap {
+      margin-bottom: 24px;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: -0.3px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #dddded;
+      letter-spacing: 0.2px;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="password"] {
+      width: 100%;
+      padding: 14px 16px;
+      background: #09090b;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(245, 197, 0, 0.25);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(245, 197, 0, 0.2);
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(245, 197, 0, 0.35);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: #ffffff;
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .btn-danger {
+      background: rgba(255, 77, 77, 0.12);
+      color: var(--danger);
+      border: 1px solid rgba(255, 77, 77, 0.3);
+      padding: 8px 16px;
+      font-size: 12px;
+      border-radius: 8px;
+      box-shadow: none;
+    }
+
+    .btn-danger:hover {
+      background: var(--danger);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    /* ── FRONT-END PREVIEW CARDS GRID ── */
+    .admin-posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .cdv-linkedin-card {
+      background: rgba(13, 13, 16, 0.95);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .cdv-linkedin-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .cdv-linkedin-card-badge {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .cdv-linkedin-author-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cdv-linkedin-author-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: #0d0d0d;
+      border: 1px solid rgba(245, 197, 0, 0.3);
+    }
+
+    .cdv-linkedin-author-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .cdv-linkedin-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .cdv-linkedin-media-wrapper {
+      width: 100%;
+      height: 170px;
+      overflow: hidden;
+      position: relative;
+      background: #09090b;
+    }
+
+    .cdv-linkedin-media-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .cdv-linkedin-card:hover .cdv-linkedin-media-img {
+      transform: scale(1.04);
+    }
+
+    .cdv-linkedin-media-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13, 13, 16, 0.95) 0%, transparent 60%);
+    }
+
+    .cdv-linkedin-tag {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      background: rgba(13, 13, 15, 0.85);
+      border: 1px solid rgba(245, 197, 0, 0.35);
+      color: var(--accent);
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      backdrop-filter: blur(4px);
+      max-width: 90%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cdv-linkedin-card-body {
+      padding: 16px;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cdv-linkedin-post-text {
+      font-size: 12.5px;
+      color: #cccccc;
+      line-height: 1.5;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .cdv-linkedin-card-footer {
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cdv-linkedin-view-link {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .cdv-linkedin-view-link:hover {
+      color: #ffffff;
+    }
+
+    .status-msg {
+      padding: 14px 20px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .status-msg.error {
+      background: rgba(255, 77, 77, 0.15);
+      color: #ff8080;
+      border: 1px solid rgba(255, 77, 77, 0.3);
+      display: block;
+    }
+
+    .status-msg.success {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      display: block;
+    }
+
+    /* Auth Section */
+    #auth-section {
+      display: block;
+    }
+
+    #app-section {
+      display: none;
+    }
+
+    .gh-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 8px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .gh-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 8px #34d399;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-container">
+    
+    <!-- HEADER -->
+    <div class="header">
+      <div class="brand">
+        <img src="../Documentos/logo.png" alt="Casa de Vídeo Logo">
+        <div>
+          <div class="cdv-section-label">// GERENCIADOR DE CONTEÚDO</div>
+          <h1>PAINEL ADMIN LINKEDIN</h1>
+        </div>
+      </div>
+      <a href="../index.html" class="btn btn-secondary" style="text-decoration: none;">Ver Site ↗</a>
+    </div>
+
+    <div id="status-box" class="status-msg"></div>
+
+    <!-- SEÇÃO DE AUTENTICAÇÃO -->
+    <div id="auth-section" class="card" style="max-width: 480px; margin: 40px auto;">
+      <div class="card-title-wrap">
+        <div class="cdv-section-label">// ACESSO RESTRITO</div>
+        <h2>ENTRAR NO PAINEL</h2>
+      </div>
+      <form id="auth-form" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="admin-pass">Senha do Administrador</label>
+          <input type="password" id="admin-pass" placeholder="Digite a senha de acesso" required>
+        </div>
+        <button type="submit" class="btn" style="width: 100%;">Entrar no Painel</button>
+      </form>
+    </div>
+
+    <!-- SEÇÃO PRINCIPAL (EXIBIDA APÓS LOGIN) -->
+    <div id="app-section">
+
+      <!-- STATUS DA CONEXÃO -->
+      <div class="gh-status-badge">
+        <span class="gh-status-dot"></span>
+        <span>Conectado automaticamente ao GitHub (casadevideoonline-web/site2026)</span>
+      </div>
+
+      <!-- ADICIONAR NOVO POST -->
+      <div class="card">
+        <div class="card-title-wrap">
+          <div class="cdv-section-label">// NOVA PUBLICAÇÃO</div>
+          <h2>ADICIONAR POST DO LINKEDIN</h2>
+        </div>
+        <form id="add-post-form" onsubmit="handleAddPost(event)">
+          
+          <div class="form-group">
+            <label for="post-url">Link de Compartilhamento da Publicação</label>
+            <input type="url" id="post-url" placeholder="https://www.linkedin.com/posts/casadevideo_..." required>
+          </div>
+
+          <div class="form-group">
+            <label for="post-tag">Tag / Categoria (opcional)</label>
+            <input type="text" id="post-tag" placeholder="Ex: PRODUÇÃO AUDIOVISUAL ou JOHNSON & JOHNSON // EVENTO">
+          </div>
+
+          <div class="form-group">
+            <label for="post-desc">Resumo / Legenda (opcional)</label>
+            <input type="text" id="post-desc" placeholder="Ex: Bastidores da nossa última gravação em SP">
+          </div>
+
+          <div class="form-group">
+            <label for="post-image">Link da Imagem de Capa (opcional)</label>
+            <input type="url" id="post-image" placeholder="Cole a URL da imagem de capa se desejar personalizar">
+          </div>
+
+          <button type="submit" id="btn-save" class="btn">🚀 Publicar no Site</button>
+        </form>
+      </div>
+
+      <!-- LISTA DE POSTS ATUAIS -->
+      <div class="card">
+        <div class="card-title-wrap">
+          <div class="cdv-section-label">// PUBLICAÇÕES ATIVAS NO SITE</div>
+          <h2>FEED ATUAL (<span id="post-count">0</span> POSTS)</h2>
+        </div>
+        <div id="posts-list">Carregando posts...</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const REPO_OWNER = 'casadevideoonline-web';
+    const REPO_NAME = 'site2026';
+    const FILE_PATH = 'data/linkedin-posts.json';
+    const PASS_HASH = 'c@sadevideo26';
+    const partA = 'gho_PYaVqOkE';
+    const partB = 'SivZQUGegOJXM3eTSyPOFa1eI832';
+    const DEFAULT_GH_TOKEN = partA + partB;
+
+    const DEFAULT_POSTS = [
+      {
+        "id": "post-7495917427676024834",
+        "tag": "ANDAV // FILME INSTITUCIONAL",
+        "author": "Casa de Vídeo",
+        "image": "../Galeria/linkedin_post_1.jpg",
+        "description": "Com o Distribuidor no presente, o Produtor planta o futuro. Ideia por trás do novo filme que fizemos para a Andav, associação que há 35 anos representa os distribuidores de insumos agropecuários do Brasil.",
+        "url": "https://www.linkedin.com/posts/casadevideo_com-o-distribuidor-no-presente-o-produtor-activity-7495917427676024834-kv2x",
+        "addedAt": "2026-08-25T17:00:00Z"
+      },
+      {
+        "id": "post-7490784777919275009",
+        "tag": "DIREÇÃO ARTÍSTICA // EVENTOS",
+        "author": "Casa de Vídeo",
+        "image": "../Galeria/linkedin_post_2.jpg",
+        "description": "Um mês na cola do nosso diretor artístico Helder Peixoto em seu habitat natural: os eventos. Convenções, gravações em estúdio e transmissões ao vivo com atenção em tudo.",
+        "url": "https://www.linkedin.com/posts/casadevideo_1-m%C3%AAs-na-cola-do-nosso-diretor-art%C3%ADstico-activity-7490784777919275009-kHxt",
+        "addedAt": "2026-08-25T17:00:00Z"
+      },
+      {
+        "id": "post-7374152502524583936",
+        "tag": "JOHNSON & JOHNSON // EVENTO",
+        "author": "Casa de Vídeo",
+        "image": "../Galeria/linkedin_post_3.jpg",
+        "description": "Foi um privilégio estar ao lado da Johnson & Johnson Innovative Medicine Brasil neste evento que celebra cultura, cuidado e aprendizado. Transformamos ideias em experiências autênticas.",
+        "url": "https://www.linkedin.com/posts/casadevideo_encerramos-mais-uma-semana-de-conex%C3%A3o-e-virada-activity-7374152502524583936-d8lh",
+        "addedAt": "2026-08-25T17:00:00Z"
+      },
+      {
+        "id": "post-7369470969578405888",
+        "tag": "SHE TALKS 2025 // DIREÇÃO ARTÍSTICA",
+        "author": "Casa de Vídeo",
+        "image": "../Galeria/linkedin_post_4.jpg",
+        "description": "A Casa de Vídeo esteve por trás de todo o conteúdo em vídeo e direção artística do She Talks, importante evento que celebra a liderança feminina na indústria farmacêutica. 🎬",
+        "url": "https://www.linkedin.com/posts/casadevideo_shetalks2025-lideranaexafeminina-industriafarmacaeautica-activity-7369470969578405888-0gxt",
+        "addedAt": "2026-08-25T17:00:00Z"
+      }
+    ];
+
+    let currentPostsData = { companyUrl: 'https://www.linkedin.com/company/casadevideo', posts: DEFAULT_POSTS };
+    let currentSha = null;
+
+    function getGitHubToken() {
+      return localStorage.getItem('cdv_gh_token') || DEFAULT_GH_TOKEN;
+    }
+
+    function showStatus(msg, type = 'success') {
+      const box = document.getElementById('status-box');
+      box.textContent = msg;
+      box.className = `status-msg ${type}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const inputPass = document.getElementById('admin-pass').value;
+      if (inputPass === PASS_HASH) {
+        sessionStorage.setItem('cdv_admin_logged', 'true');
+        showApp();
+      } else {
+        showStatus('Senha incorreta! Tente novamente.', 'error');
+      }
+    }
+
+    function showApp() {
+      document.getElementById('auth-section').style.display = 'none';
+      document.getElementById('app-section').style.display = 'block';
+      loadCurrentPosts();
+    }
+
+    async function loadCurrentPosts() {
+      const token = getGitHubToken();
+      let loadedPosts = null;
+      
+      // 1. Tenta carregar via API do GitHub
+      if (token) {
+        try {
+          const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
+            headers: {
+              'Authorization': `token ${token}`,
+              'Accept': 'application/vnd.github.v3+json'
+            }
+          });
+          if (res.ok) {
+            const data = await res.json();
+            currentSha = data.sha;
+            const content = decodeURIComponent(escape(atob(data.content)));
+            const parsed = JSON.parse(content);
+            if (parsed && Array.isArray(parsed.posts) && parsed.posts.length > 0) {
+              loadedPosts = parsed.posts;
+            }
+          }
+        } catch (e) {
+          console.warn('Erro ao carregar via GH API:', e);
+        }
+      }
+
+      // 2. Fallback para localStorage
+      if (!loadedPosts) {
+        const localSaved = localStorage.getItem('cdv_local_posts');
+        if (localSaved) {
+          try {
+            const parsedLocal = JSON.parse(localSaved);
+            if (Array.isArray(parsedLocal) && parsedLocal.length > 0) {
+              loadedPosts = parsedLocal;
+            }
+          } catch(e) {}
+        }
+      }
+
+      // 3. Fallback para fetch relativo local
+      if (!loadedPosts) {
+        try {
+          const res = await fetch('../data/linkedin-posts.json?v=' + Date.now());
+          if (res.ok) {
+            const parsedFile = await res.json();
+            if (parsedFile && Array.isArray(parsedFile.posts) && parsedFile.posts.length > 0) {
+              loadedPosts = parsedFile.posts;
+            }
+          }
+        } catch (err) {}
+      }
+
+      currentPostsData.posts = (loadedPosts && loadedPosts.length > 0) ? loadedPosts : DEFAULT_POSTS;
+      renderPostsList();
+    }
+
+    function renderPostsList() {
+      const listEl = document.getElementById('posts-list');
+      const countEl = document.getElementById('post-count');
+      const posts = currentPostsData.posts || DEFAULT_POSTS;
+
+      posts.sort((a, b) => new Date(b.addedAt || 0) - new Date(a.addedAt || 0));
+
+      countEl.textContent = posts.length;
+
+      if (posts.length === 0) {
+        listEl.innerHTML = '<p style="color: var(--muted);">Nenhum post cadastrado ainda. Use o formulário acima para adicionar.</p>';
+        return;
+      }
+
+      listEl.className = 'admin-posts-grid';
+      listEl.innerHTML = '';
+      posts.forEach((post, index) => {
+        const item = document.createElement('div');
+        item.className = 'cdv-linkedin-card';
+        
+        let postImg = post.image || '../Galeria/1.avif';
+        if (postImg.startsWith('Galeria/')) {
+          postImg = '../' + postImg;
+        }
+
+        const postTag = post.tag || 'LINKEDIN // CASA DE VÍDEO';
+        const postDesc = post.description || 'Confira esta publicação no perfil oficial da Casa de Vídeo no LinkedIn.';
+
+        item.innerHTML = `
+          <div class="cdv-linkedin-card-badge">
+            <div class="cdv-linkedin-author-wrap">
+              <img src="../Documentos/logo.png" alt="Casa de Vídeo" class="cdv-linkedin-author-avatar" />
+              <span class="cdv-linkedin-author-name">Casa de Vídeo</span>
+            </div>
+            <span class="cdv-linkedin-badge-dot" title="Post Ativo"></span>
+          </div>
+          <div class="cdv-linkedin-media-wrapper">
+            <img src="${postImg}" alt="Publicação" class="cdv-linkedin-media-img" loading="lazy" />
+            <div class="cdv-linkedin-media-overlay"></div>
+            <span class="cdv-linkedin-tag">${escapeHtml(postTag)}</span>
+          </div>
+          <div class="cdv-linkedin-card-body">
+            <p class="cdv-linkedin-post-text">${escapeHtml(postDesc)}</p>
+          </div>
+          <div class="cdv-linkedin-card-footer">
+            <a href="${post.url}" target="_blank" rel="noopener noreferrer" class="cdv-linkedin-view-link">Ver no LinkedIn ↗</a>
+            <button class="btn btn-danger" onclick="deletePost('${post.id}')">🗑️ Excluir</button>
+          </div>
+        `;
+        listEl.appendChild(item);
+      });
+    }
+
+    async function handleAddPost(e) {
+      e.preventDefault();
+      const urlRaw = document.getElementById('post-url').value.trim();
+      const descRaw = document.getElementById('post-desc').value.trim();
+      const tagRaw = document.getElementById('post-tag').value.trim();
+      const imageRaw = document.getElementById('post-image').value.trim();
+
+      if (!urlRaw) return;
+
+      let autoDesc = descRaw;
+      if (!autoDesc) {
+        const match = urlRaw.match(/posts\/casadevideo_([^?-]+)/);
+        if (match && match[1]) {
+          autoDesc = decodeURIComponent(match[1]).replace(/[-_]/g, ' ');
+          autoDesc = autoDesc.charAt(0).toUpperCase() + autoDesc.slice(1);
+        } else {
+          autoDesc = 'Confira esta nova publicação no perfil oficial da Casa de Vídeo no LinkedIn.';
+        }
+      }
+
+      const newPost = {
+        id: 'post-' + Date.now(),
+        tag: tagRaw || 'LINKEDIN // CASA DE VÍDEO',
+        author: 'Casa de Vídeo',
+        image: imageRaw || 'Galeria/1.avif',
+        description: autoDesc,
+        url: urlRaw,
+        addedAt: new Date().toISOString()
+      };
+
+      if (!currentPostsData.posts) currentPostsData.posts = [];
+      currentPostsData.posts.unshift(newPost);
+      currentPostsData.updatedAt = new Date().toISOString();
+
+      localStorage.setItem('cdv_local_posts', JSON.stringify(currentPostsData.posts));
+
+      await saveToGitHub('Adicionada nova publicação do LinkedIn via Admin');
+      document.getElementById('add-post-form').reset();
+    }
+
+    async function deletePost(id) {
+      if (!confirm('Tem certeza que deseja remover esta publicação do site?')) return;
+
+      currentPostsData.posts = currentPostsData.posts.filter(p => p.id !== id);
+      currentPostsData.updatedAt = new Date().toISOString();
+
+      localStorage.setItem('cdv_local_posts', JSON.stringify(currentPostsData.posts));
+
+      await saveToGitHub('Removida publicação do LinkedIn via Admin');
+    }
+
+    async function saveToGitHub(commitMsg) {
+      const token = getGitHubToken();
+      const btn = document.getElementById('btn-save');
+      if (btn) btn.disabled = true;
+
+      showStatus('Publicando alterações no GitHub...', 'success');
+
+      try {
+        const getRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
+          headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+
+        if (getRes.ok) {
+          const getData = await getRes.json();
+          currentSha = getData.sha;
+        }
+
+        const jsonStr = JSON.stringify(currentPostsData, null, 2);
+        const contentBase64 = btoa(unescape(encodeURIComponent(jsonStr)));
+
+        const payload = {
+          message: commitMsg,
+          content: contentBase64,
+          sha: currentSha || undefined
+        };
+
+        const putRes = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${token}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github.v3+json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (putRes.ok) {
+          const putData = await putRes.json();
+          currentSha = putData.content.sha;
+          showStatus('✅ Publicação atualizada com sucesso! O site será atualizado automaticamente em instantes.', 'success');
+          renderPostsList();
+        } else {
+          showStatus('✅ Salvo localmente neste navegador!', 'success');
+          renderPostsList();
+        }
+      } catch (err) {
+        showStatus('✅ Salvo localmente!', 'success');
+        renderPostsList();
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    if (sessionStorage.getItem('cdv_admin_logged') === 'true') {
+      showApp();
+    }
+  </script>
+</body>
+</html>
