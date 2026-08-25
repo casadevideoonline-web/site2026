@@ -2,6 +2,12 @@
   "companyUrl": "https://www.linkedin.com/company/casadevideo",
   "posts": [
     {
+      "id": "post-1787675769683",
+      "iframe": "https://www.linkedin.com/posts/casadevideo_encerramos-mais-uma-semana-de-conex%C3%A3o-e-virada-activity-7374152502524583936-d8lh?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEgJ1JQBK4bbpLdCm2_M4VDR3MVBWoRlc8A",
+      "description": "",
+      "addedAt": "2026-08-25T16:36:09.683Z"
+    },
+    {
       "id": "post-1787675677408",
       "iframe": "<iframe src=\"https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7495917149463527425?collapsed=1\" height=\"550\" width=\"504\" frameborder=\"0\" allowfullscreen=\"\" title=\"Publicação incorporada\"></iframe>",
       "description": "",
@@ -14,5 +20,5 @@
       "addedAt": "2026-08-25T16:34:08.509Z"
     }
   ],
-  "updatedAt": "2026-08-25T16:35:38.163Z"
+  "updatedAt": "2026-08-25T16:36:09.683Z"
 }
