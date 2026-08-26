@@ -425,7 +425,14 @@
 .img-zoom img { transition: transform 0.7s ease; display: block; width: 100%; height: 100%; object-fit: cover; }
 .img-zoom:hover img { transform: scale(1.06); }
 
-/* Galeria de imagens (Scroll Lateral - Posições e Alturas Alternadas como na Referência) */
+.cdv-gallery-track-wrap {
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  cursor: default;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
 .cdv-gallery-track-wrap::-webkit-scrollbar {
   display: none;
 }
@@ -439,6 +446,7 @@
   background: #181818;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
   user-select: none;
+  cursor: default;
 }
 .cdv-gallery-card:nth-child(1)  { height: 380px; transform: translateY(70px); }
 .cdv-gallery-card:nth-child(2)  { height: 480px; transform: translateY(0px); }
@@ -1749,7 +1757,7 @@
     </div>
   </div>
 
-  <div class="cdv-gallery-track-wrap" style="width: 100%; overflow-x: auto; scroll-behavior: smooth; padding-left: max(5vw, calc((100vw - 1200px) / 2)); padding-right: 5vw; padding-bottom: 32px; cursor: grab; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
+  <div class="cdv-gallery-track-wrap" style="width: 100%; overflow-x: auto; scroll-behavior: smooth; padding-left: max(5vw, calc((100vw - 1200px) / 2)); padding-right: 5vw; padding-bottom: 32px; cursor: default; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
     <div class="cdv-gallery-track" style="display: flex; gap: 28px; width: max-content; padding-top: 10px; padding-bottom: 30px;">
       <div class="cdv-gallery-card"><img src="Galeria/1.avif" alt="Bastidores Casa de Vídeo 1" loading="lazy"/></div>
       <div class="cdv-gallery-card"><img src="Galeria/2.avif" alt="Bastidores Casa de Vídeo 2" loading="lazy"/></div>
@@ -2244,82 +2252,8 @@
     });
   });
 
-  // Galeria drag & scroll controls + Lightbox
-  const trackWrap = document.querySelector('.cdv-gallery-track-wrap');
-  const galleryCards = Array.from(document.querySelectorAll('.cdv-gallery-card'));
-
-  let isDown = false;
-  let isMoved = false;
-  let startX;
-  let scrollLeft;
-  let autoScrollActive = true;
-  let scrollSpeed = 0.8; // Velocidade do scroll automático (pixels por frame)
-
-  if (trackWrap) {
-    // Permitir rolagem com a roda do mouse (mouse wheel) na horizontal
-    trackWrap.addEventListener('wheel', (e) => {
-      if (e.deltaY !== 0) {
-        e.preventDefault();
-        trackWrap.scrollLeft += e.deltaY;
-      }
-    }, { passive: false });
-
-    trackWrap.addEventListener('mouseenter', () => {
-      autoScrollActive = false;
-    });
-
-    trackWrap.addEventListener('touchstart', () => {
-      autoScrollActive = false;
-    }, { passive: true });
-
-    trackWrap.addEventListener('touchend', () => {
-      autoScrollActive = true;
-    }, { passive: true });
-
-    trackWrap.addEventListener('mousedown', (e) => {
-      isDown = true;
-      isMoved = false;
-      autoScrollActive = false;
-      trackWrap.style.cursor = 'grabbing';
-      startX = e.pageX - trackWrap.offsetLeft;
-      scrollLeft = trackWrap.scrollLeft;
-    });
-    trackWrap.addEventListener('mouseleave', () => {
-      isDown = false;
-      autoScrollActive = true;
-      trackWrap.style.cursor = 'grab';
-    });
-    trackWrap.addEventListener('mouseup', () => {
-      isDown = false;
-      autoScrollActive = true;
-      trackWrap.style.cursor = 'grab';
-    });
-    trackWrap.addEventListener('mousemove', (e) => {
-      if(!isDown) return;
-      const x = e.pageX - trackWrap.offsetLeft;
-      const walk = (x - startX) * 1.8;
-      if (Math.abs(x - startX) > 5) {
-        isMoved = true;
-      }
-      trackWrap.scrollLeft = scrollLeft - walk;
-    });
-
-
-    // Função de animação de scroll contínuo e automático
-    function autoScrollStep() {
-      if (autoScrollActive && !isDown) {
-        trackWrap.scrollLeft += scrollSpeed;
-        // Reseta o scroll para o início quando chega ao fim
-        if (trackWrap.scrollLeft >= trackWrap.scrollWidth - trackWrap.clientWidth - 1) {
-          trackWrap.scrollLeft = 0;
-        }
-      }
-      requestAnimationFrame(autoScrollStep);
-    }
-    requestAnimationFrame(autoScrollStep);
-  }
-
   // Lightbox Modal System
+  const galleryCards = Array.from(document.querySelectorAll('.cdv-gallery-card'));
   const lightbox = document.getElementById('galleryLightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lbClose = document.getElementById('lightboxClose');
@@ -2357,8 +2291,7 @@
   }
 
   galleryCards.forEach((card, idx) => {
-    card.addEventListener('click', (e) => {
-      if (isMoved) return; // Se arrastou, não abre lightbox
+    card.addEventListener('click', () => {
       openLightbox(idx);
     });
   });
