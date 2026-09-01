@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Casa de Vídeo — Apresentação Institucional</title>
+<meta name="description" content="Produções audiovisuais criativas, humanas e memoráveis para marcas, eventos e experiências.">
+<meta name="theme-color" content="#000000">
+
+<!-- Preview do link no WhatsApp, e-mail e redes.
+     ATENÇÃO: se a pasta no servidor não for /institucional/, corrija as 2 URLs abaixo. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Casa de Vídeo">
+<meta property="og:title" content="Casa de Vídeo — Apresentação Institucional">
+<meta property="og:description" content="Produções audiovisuais criativas, humanas e memoráveis para marcas, eventos e experiências.">
+<meta property="og:url" content="https://casadevideo.com.br/institucional/">
+<meta property="og:image" content="https://casadevideo.com.br/institucional/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Cpath d='M12 9l12 7-12 7z' fill='%23F5A623'/%3E%3C/svg%3E">
+
+<style>
+  :root{ --gold:#F5A623; --ink:#000; --ui:rgba(255,255,255,.72); }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--ink); color:#fff;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    overflow:hidden; -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- abertura ---------- */
+  #boot{
+    position:fixed; inset:0; z-index:60; background:#000;
+    display:grid; place-items:center; transition:opacity .6s ease;
+  }
+  #boot.gone{opacity:0; pointer-events:none}
+  #boot .ring{
+    width:54px; aspect-ratio:1; border-radius:50%;
+    border:2px solid rgba(245,166,35,.22); border-top-color:var(--gold);
+    animation:spin 1s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ---------- palco ---------- */
+  #stage{position:fixed; inset:0; display:grid; place-items:center}
+  #frame{
+    position:relative; width:100%; height:100%;
+    max-width:calc(100vh * 16 / 9); max-height:calc(100vw * 9 / 16);
+    aspect-ratio:16/9; background:#000;
+  }
+  .slide{
+    position:absolute; inset:0; opacity:0; visibility:hidden;
+    transition:opacity .45s ease; will-change:opacity;
+  }
+  .slide.on{opacity:1; visibility:visible}
+  .slide img.bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block}
+
+  /* ---------- vídeo ---------- */
+  .vwrap{position:absolute; overflow:hidden; background:#000}
+  .vwrap video{width:100%; height:100%; display:block; object-fit:cover; background:#000}
+  .playbtn{
+    position:absolute; inset:0; display:grid; place-items:center;
+    background:rgba(0,0,0,.28); border:0; cursor:pointer; padding:0;
+    transition:background .25s ease, opacity .25s ease;
+  }
+  .playbtn:hover{background:rgba(0,0,0,.14)}
+  .playbtn.hidden{opacity:0; pointer-events:none}
+  .playbtn i{
+    width:clamp(56px,7vw,92px); aspect-ratio:1; border-radius:50%;
+    background:rgba(0,0,0,.55); border:2px solid var(--gold);
+    display:grid; place-items:center;
+    box-shadow:0 0 0 8px rgba(245,166,35,.10), 0 10px 40px rgba(0,0,0,.6);
+    transition:transform .25s ease, background .25s ease;
+  }
+  .playbtn:hover i{transform:scale(1.07); background:rgba(245,166,35,.95)}
+  .playbtn i::after{
+    content:""; width:0; height:0; margin-left:18%;
+    border-left:clamp(16px,2vw,26px) solid var(--gold);
+    border-top:clamp(10px,1.25vw,16px) solid transparent;
+    border-bottom:clamp(10px,1.25vw,16px) solid transparent;
+    transition:border-left-color .25s ease;
+  }
+  .playbtn:hover i::after{border-left-color:#000}
+  .buffer{
+    position:absolute; inset:0; display:none; place-items:center;
+    background:rgba(0,0,0,.35); pointer-events:none;
+  }
+  .buffer.on{display:grid}
+  .buffer div{
+    width:44px; aspect-ratio:1; border-radius:50%;
+    border:2px solid rgba(245,166,35,.22); border-top-color:var(--gold);
+    animation:spin 1s linear infinite;
+  }
+
+  /* ---------- navegação ---------- */
+  .nav{
+    position:fixed; top:50%; transform:translateY(-50%);
+    width:clamp(42px,4vw,58px); aspect-ratio:1; border-radius:50%;
+    background:rgba(0,0,0,.45); border:1px solid rgba(245,166,35,.35);
+    color:var(--ui); cursor:pointer; z-index:30;
+    display:grid; place-items:center; backdrop-filter:blur(6px);
+    transition:opacity .3s ease, background .2s ease, border-color .2s ease;
+  }
+  .nav:hover{background:rgba(245,166,35,.9); color:#000; border-color:var(--gold)}
+  .nav:disabled{opacity:0; pointer-events:none}
+  #prev{left:clamp(10px,2vw,26px)} #next{right:clamp(10px,2vw,26px)}
+  .nav svg{width:42%; height:42%; fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
+
+  /* ---------- rodapé ---------- */
+  #bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:30;
+    display:flex; align-items:center; gap:clamp(10px,2vw,22px);
+    padding:14px clamp(12px,2.5vw,26px);
+    padding-bottom:calc(14px + env(safe-area-inset-bottom));
+    background:linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,0));
+    transition:opacity .35s ease;
+  }
+  #dots{display:flex; gap:7px; flex:1; flex-wrap:wrap}
+  .dot{
+    width:26px; height:4px; border-radius:2px; background:rgba(255,255,255,.25);
+    border:0; padding:0; cursor:pointer; transition:background .2s ease, transform .2s ease;
+  }
+  .dot:hover{background:rgba(245,166,35,.6)}
+  .dot.on{background:var(--gold); transform:scaleY(1.5)}
+  #count{
+    font-size:clamp(11px,1.15vw,13px); letter-spacing:.16em; color:var(--ui);
+    font-variant-numeric:tabular-nums; white-space:nowrap;
+  }
+  #count b{color:var(--gold); font-weight:600}
+  .iconbtn{background:transparent; border:0; color:var(--ui); cursor:pointer; padding:6px; line-height:0; transition:color .2s ease}
+  .iconbtn:hover{color:var(--gold)}
+  .iconbtn svg{width:clamp(17px,1.7vw,20px); height:clamp(17px,1.7vw,20px); fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+
+  body.idle #bar, body.idle .nav{opacity:0; pointer-events:none}
+
+  #hint{
+    position:fixed; left:50%; bottom:clamp(64px,9vh,92px); transform:translateX(-50%);
+    z-index:31; font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+    color:rgba(255,255,255,.55); pointer-events:none;
+    animation:fade 5.5s ease forwards; animation-delay:2s;
+  }
+  @keyframes fade{to{opacity:0}}
+
+  @media (max-width:640px){
+    .nav{display:none}
+    #dots{flex-wrap:nowrap; gap:4px}
+    #dots .dot{width:12px}
+    #hint{letter-spacing:.16em}
+  }
+</style>
+</head>
+<body>
+
+<div id="boot"><div class="ring"></div></div>
+<div id="stage"></div>
+
+<button class="nav" id="prev" aria-label="Slide anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button class="nav" id="next" aria-label="Próximo slide"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+
+<div id="hint">Use as setas ← → para navegar</div>
+
+<div id="bar">
+  <div id="dots"></div>
+  <div id="count"><b>01</b> / 12</div>
+  <button class="iconbtn" id="fs" aria-label="Tela cheia" title="Tela cheia">
+    <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // Geometria extraída do PowerPoint (% da área do slide)
+  var SLIDES = [
+    {i:1}, {i:2}, {i:3},
+    {i:4,  v:"media1", left:0,       top:0,       w:100,     h:100},
+    {i:5,  v:"media2", left:47.0435, top:0,       w:31.6406, h:100},
+    {i:6},
+    {i:7,  v:"media3", left:42.9390, top:16.2270, w:53.9200, h:53.9200},
+    {i:8}, {i:9},
+    {i:10, v:"media4", left:42.6088, top:26.7888, w:53.8512, h:53.8512},
+    {i:11}, {i:12}
+  ];
+
+  var stage = document.getElementById('stage');
+  var frame = document.createElement('div');
+  frame.id = 'frame';
+  stage.appendChild(frame);
+
+  var pad = function(n){ return (n<10?'0':'') + n; };
+  var els = [], videos = [];
+
+  SLIDES.forEach(function(s, idx){
+    var d = document.createElement('div');
+    d.className = 'slide';
+
+    var img = document.createElement('img');
+    img.className = 'bg';
+    img.src = 'slides/slide-' + pad(s.i) + '.jpg';
+    img.alt = 'Slide ' + s.i;
+    img.decoding = 'async';
+    img.loading = idx < 3 ? 'eager' : 'lazy';
+    img.draggable = false;
+    d.appendChild(img);
+
+    if (s.v) {
+      var w = document.createElement('div');
+      w.className = 'vwrap';
+      w.style.left = s.left + '%'; w.style.top = s.top + '%';
+      w.style.width = s.w + '%';   w.style.height = s.h + '%';
+
+      var v = document.createElement('video');
+      v.src = 'videos/' + s.v + '.mp4';
+      v.poster = 'posters/' + s.v + '.jpg';
+      v.preload = 'none';                 // só baixa quando dão play
+      v.controls = false;                 // barra nativa só depois do 1o play
+      v.playsInline = true;
+      v.setAttribute('playsinline','');
+      v.setAttribute('webkit-playsinline','');
+      v.setAttribute('controlsList','nodownload');
+      w.appendChild(v);
+
+      var buf = document.createElement('div');
+      buf.className = 'buffer';
+      buf.appendChild(document.createElement('div'));
+      w.appendChild(buf);
+
+      var btn = document.createElement('button');
+      btn.className = 'playbtn';
+      btn.setAttribute('aria-label','Reproduzir vídeo');
+      btn.appendChild(document.createElement('i'));
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        v.preload = 'auto';
+        buf.classList.add('on');
+        var p = v.play();
+        if (p && p.catch) p.catch(function(){ buf.classList.remove('on'); });
+      });
+      w.appendChild(btn);
+
+      v.addEventListener('play',    function(){ v.controls = true; btn.classList.add('hidden'); });
+      v.addEventListener('pause',   function(){ btn.classList.remove('hidden'); });
+      v.addEventListener('ended',   function(){ btn.classList.remove('hidden'); });
+      v.addEventListener('waiting', function(){ buf.classList.add('on'); });
+      v.addEventListener('playing', function(){ buf.classList.remove('on'); });
+      v.addEventListener('error',   function(){ buf.classList.remove('on'); });
+
+      d.appendChild(w);
+      videos.push(v);
+    }
+
+    frame.appendChild(d);
+    els.push(d);
+  });
+
+  // ---------- navegação ----------
+  var cur = 0;
+  var dots  = document.getElementById('dots');
+  var count = document.getElementById('count');
+  var prev  = document.getElementById('prev');
+  var next  = document.getElementById('next');
+
+  SLIDES.forEach(function(s, i){
+    var b = document.createElement('button');
+    b.className = 'dot';
+    b.setAttribute('aria-label','Ir para o slide ' + (i+1));
+    b.addEventListener('click', function(){ go(i); });
+    dots.appendChild(b);
+  });
+  var dotEls = dots.children;
+
+  function go(n){
+    n = Math.max(0, Math.min(SLIDES.length - 1, n));
+    if (n === cur && els[cur].classList.contains('on')) return;
+    videos.forEach(function(v){ if(!v.paused) v.pause(); });
+    els[cur].classList.remove('on');
+    dotEls[cur].classList.remove('on');
+    cur = n;
+    els[cur].classList.add('on');
+    dotEls[cur].classList.add('on');
+    count.innerHTML = '<b>' + pad(cur+1) + '</b> / ' + pad(SLIDES.length);
+    prev.disabled = (cur === 0);
+    next.disabled = (cur === SLIDES.length - 1);
+    [cur+1, cur+2].forEach(function(k){
+      var im = els[k] && els[k].querySelector('img');
+      if (im) im.loading = 'eager';
+    });
+  }
+
+  prev.addEventListener('click', function(){ go(cur-1); });
+  next.addEventListener('click', function(){ go(cur+1); });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(cur+1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(cur-1); }
+    else if (e.key === 'Home') { go(0); }
+    else if (e.key === 'End')  { go(SLIDES.length-1); }
+    else if (e.key === 'f' || e.key === 'F') { toggleFs(); }
+  });
+
+  stage.addEventListener('click', function(e){
+    if (e.target.closest('.vwrap')) return;
+    var r = frame.getBoundingClientRect();
+    go(e.clientX < r.left + r.width/2 ? cur-1 : cur+1);
+  });
+
+  var sx = 0, sy = 0, tracking = false;
+  stage.addEventListener('touchstart', function(e){
+    tracking = true; sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+  }, {passive:true});
+  stage.addEventListener('touchend', function(e){
+    if (!tracking) return;
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) go(dx < 0 ? cur+1 : cur-1);
+    tracking = false;
+  }, {passive:true});
+
+  function toggleFs(){
+    var d = document.documentElement;
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      (d.requestFullscreen || d.webkitRequestFullscreen).call(d);
+    } else {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    }
+  }
+  document.getElementById('fs').addEventListener('click', function(e){ e.stopPropagation(); toggleFs(); });
+
+  var t;
+  function wake(){
+    document.body.classList.remove('idle');
+    clearTimeout(t);
+    t = setTimeout(function(){ document.body.classList.add('idle'); }, 3000);
+  }
+  ['mousemove','touchstart','keydown','click'].forEach(function(ev){
+    document.addEventListener(ev, wake, {passive:true});
+  });
+  wake();
+
+  // no celular a dica fala em deslizar, nao em setas do teclado
+  if (window.matchMedia('(hover: none)').matches) {
+    document.getElementById('hint').textContent = 'Deslize para navegar';
+  }
+
+  go(0);
+
+  // some com a tela de abertura quando o 1o slide estiver pronto
+  var first = els[0].querySelector('img');
+  function boot(){
+    var b = document.getElementById('boot');
+    if (b) b.classList.add('gone');
+  }
+  if (first.complete) boot();
+  else { first.addEventListener('load', boot); first.addEventListener('error', boot); }
+  setTimeout(boot, 6000);
+})();
+</script>
+</body>
+</html>
