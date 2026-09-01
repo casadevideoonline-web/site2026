@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin — Feed LinkedIn | Casa de Vídeo</title>
   <link rel="icon" type="image/png" href="../Documentos/logo.png"/>
+  <!-- ── Security Headers ── -->
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net https://api.github.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; connect-src 'self' https://api.github.com;"/>
   <style>
     @font-face {
       font-family: 'Geist Mono Variable';
@@ -444,12 +450,22 @@
         <div class="cdv-section-label">// ACESSO RESTRITO</div>
         <h2>ENTRAR NO PAINEL</h2>
       </div>
-      <form id="auth-form" onsubmit="handleLogin(event)">
+      <!-- Aviso de bloqueio -->
+      <div id="lockout-banner" style="display:none; background:rgba(255,77,77,0.15); border:1px solid rgba(255,77,77,0.3); color:#ff8080; padding:12px 16px; border-radius:10px; font-size:13px; margin-bottom:20px;">
+        🔒 Muitas tentativas incorretas. Aguarde <span id="lockout-timer">300</span>s para tentar novamente.
+      </div>
+      <form id="auth-form" onsubmit="handleLogin(event)" autocomplete="off">
         <div class="form-group">
           <label for="admin-pass">Senha do Administrador</label>
-          <input type="password" id="admin-pass" placeholder="Digite a senha de acesso" required>
+          <input type="password" id="admin-pass" placeholder="Digite a senha de acesso" required autocomplete="current-password">
         </div>
-        <button type="submit" class="btn" style="width: 100%;">Entrar no Painel</button>
+        <div class="form-group">
+          <label for="gh-token">Token GitHub <span style="color:var(--muted); font-weight:400; font-size:11px;">(necessário para publicar)</span></label>
+          <input type="password" id="gh-token" placeholder="ghp_... ou gho_..." required autocomplete="off">
+          <p style="margin-top:8px; font-size:11px; color:var(--muted); line-height:1.5;">⚠️ O token não é salvo permanentemente — apenas nesta sessão do navegador.</p>
+        </div>
+        <div id="login-attempts-info" style="font-size:11px; color:var(--muted); margin-bottom:16px; display:none;">Tentativas restantes: <span id="attempts-left">5</span>/5</div>
+        <button type="submit" id="login-btn" class="btn" style="width: 100%;">Entrar no Painel</button>
       </form>
     </div>
 
@@ -508,13 +524,15 @@
   </div>
 
   <script>
+    // ── Configuração do repositório ──────────────────────────────────────────
     const REPO_OWNER = 'casadevideoonline-web';
-    const REPO_NAME = 'site2026';
-    const FILE_PATH = 'data/linkedin-posts.json';
-    const PASS_HASH = 'c@sadevideo26';
-    const partA = 'gho_PYaVqOkE';
-    const partB = 'SivZQUGegOJXM3eTSyPOFa1eI832';
-    const DEFAULT_GH_TOKEN = partA + partB;
+    const REPO_NAME  = 'site2026';
+    const FILE_PATH  = 'data/linkedin-posts.json';
+
+    // ── Hash SHA-256 da senha do admin ───────────────────────────────────────
+    // Nenhuma senha em plain-text é armazenada aqui.
+    // Para gerar novo hash: https://emn178.github.io/online-tools/sha256.html
+    const ADMIN_PASS_HASH = '526cfe7f347086905fc65d49f175486538f6ea1a76b075ee51f1b9137f995cd0';
 
     const DEFAULT_POSTS = [
       {
@@ -558,8 +576,9 @@
     let currentPostsData = { companyUrl: 'https://www.linkedin.com/company/casadevideo', posts: DEFAULT_POSTS };
     let currentSha = null;
 
+    // ── Obtém token armazenado APENAS em sessionStorage (some ao fechar aba) ──
     function getGitHubToken() {
-      return localStorage.getItem('cdv_gh_token') || DEFAULT_GH_TOKEN;
+      return sessionStorage.getItem('cdv_gh_token') || '';
     }
 
     function showStatus(msg, type = 'success') {
@@ -569,14 +588,99 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function handleLogin(e) {
+    // ── Rate limiting: max 5 tentativas, bloqueio de 5 minutos ─────────────
+    const MAX_ATTEMPTS  = 5;
+    const LOCKOUT_MS    = 5 * 60 * 1000; // 5 minutos
+    let _lockoutTimer   = null;
+
+    function getLockoutState() {
+      const raw = sessionStorage.getItem('cdv_login_state');
+      if (!raw) return { attempts: 0, lockedUntil: 0 };
+      try { return JSON.parse(raw); } catch { return { attempts: 0, lockedUntil: 0 }; }
+    }
+    function saveLockoutState(state) {
+      sessionStorage.setItem('cdv_login_state', JSON.stringify(state));
+    }
+    function startLockoutCountdown(remainingMs) {
+      const banner  = document.getElementById('lockout-banner');
+      const timerEl = document.getElementById('lockout-timer');
+      const loginBtn = document.getElementById('login-btn');
+      banner.style.display  = 'block';
+      loginBtn.disabled     = true;
+      let remaining = Math.ceil(remainingMs / 1000);
+      timerEl.textContent   = remaining;
+      clearInterval(_lockoutTimer);
+      _lockoutTimer = setInterval(() => {
+        remaining--;
+        timerEl.textContent = remaining;
+        if (remaining <= 0) {
+          clearInterval(_lockoutTimer);
+          banner.style.display = 'none';
+          loginBtn.disabled    = false;
+          saveLockoutState({ attempts: 0, lockedUntil: 0 });
+          document.getElementById('login-attempts-info').style.display = 'none';
+        }
+      }, 1000);
+    }
+
+    // Verifica lockout ao carregar
+    (function checkLockoutOnLoad() {
+      const state = getLockoutState();
+      if (state.lockedUntil > Date.now()) {
+        startLockoutCountdown(state.lockedUntil - Date.now());
+      }
+    })();
+
+    async function sha256(message) {
+      const msgBuffer  = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray  = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function isValidGhToken(token) {
+      // GitHub tokens começam com ghp_, gho_, github_pat_ ou são fine-grained
+      return /^(ghp_|gho_|github_pat_)[A-Za-z0-9_]{20,}$/.test(token);
+    }
+
+    async function handleLogin(e) {
       e.preventDefault();
-      const inputPass = document.getElementById('admin-pass').value;
-      if (inputPass === PASS_HASH) {
+
+      const state = getLockoutState();
+      if (state.lockedUntil > Date.now()) return; // ainda bloqueado
+
+      const inputPass  = document.getElementById('admin-pass').value;
+      const inputToken = document.getElementById('gh-token').value.trim();
+
+      // Valida formato do token
+      if (!isValidGhToken(inputToken)) {
+        showStatus('Token GitHub inválido. Deve começar com ghp_, gho_ ou github_pat_.', 'error');
+        return;
+      }
+
+      const inputHash = await sha256(inputPass);
+
+      if (inputHash === ADMIN_PASS_HASH) {
+        // Login bem-sucedido — salva token apenas em sessionStorage
         sessionStorage.setItem('cdv_admin_logged', 'true');
+        sessionStorage.setItem('cdv_gh_token', inputToken);
+        saveLockoutState({ attempts: 0, lockedUntil: 0 });
         showApp();
       } else {
-        showStatus('Senha incorreta! Tente novamente.', 'error');
+        state.attempts++;
+        const attemptsLeft = MAX_ATTEMPTS - state.attempts;
+        if (attemptsLeft <= 0) {
+          state.lockedUntil = Date.now() + LOCKOUT_MS;
+          saveLockoutState(state);
+          showStatus('Muitas tentativas incorretas. Painel bloqueado por 5 minutos.', 'error');
+          startLockoutCountdown(LOCKOUT_MS);
+        } else {
+          saveLockoutState(state);
+          const infoEl = document.getElementById('login-attempts-info');
+          infoEl.style.display = 'block';
+          document.getElementById('attempts-left').textContent = attemptsLeft;
+          showStatus(`Senha incorreta! ${attemptsLeft} tentativa(s) restante(s).`, 'error');
+        }
       }
     }
 
@@ -671,6 +775,9 @@
         const postTag = post.tag || 'LINKEDIN // CASA DE VÍDEO';
         const postDesc = post.description || 'Confira esta publicação no perfil oficial da Casa de Vídeo no LinkedIn.';
 
+        // Valida a URL do post antes de usar no DOM (bloqueia javascript: e data:)
+        const safePostUrl = /^https:\/\/www\.linkedin\.com\//.test(post.url || '') ? post.url : '#';
+
         item.innerHTML = `
           <div class="cdv-linkedin-card-badge">
             <div class="cdv-linkedin-author-wrap">
@@ -688,8 +795,8 @@
             <p class="cdv-linkedin-post-text">${escapeHtml(postDesc)}</p>
           </div>
           <div class="cdv-linkedin-card-footer">
-            <a href="${post.url}" target="_blank" rel="noopener noreferrer" class="cdv-linkedin-view-link">Ver no LinkedIn ↗</a>
-            <button class="btn btn-danger" onclick="deletePost('${post.id}')">🗑️ Excluir</button>
+            <a href="${safePostUrl}" target="_blank" rel="noopener noreferrer" class="cdv-linkedin-view-link">Ver no LinkedIn ↗</a>
+            <button class="btn btn-danger" onclick="deletePost('${escapeHtml(post.id)}')">🗑️ Excluir</button>
           </div>
         `;
         listEl.appendChild(item);
@@ -698,12 +805,16 @@
 
     async function handleAddPost(e) {
       e.preventDefault();
-      const urlRaw = document.getElementById('post-url').value.trim();
-      const descRaw = document.getElementById('post-desc').value.trim();
-      const tagRaw = document.getElementById('post-tag').value.trim();
+      const urlRaw   = document.getElementById('post-url').value.trim();
+      const descRaw  = document.getElementById('post-desc').value.trim();
+      const tagRaw   = document.getElementById('post-tag').value.trim();
       const imageRaw = document.getElementById('post-image').value.trim();
 
-      if (!urlRaw) return;
+      // ── Valida URL do LinkedIn (bloqueia javascript:, data:, etc.) ─────────
+      if (!urlRaw || !/^https:\/\/www\.linkedin\.com\//.test(urlRaw)) {
+        showStatus('❌ URL inválida. Cole o link direto de uma publicação do LinkedIn.', 'error');
+        return;
+      }
 
       let autoDesc = descRaw;
       if (!autoDesc) {
@@ -812,7 +923,8 @@
         .replace(/'/g, '&#039;');
     }
 
-    if (sessionStorage.getItem('cdv_admin_logged') === 'true') {
+    // Restaura sessão ativa (token deve estar em sessionStorage)
+    if (sessionStorage.getItem('cdv_admin_logged') === 'true' && getGitHubToken()) {
       showApp();
     }
   </script>
