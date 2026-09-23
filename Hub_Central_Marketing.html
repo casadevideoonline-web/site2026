@@ -9,29 +9,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   
-  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./js/session-guard.js"></script>
   
-  <style type="text/tailwindcss">
-    @theme {
-      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-      --font-display: "Space Grotesk", sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-    }
-    
-    html {
-      scroll-behavior: smooth;
-      background-color: #f4f5f8;
-      color: #0c0d0e;
-    }
-
+  <style>
     body {
-      font-family: var(--font-sans);
+      font-family: "Inter", sans-serif;
       background-color: #f4f5f8;
       color: #0c0d0e;
       overflow-x: hidden;
     }
+    .font-display { font-family: "Space Grotesk", sans-serif; }
+    .font-mono { font-family: "JetBrains Mono", monospace; }
 
     ::selection {
       background-color: #000000;
@@ -186,7 +176,7 @@
           <span class="text-indigo-600 inline-block">Evolução 360°</span>
         </h1>
         <p class="font-sans text-base text-zinc-600 leading-relaxed font-light">
-          Acompanhamento transparente das métricas de performance da Casa de Vídeo nos 3 pilares: **Tráfego Pago (Google Ads)**, **SEO Orgânico** e **GEO (Inteligência Artificial)** com comparativos de evolução semana a semana.
+          Acompanhamento transparente das métricas de performance da Casa de Vídeo nos 3 pilares: <strong class="font-semibold text-zinc-950">Tráfego Pago (Google Ads)</strong>, <strong class="font-semibold text-zinc-950">SEO Orgânico</strong> e <strong class="font-semibold text-zinc-950">GEO (Inteligência Artificial)</strong> com comparativos de evolução semana a semana.
         </p>
       </div>
 
