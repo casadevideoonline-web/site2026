@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard GEO | b.rocket • Casa de Vídeo</title>
+  <title>Diagnóstico & Dashboard GEO | b.rocket • Casa de Vídeo</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="../js/session-guard.js"></script>
-  <style type="text/tailwindcss">
-    @theme {
-      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-      --font-display: "Space Grotesk", sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-    }
-    body { font-family: var(--font-sans); background: #f4f5f8; color: #0c0d0e; }
+  
+  <style>
+    body { font-family: "Inter", sans-serif; background: #f4f5f8; color: #0c0d0e; }
+    .font-display { font-family: "Space Grotesk", sans-serif; }
+    .font-mono { font-family: "JetBrains Mono", monospace; }
+
     .grid-blueprint {
       background-image: 
         linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
@@ -55,15 +56,21 @@
         <span>← Voltar ao Hub Central Semanal</span>
       </a>
       <h1 class="font-display font-black text-2xl md:text-3xl text-zinc-950 uppercase text-tactile-3d-dark mt-1">
-        Dashboard GEO & Citabilidade — Casa de Vídeo
+        Diagnóstico & Dashboard GEO — Casa de Vídeo
       </h1>
-      <p class="font-mono text-xs text-zinc-500">b.rocket GEO Engine (9 Sub-Agentes) • Presença em Motores de IA</p>
+      <p class="font-mono text-xs text-zinc-500">Motor b.rocket GEO Engine (9 Sub-Agentes) • Padrão Oficial de Citabilidade em IAs</p>
     </div>
-    <span class="font-mono text-xs bg-violet-50 text-violet-700 border border-violet-200 px-3.5 py-1.5 rounded-xl font-bold">
-      GEO Score Composto: 84 / 100
-    </span>
+    <div class="flex items-center gap-3">
+      <span class="font-mono text-xs bg-violet-50 text-violet-700 border border-violet-200 px-3.5 py-1.5 rounded-xl font-bold">
+        GEO Score Composto: 84 / 100
+      </span>
+      <a href="./Passo_a_Passo_GEO.html" class="tactile-raised !bg-[#8B5CF6] text-white font-mono text-xs font-bold px-3.5 py-1.5 rounded-xl hover:bg-violet-700 uppercase">
+        Guia Técnico →
+      </a>
+    </div>
   </div>
 
+  <!-- Key Metrics Cards -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
     <div class="tactile-raised p-6 border-l-4 border-l-violet-600">
       <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">GEO Score Composto</span>
@@ -71,7 +78,7 @@
       <span class="font-mono text-[10px] text-violet-700 font-bold block mt-1">↑ +6 pts esta semana</span>
     </div>
     <div class="tactile-raised p-6 border-l-4 border-l-emerald-600">
-      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Citation Share em LLMs</span>
+      <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Citation Share nas LLMs</span>
       <h3 class="font-display font-black text-2xl text-emerald-600 mt-2">75%</h3>
       <span class="font-mono text-[10px] text-zinc-400 block mt-1">20 Prompts x 4 LLMs</span>
     </div>
@@ -87,15 +94,15 @@
     </div>
   </div>
 
-  <!-- Visual Charts Section -->
+  <!-- Visual Charts Section: 7 Pilares Princeton & Citation Share -->
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
     <!-- Chart 1: 7 Pilares Princeton -->
     <div class="lg:col-span-2 tactile-raised p-6 rounded-3xl bg-white border border-zinc-200">
       <h3 class="font-display font-bold text-lg text-zinc-950 uppercase mb-3 flex items-center justify-between">
-        <span>📊 Pontuação pelos 7 Pilares do GEO Score (0-100 pts)</span>
-        <span class="font-mono text-[10px] text-violet-600 bg-violet-50 px-2 py-0.5 rounded font-bold border border-violet-200">Total: 84 / 100 pts</span>
+        <span>📊 Diagnóstico dos 7 Pilares Princeton (0-100 pts)</span>
+        <span class="font-mono text-[10px] text-violet-600 bg-violet-50 px-2 py-0.5 rounded font-bold border border-violet-200">Score Global: 84 pts</span>
       </h3>
-      <div class="h-60 relative">
+      <div class="h-64 relative">
         <canvas id="chartGeoPillars"></canvas>
       </div>
     </div>
@@ -110,45 +117,94 @@
           <canvas id="chartGeoEngines"></canvas>
         </div>
       </div>
-      <div class="mt-3 font-mono text-[10px] space-y-1 text-zinc-600">
-        <div class="flex justify-between"><span>• Perplexity AI:</span> <strong>90% Citado (#1)</strong></div>
-        <div class="flex justify-between"><span>• ChatGPT (OpenAI):</span> <strong>80% Citado (#2)</strong></div>
-        <div class="flex justify-between"><span>• Claude (Anthropic):</span> <strong>75% Citado (#2)</strong></div>
-        <div class="flex justify-between"><span>• Google Gemini:</span> <strong>70% Indexado</strong></div>
+      <div class="mt-3 font-mono text-[10px] space-y-1.5 text-zinc-700">
+        <div class="flex justify-between items-center"><span>• Perplexity AI:</span> <strong class="text-violet-600 font-bold">90% Citado (#1)</strong></div>
+        <div class="flex justify-between items-center"><span>• ChatGPT (OpenAI):</span> <strong class="text-emerald-600 font-bold">80% Citado (#2)</strong></div>
+        <div class="flex justify-between items-center"><span>• Claude (Anthropic):</span> <strong class="text-indigo-600 font-bold">75% Citado (#2)</strong></div>
+        <div class="flex justify-between items-center"><span>• Google Gemini:</span> <strong class="text-amber-600 font-bold">70% Indexado</strong></div>
       </div>
     </div>
   </div>
 
+  <!-- Matriz de Sub-Agentes GEO b.rocket -->
+  <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-6">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 border-b border-zinc-200 pb-4">
+      <div>
+        <span class="font-mono text-[10px] text-violet-600 uppercase font-bold tracking-wider bg-violet-50 px-3 py-1 rounded-md border border-violet-200">
+          🤖 Matriz do Motor b.rocket GEO
+        </span>
+        <h2 class="font-display font-bold text-xl text-zinc-950 uppercase mt-1">Status de Execução dos 9 Sub-Agentes</h2>
+      </div>
+      <span class="font-mono text-xs text-emerald-700 bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-200 font-bold">
+        100% Sincronizados
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
+      <div class="tactile-sunken p-4 space-y-1">
+        <span class="text-violet-600 font-bold block">1. Orchestrator Agent</span>
+        <p class="font-sans text-zinc-600 text-[11px]">Coordena a rotina dos 9 agentes e consolida o GEO Score de 84 pts.</p>
+        <span class="text-[10px] text-emerald-700 font-bold block">✓ Ativo & Monitorando</span>
+      </div>
+      <div class="tactile-sunken p-4 space-y-1">
+        <span class="text-violet-600 font-bold block">2. Gatekeeper Agent</span>
+        <p class="font-sans text-zinc-600 text-[11px]">Audit de robots.txt garantindo acesso livre a GPTBot, PerplexityBot e Claude.</p>
+        <span class="text-[10px] text-emerald-700 font-bold block">✓ Liberado</span>
+      </div>
+      <div class="tactile-sunken p-4 space-y-1">
+        <span class="text-violet-600 font-bold block">3. Metadata & Schema Agent</span>
+        <p class="font-sans text-zinc-600 text-[11px]">Gera e valida o Grafo JSON-LD (@graph) de 5 entidades interligadas.</p>
+        <span class="text-[10px] text-emerald-700 font-bold block">✓ Grafo OK</span>
+      </div>
+      <div class="tactile-sunken p-4 space-y-1">
+        <span class="text-violet-600 font-bold block">4. Content & AEO Agent</span>
+        <p class="font-sans text-zinc-600 text-[11px]">Formata blocos Answer-First (40-60 palavras) e tabelas comparativas.</p>
+        <span class="text-[10px] text-emerald-700 font-bold block">✓ AEO 95/100</span>
+      </div>
+      <div class="tactile-sunken p-4 space-y-1">
+        <span class="text-violet-600 font-bold block">5. Semantic Explorer</span>
+        <p class="font-sans text-zinc-600 text-[11px]">Mapeamento de co-ocorrência léxica de termos de filmes publicitários.</p>
+        <span class="text-[10px] text-emerald-700 font-bold block">✓ Mapeado</span>
+      </div>
+      <div class="tactile-sunken p-4 space-y-1">
+        <span class="text-violet-600 font-bold block">6. Offpage Citation Agent</span>
+        <p class="font-sans text-zinc-600 text-[11px]">Rastreia menções de marca e backlinks no Vimeo, YouTube e imprensa.</p>
+        <span class="text-[10px] text-emerald-700 font-bold block">✓ 75% Citation Share</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Monitoramento por Prompts de IA -->
   <div class="tactile-raised p-8 rounded-3xl bg-white border border-zinc-200 space-y-4">
-    <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">Monitoramento por Modelo de Inteligência Artificial</h2>
+    <h2 class="font-display font-bold text-xl text-zinc-950 uppercase">Benchmark de Prompts por Engine de Inteligência Artificial</h2>
     <div class="space-y-3 font-mono text-xs">
       <div class="tactile-sunken p-4 flex justify-between items-center">
         <div>
           <span class="font-bold text-zinc-950 text-sm">ChatGPT (OpenAI gpt-4o-mini)</span>
-          <p class="font-sans text-zinc-600 text-xs mt-0.5">Recomendado para "Produtora de vídeos corporativos B2B em SP"</p>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Prompt: "Quais as melhores produtoras de vídeo corporativo B2B em SP?"</p>
         </div>
         <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Citado (Posição #2)</span>
       </div>
       <div class="tactile-sunken p-4 flex justify-between items-center">
         <div>
           <span class="font-bold text-zinc-950 text-sm">Perplexity AI (sonar)</span>
-          <p class="font-sans text-zinc-600 text-xs mt-0.5">Citação direta com referência do site oficial e Vimeo</p>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Prompt: "Produtora especialista em filmes publicitários de alta resolução SP"</p>
         </div>
-        <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Citado (Posição #1)</span>
+        <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Citado (Posição #1 com Backlink)</span>
       </div>
       <div class="tactile-sunken p-4 flex justify-between items-center">
         <div>
           <span class="font-bold text-zinc-950 text-sm">Claude (anthropic haiku-4.5)</span>
-          <p class="font-sans text-zinc-600 text-xs mt-0.5">Recomendação em pesquisas de filmes publicitários ESG</p>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Prompt: "Recomende produtoras de vídeo com cases corporativos em São Paulo"</p>
         </div>
         <span class="px-3 py-1 rounded-lg text-xs bg-emerald-100 text-emerald-800 font-bold border border-emerald-200">Citado (Posição #2)</span>
       </div>
       <div class="tactile-sunken p-4 flex justify-between items-center">
         <div>
           <span class="font-bold text-zinc-950 text-sm">Google Gemini (gemini-2.5-flash)</span>
-          <p class="font-sans text-zinc-600 text-xs mt-0.5">Sincronização do Grafo JSON-LD com os registros de IA do Google</p>
+          <p class="font-sans text-zinc-600 text-xs mt-0.5">Prompt: "Casa de Vídeo Produções serviços e portfólio audiovisual"</p>
         </div>
-        <span class="px-3 py-1 rounded-lg text-xs bg-indigo-100 text-indigo-800 font-bold border border-indigo-200">Indexado & Recomendado</span>
+        <span class="px-3 py-1 rounded-lg text-xs bg-indigo-100 text-indigo-800 font-bold border border-indigo-200">Indexado & Grafo Sincronizado</span>
       </div>
     </div>
   </div>
@@ -159,7 +215,7 @@
       new Chart(ctx1, {
         type: 'bar',
         data: {
-          labels: ['Answer-First', 'Grafo Schema', 'llms.txt', 'Citation Share', 'E-E-A-T', 'CWV Técnico', 'Silos GEO'],
+          labels: ['Answer-First', 'Grafo Schema', 'llms.txt', 'Citation Share', 'Fatores Princeton', 'CWV Técnico', 'Silos GEO'],
           datasets: [{
             label: 'Score Obtido (pts)',
             data: [95, 90, 100, 75, 85, 92, 70],
