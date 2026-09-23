@@ -1,6 +1,6 @@
 {
   "cliente": "Casa de Vídeo Produções Ltda",
-  "ultima_atualizacao": "2026-09-23T17:00:00Z",
+  "ultima_atualizacao": "2026-09-23T18:10:00Z",
   "semanas": [
     {
       "id": "sem39",
@@ -27,7 +27,8 @@
       "seo": {
         "impressoes_gsc": 4820,
         "impressoes_fmt": "4.820",
-        "diff_impressoes": "↑ +18.1%",
+        "trafego_fmt": "420 Sessões",
+        "diff_impressoes": "↑ +14% WoW",
         "top10_termos": 16,
         "top10_fmt": "16 Termos",
         "diff_top10": "↑ +2 Termos",
@@ -78,7 +79,8 @@
       "seo": {
         "impressoes_gsc": 4080,
         "impressoes_fmt": "4.080",
-        "diff_impressoes": "↑ +12.0%",
+        "trafego_fmt": "368 Sessões",
+        "diff_impressoes": "↑ +8% WoW",
         "top10_termos": 14,
         "top10_fmt": "14 Termos",
         "diff_top10": "↑ +1 Termo",
@@ -129,6 +131,7 @@
       "seo": {
         "impressoes_gsc": 3640,
         "impressoes_fmt": "3.640",
+        "trafego_fmt": "340 Sessões",
         "diff_impressoes": "— Baseline",
         "top10_termos": 13,
         "top10_fmt": "13 Termos",

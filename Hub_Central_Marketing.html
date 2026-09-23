@@ -659,7 +659,7 @@
       document.getElementById("diffInvestimento").innerText = sem.google_ads.diff_investimento;
       document.getElementById("kpiLeads").innerText = sem.google_ads.leads_fmt;
       document.getElementById("diffLeads").innerText = sem.google_ads.diff_leads;
-      document.getElementById("kpiTrafego").innerText = sem.seo.impressoes_fmt + " Impressões";
+      document.getElementById("kpiTrafego").innerText = sem.seo.trafego_fmt || (sem.seo.impressoes_fmt + " Imp.");
       document.getElementById("diffTrafego").innerText = sem.seo.diff_impressoes;
       document.getElementById("kpiGeoScore").innerText = sem.geo.score_fmt;
       document.getElementById("diffGeoScore").innerText = sem.geo.diff_score;
