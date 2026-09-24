@@ -135,22 +135,23 @@
       </a>
 
       <!-- Date Filter Controls & Pipeline Button -->
-      <div class="flex flex-wrap items-center gap-3 no-print">
+      <div class="flex flex-wrap items-center gap-2 md:gap-3 no-print">
         <button onclick="abrirModalPipeline()" class="tactile-sunken text-indigo-700 font-mono text-xs font-bold px-3.5 py-2 uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 rounded-xl hover:bg-indigo-100/60 hover:border-indigo-300 cursor-pointer">
           <span>📋 Histórico & Pipeline</span>
         </button>
 
-        <div class="tactile-sunken px-3.5 py-1.5 flex items-center gap-2 text-xs font-mono">
-          <span class="text-zinc-500 font-bold">📅 Período:</span>
-          <select id="selectSemana" onchange="atualizarDadosSemana()" class="bg-transparent text-indigo-600 font-bold outline-none cursor-pointer">
-            <option value="sem39" selected>Semana Atual: 17/Set - 23/Set 2026</option>
-            <option value="sem38">Semana Anterior: 10/Set - 16/Set 2026</option>
+        <div class="tactile-sunken px-3.5 py-1.5 flex items-center gap-2 text-xs font-mono max-w-[320px]">
+          <span class="text-zinc-500 font-bold shrink-0">📅 Período:</span>
+          <select id="selectSemana" onchange="atualizarDadosSemana()" class="bg-transparent text-indigo-600 font-bold outline-none cursor-pointer w-full truncate">
+            <option value="sem_real_live" selected>Ao Vivo: 24/Set - 30/Set 2026 (Produção Real)</option>
+            <option value="sem39">Semana 39: 17/Set - 23/Set 2026</option>
+            <option value="sem38">Semana 38: 10/Set - 16/Set 2026</option>
             <option value="sem37">Semana 37: 03/Set - 09/Set 2026</option>
           </select>
         </div>
 
         <button onclick="window.print()" class="tactile-raised !bg-[#4353ff] text-white font-mono text-xs font-bold px-4 py-2 hover:bg-[#3240e6] uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 rounded-xl shadow-md border-t border-[#606fff] hover:scale-105 cursor-pointer">
-          <span>🖨️ Exportar PDF</span>
+          <span>🖨️ PDF</span>
         </button>
 
         <button onclick="realizarLogout()" class="tactile-sunken text-zinc-600 hover:text-red-600 font-mono text-xs font-bold px-3.5 py-2 uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 rounded-xl hover:bg-red-50 hover:border-red-200 cursor-pointer">
@@ -169,42 +170,42 @@
       <div class="absolute -top-20 right-0 w-80 h-80 rounded-full bg-emerald-100/30 blur-[80px]"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto relative z-10 flex flex-col lg:flex-row gap-10 items-end justify-between">
-      <div class="max-w-3xl">
+    <div class="max-w-7xl mx-auto relative z-10 space-y-8">
+      <!-- Title Block -->
+      <div class="max-w-4xl">
         <div class="inline-flex items-center gap-2 font-mono text-[10px] text-indigo-700 uppercase tracking-widest bg-indigo-50 px-3.5 py-1.5 rounded-lg border border-indigo-200 font-bold mb-4 shadow-xs">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
           <span>Cliente: Casa de Vídeo Produções Ltda</span>
         </div>
-        <h1 class="font-display font-black text-3xl sm:text-5xl text-zinc-950 tracking-tight leading-[1.1] uppercase text-tactile-3d-dark mb-4">
-          Hub Central & Relatório Semanal<br/>
-          <span class="text-indigo-600 inline-block">Evolução 360°</span>
+        <h1 class="font-display font-black text-3xl sm:text-5xl text-zinc-950 tracking-tight leading-[1.15] uppercase text-tactile-3d-dark mb-4">
+          Hub Central & Relatório Semanal <span class="text-indigo-600">Evolução 360°</span>
         </h1>
-        <p class="font-sans text-base text-zinc-600 leading-relaxed font-light">
+        <p class="font-sans text-base text-zinc-600 leading-relaxed font-light max-w-3xl">
           Acompanhamento transparente das métricas de performance da Casa de Vídeo nos 3 pilares: <strong class="font-semibold text-zinc-950">Tráfego Pago (Google Ads)</strong>, <strong class="font-semibold text-zinc-950">SEO Orgânico</strong> e <strong class="font-semibold text-zinc-950">GEO (Inteligência Artificial)</strong> com comparativos de evolução semana a semana.
         </p>
       </div>
 
       <!-- Quick Stats Card Bar -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full lg:w-auto shrink-0">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
         <div class="tactile-sunken p-4 text-center">
           <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Investimento Ads</span>
-          <strong id="kpiInvestimento" class="font-display font-black text-xl text-indigo-600 block mt-1">R$ 875,00</strong>
-          <span id="diffInvestimento" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">↑ +5% WoW</span>
+          <strong id="kpiInvestimento" class="font-display font-black text-xl text-indigo-600 block mt-1">R$ 0,00</strong>
+          <span id="diffInvestimento" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">🟢 Operação Iniciada</span>
         </div>
         <div class="tactile-sunken p-4 text-center">
           <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Leads B2B</span>
-          <strong id="kpiLeads" class="font-display font-black text-xl text-emerald-600 block mt-1">6 Leads</strong>
-          <span id="diffLeads" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">↑ +20% WoW</span>
+          <strong id="kpiLeads" class="font-display font-black text-xl text-emerald-600 block mt-1">0 Leads</strong>
+          <span id="diffLeads" class="font-mono text-[10px] text-amber-700 font-bold block mt-0.5">⏳ Aguardando Deploy</span>
         </div>
         <div class="tactile-sunken p-4 text-center">
           <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Tráfego Orgânico</span>
-          <strong id="kpiTrafego" class="font-display font-black text-xl text-zinc-950 block mt-1">420 Sessões</strong>
-          <span id="diffTrafego" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">↑ +14% WoW</span>
+          <strong id="kpiTrafego" class="font-display font-black text-xl text-zinc-950 block mt-1">0 Sessões</strong>
+          <span id="diffTrafego" class="font-mono text-[10px] text-emerald-700 font-bold block mt-0.5">🟢 GSC Conectado</span>
         </div>
         <div class="tactile-sunken p-4 text-center">
           <span class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">GEO Score (IAs)</span>
           <strong id="kpiGeoScore" class="font-display font-black text-xl text-violet-600 block mt-1">84 / 100</strong>
-          <span id="diffGeoScore" class="font-mono text-[10px] text-violet-700 font-bold block mt-0.5">↑ +6 pts WoW</span>
+          <span id="diffGeoScore" class="font-mono text-[10px] text-violet-700 font-bold block mt-0.5">🟢 llms.txt & @graph OK</span>
         </div>
       </div>
     </div>
