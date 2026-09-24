@@ -35,10 +35,13 @@ flowchart TD
 
 ---
 
-### 🛠️ ETAPA 1: Implementação Técnica no Site Oficial (TI / Dev Casa de Vídeo)
+### 🛠️ ETAPA 1: Implementação Técnica no Site Oficial (✅ CONCLUÍDA & COMMITADA NO GITHUB)
 
-#### Tarefa 1.1 — Publicação do Arquivo `llms.txt`
-- **Ação:** Fazer o upload do arquivo [llms.txt](file:///Users/guilhermerossi/Documents/b.rocket/Clientes/Casa%20de%20V%C3%ADdeo/Mkt/GEO/llms.txt) para o diretório raiz do site do cliente.
+> **Status:** ✅ **100% Concluída e Enviada (Git Push)** no repositório `https://github.com/casadevideoonline-web/site2026.git` (Branch `main`).  
+> **Arquivos alterados/enviados:** `llms.txt`, `index.html`, `carta-compromisso.html`, `politica-trabalhista.html`.
+
+#### Tarefa 1.1 — Publicação do Arquivo `llms.txt` (✅ Concluída)
+- **Ação:** Arquivo [llms.txt](file:///Users/guilhermerossi/Documents/Casa%20de%20Video/Site/llms.txt) inserido na raiz do repositório.
 - **URL Final Esperada:** `https://casadevideo.com.br/llms.txt`
 - **Função:** Fornecer aos rastreadores de IA (ChatGPT, Gemini, Claude, Perplexity) os dados oficiais estruturados da marca Casa de Vídeo.
 
