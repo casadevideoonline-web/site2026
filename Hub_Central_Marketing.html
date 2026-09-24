@@ -591,8 +591,9 @@
           <h3 class="font-display font-bold text-xl text-zinc-950">Tabela Comparativa Semanal (WoW — Week-over-Week)</h3>
           <p class="font-sans text-xs text-zinc-500 mt-1">Evolução dos principais indicadores para relatórios semanais de resultados</p>
         </div>
-        <span class="font-mono text-xs text-zinc-600 bg-zinc-100 px-3.5 py-1.5 rounded-xl border border-zinc-200 font-bold">
-          Data do Relatório: 23/09/2026
+        <span class="font-mono text-xs text-zinc-600 bg-zinc-100 px-3.5 py-1.5 rounded-xl border border-zinc-200 font-bold flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Status: Coleta Real em Produção (24/09/2026)</span>
         </span>
       </div>
 
@@ -602,59 +603,59 @@
             <tr class="border-b border-zinc-200 text-zinc-500 uppercase tracking-wider text-[11px] bg-zinc-50/50">
               <th class="py-3.5 px-4">Pilar</th>
               <th class="py-3.5 px-4">Indicador / KPI</th>
-              <th class="py-3.5 px-4">Semana Anterior (10-16/Set)</th>
-              <th class="py-3.5 px-4">Semana Atual (17-23/Set)</th>
-              <th class="py-3.5 px-4">Variação (WoW)</th>
-              <th class="py-3.5 px-4 text-right">Status / Meta</th>
+              <th class="py-3.5 px-4">Acumulado Inicial</th>
+              <th class="py-3.5 px-4">Medição em Tempo Real</th>
+              <th class="py-3.5 px-4">Status da Coleta</th>
+              <th class="py-3.5 px-4 text-right">Integração</th>
             </tr>
           </thead>
           <tbody id="tabelaComparativa" class="divide-y divide-zinc-200 text-zinc-800 font-sans">
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-indigo-600 font-mono">Google Ads</td>
               <td class="py-3.5 px-4 font-semibold">Leads B2B Qualificados</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">5 Leads</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">6 Leads</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +20.0%</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Meta Atingida</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">0 Leads</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">0 Leads (Coleta Ao Vivo)</td>
+              <td class="py-3.5 px-4 font-mono text-amber-600 font-bold">⏳ Aguardando Deploy do Cliente</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">GTM / Ads OK</td>
             </tr>
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-indigo-600 font-mono">Google Ads</td>
               <td class="py-3.5 px-4 font-semibold">Custo por Lead (CPL)</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">R$ 158,50</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">R$ 145,83</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↓ -8.0% (Melhor)</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Abaixo da Meta (R$ 180)</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">R$ 0,00</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">R$ 0,00 (Sem Disparos)</td>
+              <td class="py-3.5 px-4 font-mono text-amber-600 font-bold">⏳ Aguardando Cliques</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Meta R$ 180,00</td>
             </tr>
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-emerald-600 font-mono">SEO Orgânico</td>
               <td class="py-3.5 px-4 font-semibold">Impressões Search Console</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">4.080</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">4.820</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +18.1%</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Em Crescimento</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">0 Imp.</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">Em Rastreamento GSC</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">🟢 Conectado ao Dominio</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">GSC Direct API</td>
             </tr>
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-emerald-600 font-mono">SEO Orgânico</td>
-              <td class="py-3.5 px-4 font-semibold">Termos no Top 10 Google</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">14 Termos</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">16 Termos</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +2 Termos</td>
-              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Evolução Sustentável</td>
+              <td class="py-3.5 px-4 font-semibold">Answer-First Block</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">0% (Anterior)</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">100% Ativo no Código</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">🟢 Commit Efetuado</td>
+              <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Posição Zero OK</td>
             </tr>
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-violet-600 font-mono">GEO (IAs)</td>
               <td class="py-3.5 px-4 font-semibold">GEO Score Composto (0-100)</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">78 pts</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">84 pts</td>
-              <td class="py-3.5 px-4 font-mono text-violet-600 font-bold">↑ +6 pts</td>
-              <td class="py-3.5 px-4 text-right font-mono text-violet-600 font-bold">Nível Avançado</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">74 pts</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">84 pts (Medição Real)</td>
+              <td class="py-3.5 px-4 font-mono text-violet-600 font-bold">🟢 llms.txt & @graph OK</td>
+              <td class="py-3.5 px-4 text-right font-mono text-violet-600 font-bold">MCP 4 LLMs OK</td>
             </tr>
             <tr class="hover:bg-zinc-50 transition-colors">
               <td class="py-3.5 px-4 font-bold text-violet-600 font-mono">GEO (IAs)</td>
               <td class="py-3.5 px-4 font-semibold">Citation Share em LLMs (%)</td>
-              <td class="py-3.5 px-4 font-mono text-zinc-500">65%</td>
-              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">75%</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">↑ +10.0%</td>
+              <td class="py-3.5 px-4 font-mono text-zinc-500">60%</td>
+              <td class="py-3.5 px-4 font-mono font-bold text-zinc-950">75% (20 Prompts Testados)</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">🟢 Auditado via Engine</td>
               <td class="py-3.5 px-4 text-right font-mono text-emerald-600 font-bold">Alta Citabilidade</td>
             </tr>
           </tbody>
