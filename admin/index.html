@@ -10,7 +10,7 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()"/>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net https://api.github.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; connect-src 'self' https://api.github.com;"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; connect-src 'self' https://api.github.com; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'none';"/>
   <style>
     @font-face {
       font-family: 'Geist Mono Variable';
@@ -767,9 +767,15 @@
         const item = document.createElement('div');
         item.className = 'cdv-linkedin-card';
         
-        let postImg = post.image || '../Galeria/1.avif';
-        if (postImg.startsWith('Galeria/')) {
-          postImg = '../' + postImg;
+        // Sanitiza a imagem: só aceita nomes de arquivo locais conhecidos.
+        // Bloqueia javascript:, data:, URLs externas e path traversal (defesa contra XSS via JSON).
+        let postImg = '../Galeria/1.avif';
+        {
+          const rawImg = (post.image || '').trim();
+          if (/^(\.\.\/)?(Galeria|Documentos)\/[\w.\-]+\.(avif|jpe?g|png|webp|gif)$/i.test(rawImg)
+              && !rawImg.includes('..\/..') ) {
+            postImg = rawImg.startsWith('../') ? rawImg : '../' + rawImg;
+          }
         }
 
         const postTag = post.tag || 'LINKEDIN // CASA DE VÍDEO';
@@ -787,7 +793,7 @@
             <span class="cdv-linkedin-badge-dot" title="Post Ativo"></span>
           </div>
           <div class="cdv-linkedin-media-wrapper">
-            <img src="${postImg}" alt="Publicação" class="cdv-linkedin-media-img" loading="lazy" />
+            <img src="${escapeHtml(postImg)}" alt="Publicação" class="cdv-linkedin-media-img" loading="lazy" />
             <div class="cdv-linkedin-media-overlay"></div>
             <span class="cdv-linkedin-tag">${escapeHtml(postTag)}</span>
           </div>

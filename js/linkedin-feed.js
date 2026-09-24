@@ -95,8 +95,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const postTag = post.tag || 'LINKEDIN // CASA DE VÍDEO';
       const postDesc = post.description || 'Confira esta publicação no perfil oficial da Casa de Vídeo no LinkedIn.';
-      const postImg = post.image || 'Galeria/1.avif';
-      const postUrl = post.url || COMPANY_URL;
+      // Sanitiza a imagem: só aceita caminhos relativos locais (bloqueia javascript:, data:, URLs externas).
+      const postImg = safeImagePath(post.image);
+      // Sanitiza a URL: só aceita links https do LinkedIn (bloqueia javascript:, data:, etc.).
+      const postUrl = safeLinkedInUrl(post.url);
 
       card.innerHTML = `
         <div class="cdv-linkedin-card-badge">
@@ -109,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <span class="cdv-linkedin-badge-dot" title="Post Ativo"></span>
         </div>
         <div class="cdv-linkedin-media-wrapper">
-          <img src="${postImg}" alt="Publicação Casa de Vídeo" class="cdv-linkedin-media-img" loading="lazy" />
+          <img src="${escapeHtml(postImg)}" alt="Publicação Casa de Vídeo" class="cdv-linkedin-media-img" loading="lazy" />
           <div class="cdv-linkedin-media-overlay"></div>
           <span class="cdv-linkedin-tag">${escapeHtml(postTag)}</span>
         </div>
@@ -117,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <p class="cdv-linkedin-post-text">${escapeHtml(postDesc)}</p>
         </div>
         <div class="cdv-linkedin-card-footer">
-          <a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="cdv-linkedin-view-link">
+          <a href="${escapeHtml(postUrl)}" target="_blank" rel="noopener noreferrer" class="cdv-linkedin-view-link">
             <span>Ver no LinkedIn</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -139,5 +141,34 @@ document.addEventListener('DOMContentLoaded', function () {
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
+  }
+
+  // Só permite caminhos de imagem relativos locais (Galeria/..., Documentos/...).
+  // Bloqueia javascript:, data:, http(s):// e caminhos absolutos que possibilitariam XSS/hotlink.
+  function safeImagePath(raw) {
+    const fallback = 'Galeria/1.avif';
+    if (typeof raw !== 'string' || raw.trim() === '') return fallback;
+    const val = raw.trim();
+    // Rejeita qualquer esquema (javascript:, data:, http:, //cdn...) e path traversal.
+    if (/^[a-z]+:/i.test(val) || val.startsWith('//') || val.startsWith('/') || val.includes('..')) {
+      return fallback;
+    }
+    // Aceita apenas arquivos de imagem locais conhecidos.
+    if (!/^(Galeria|Documentos)\/[\w.\-]+\.(avif|jpe?g|png|webp|gif)$/i.test(val)) {
+      return fallback;
+    }
+    return val;
+  }
+
+  // Só permite URLs https de publicações do LinkedIn; caso contrário aponta para o perfil oficial.
+  function safeLinkedInUrl(raw) {
+    if (typeof raw !== 'string') return COMPANY_URL;
+    try {
+      const u = new URL(raw, window.location.href);
+      if (u.protocol === 'https:' && /(^|\.)linkedin\.com$/i.test(u.hostname)) {
+        return u.href;
+      }
+    } catch (e) {}
+    return COMPANY_URL;
   }
 });

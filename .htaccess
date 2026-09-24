@@ -1,0 +1,53 @@
+# ============================================================================
+# Casa de Vídeo — Configuração de segurança (Apache / Hostinger)
+# Headers HTTP reais são mais confiáveis que <meta http-equiv> no HTML.
+# ============================================================================
+
+# ── Força HTTPS ─────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} ^casadevideo\.com\.br$ [NC]
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://www.casadevideo.com.br%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ── Cabeçalhos de segurança ─────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  # HSTS: exige HTTPS por 1 ano (inclui subdomínios). Ativar preload só quando
+  # tiver certeza de que todos os subdomínios servem HTTPS.
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+
+  # Content-Security-Policy (mesma política dos <meta>, aplicada no servidor).
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src 'self' https://www.googletagmanager.com https://www.google.com https://maps.google.com; connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net https://region1.google-analytics.com; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'self'"
+
+  # Remove header que expõe a versão do servidor.
+  Header unset X-Powered-By
+</IfModule>
+
+# ── Bloqueia acesso a arquivos sensíveis / de build ─────────────────────────
+<FilesMatch "(^\.|\.(git|gitignore|DS_Store|py|code-workspace|md)$)">
+  Require all denied
+</FilesMatch>
+
+# Artefatos de build gerados localmente (não deveriam ir para produção).
+<FilesMatch "^(site_base64\.txt|site_completo_standalone\.html|build_standalone\.py)$">
+  Require all denied
+</FilesMatch>
+
+# Impede listagem de diretórios.
+Options -Indexes
+
+# ── Painel /admin: sem cache e não indexável ────────────────────────────────
+<IfModule mod_headers.c>
+  <FilesMatch "admin/">
+    Header always set Cache-Control "no-store, no-cache, must-revalidate"
+    Header always set X-Robots-Tag "noindex, nofollow"
+  </FilesMatch>
+</IfModule>

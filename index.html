@@ -51,11 +51,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": ["Organization", "Corporation"],
       "@id": "https://www.casadevideo.com.br/#organization",
       "name": "Casa de Vídeo Produções Ltda",
+      "legalName": "Casa de Vídeo Produções Audiovisuais Ltda",
       "alternateName": "Casa de Vídeo",
       "url": "https://www.casadevideo.com.br",
-      "logo": "https://www.casadevideo.com.br/Documentos/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://www.casadevideo.com.br/#logo",
+        "url": "https://www.casadevideo.com.br/Documentos/logo.png",
+        "caption": "Casa de Vídeo Produções Audiovisuais"
+      },
+      "image": "https://www.casadevideo.com.br/Documentos/logo.png",
       "description": "Produtora audiovisual especializada em filmes publicitários, vídeos corporativos, institucionais e comerciais de alta performance em São Paulo.",
       "foundingDate": "1990",
+      "telephone": "+55-11-3866-2535",
+      "email": "contato@casadevideo.com.br",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "São Paulo",
@@ -72,25 +81,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "sameAs": [
         "https://www.linkedin.com/company/casadevideo",
         "https://vimeo.com/casadevideo",
-        "https://www.instagram.com/casadevideo"
+        "https://www.instagram.com/casadevideo",
+        "https://www.youtube.com/@casadevideoproducoes"
+      ],
+      "knowsAbout": [
+        "Produção Audiovisual",
+        "Filmes Publicitários",
+        "Vídeos Corporativos B2B",
+        "Comerciais de TV e Streaming",
+        "Branded Content",
+        "Pós-produção e Color Grading"
       ]
     },
     {
       "@type": "WebSite",
       "@id": "https://www.casadevideo.com.br/#website",
       "url": "https://www.casadevideo.com.br",
-      "name": "Casa de Vídeo Produções",
+      "name": "Casa de Vídeo Produções Audiovisuais",
+      "description": "Produtora de vídeos corporativos, filmes publicitários e conteúdo audiovisual B2B em São Paulo.",
       "publisher": {
         "@id": "https://www.casadevideo.com.br/#organization"
       },
       "inLanguage": "pt-BR"
     },
     {
-      "@type": "LocalBusiness",
+      "@type": "ProfessionalService",
       "@id": "https://www.casadevideo.com.br/#localbusiness",
-      "name": "Casa de Vídeo Produções Audiovisuais",
-      "image": "https://www.casadevideo.com.br/Documentos/logo.png",
+      "name": "Casa de Vídeo — Produtora Audiovisual São Paulo",
+      "url": "https://www.casadevideo.com.br",
+      "telephone": "+55-11-3866-2535",
       "priceRange": "$$$",
+      "image": "https://www.casadevideo.com.br/Documentos/logo.png",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "São Paulo",
@@ -107,30 +128,94 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         "opens": "08:00",
         "closes": "19:00"
+      },
+      "parentOrganization": {
+        "@id": "https://www.casadevideo.com.br/#organization"
       }
     },
     {
       "@type": "Service",
       "@id": "https://www.casadevideo.com.br/#service-producao-b2b",
-      "name": "Produção de Vídeos Corporativos e Filmes Publicitários",
+      "name": "Produção de Vídeos Corporativos e Filmes Publicitários B2B",
+      "serviceType": "Produção Audiovisual Publicitária e Institucional",
       "provider": {
         "@id": "https://www.casadevideo.com.br/#organization"
       },
-      "areaServed": "Brasil",
-      "serviceType": "Produção Audiovisual B2B",
-      "description": "Desenvolvimento completo de roteiro, direção de cena, captação 4K/Cinema e pós-produção audiovisual para empresas e marcas."
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "São Paulo e Região Metropolitana"
+      },
+      "description": "Desenvolvimento completo de roteiro, direção de cena, captação 4K/Cinema e pós-produção audiovisual para empresas, marcas e agências."
     },
     {
       "@type": "VideoObject",
       "@id": "https://www.casadevideo.com.br/#showreel2026",
-      "name": "Showreel Casa de Vídeo — Produções Audiovisuais 4K",
-      "description": "Portfólio cinematográfico dos principais filmes publicitários, institucionais e corporativos produzidos pela Casa de Vídeo.",
-      "thumbnailUrl": ["https://www.casadevideo.com.br/Documentos/logo.png"],
+      "name": "Showreel Comercial & Corporativo 2026 — Casa de Vídeo",
+      "description": "Portfólio cinematográfico dos principais filmes publicitários, institucionais e corporativos 4K produzidos pela Casa de Vídeo em São Paulo.",
+      "thumbnailUrl": [
+        "https://www.casadevideo.com.br/Documentos/logo.png"
+      ],
       "contentUrl": "https://www.casadevideo.com.br/Documentos/reel_cv_2026_1080p.mp4",
+      "embedUrl": "https://vimeo.com/casadevideo",
       "uploadDate": "2026-01-15T08:00:00-03:00",
+      "duration": "PT1M45S",
       "publisher": {
         "@id": "https://www.casadevideo.com.br/#organization"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.casadevideo.com.br/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qual é o prazo médio de entrega de um vídeo corporativo B2B?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O prazo médio de produção varia entre 15 e 30 dias úteis, englobando alinhamento de roteiro, pré-produção, gravação e pós-produção com rodadas de aprovação."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A Casa de Vídeo atende agências de publicidade e diretores de marketing em São Paulo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Somos especializados no atendimento B2B a agências, gerentes de comunicação e diretores de marketing, entregando conformidade trabalhista, pontualidade e padrão cinematográfico."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A produtora oferece estrutura completa de equipamento e equipe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dispomos de câmeras de cinema 4K/6K, iluminação profissional de LED/HMI, captação de áudio direto, drones homologados pela ANAC e equipe técnica qualificada."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.casadevideo.com.br/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.casadevideo.com.br"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Serviços Audiovisuais",
+          "item": "https://www.casadevideo.com.br/#servicos"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Produtora de Vídeo B2B SP",
+          "item": "https://www.casadevideo.com.br/#contato"
+        }
+      ]
     }
   ]
 }
@@ -145,6 +230,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="author" content="b.rocket - berocket@berocket.com.br"/>
 
 <!-- ── Security Headers ── -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src 'self' https://www.googletagmanager.com https://www.google.com https://maps.google.com; connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net https://region1.google-analytics.com; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'self';"/>
 <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
 <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
@@ -154,9 +240,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
 <!-- GSAP + Core JS (animações do site) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" integrity="sha384-RVPQwTb0fPz9kI8s5GwAq1Qioto9fnEQt1aKGSQSm8xV6+DIdBSgcCShoHqfKnhv" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- Core Scripts -->
 <script src="js/main.js" defer></script>
@@ -1580,7 +1666,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- DIREITA: sociais + CTA (Instagram, LinkedIn e Vimeo com hover colorido) -->
       <div class="right-nav">
         <!-- Instagram -->
-        <a href="https://www.instagram.com/casadevideo" target="_blank" rel="noopener" class="nav-social-link instagram w-inline-block" aria-label="Instagram Casa de Vídeo">
+        <a href="https://www.instagram.com/casadevideo" target="_blank" rel="noopener noreferrer" class="nav-social-link instagram w-inline-block" aria-label="Instagram Casa de Vídeo">
           <div class="icon-social w-embed">
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 16 16" fill="none">
               <g clip-path="url(#clip0_insta)">
@@ -1598,7 +1684,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <img src="https://cdn.prod.website-files.com/6873f64b566572b04fea0b24/68776db1e1b5806af83f16f0_Insta.png" loading="lazy" alt="" class="instagram-bg"/>
         </a>
         <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/company/casadevideo" target="_blank" rel="noopener" class="nav-social-link linkedin w-inline-block" aria-label="LinkedIn Casa de Vídeo">
+        <a href="https://www.linkedin.com/company/casadevideo" target="_blank" rel="noopener noreferrer" class="nav-social-link linkedin w-inline-block" aria-label="LinkedIn Casa de Vídeo">
           <div class="icon-social w-embed">
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="-10 -10 44 44" fill="currentColor">
               <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
@@ -1606,7 +1692,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </a>
         <!-- Vimeo -->
-        <a href="https://vimeo.com/casadevideo" target="_blank" rel="noopener" class="nav-social-link vimeo w-inline-block" aria-label="Vimeo Casa de Vídeo">
+        <a href="https://vimeo.com/casadevideo" target="_blank" rel="noopener noreferrer" class="nav-social-link vimeo w-inline-block" aria-label="Vimeo Casa de Vídeo">
           <div class="icon-social w-embed">
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="-3 -3 30 30" fill="currentColor">
               <path d="M22 7.42c-.09 2-1.48 4.73-4.17 8.2C15.04 19.2 12.72 21 10.76 21c-1.19 0-2.19-1.1-3.01-3.28L6.19 12.2C5.56 10.02 4.89 8.93 4.19 8.93c-.15 0-.68.32-1.59.97l-.95-1.22c1-.88 1.99-1.76 2.96-2.64C5.94 8.89 6.94 8.29 7.6 8.24c1.57-.15 2.54.92 2.9 3.22.39 2.47.66 4 .82 4.62.45 2.07.95 3.1 1.49 3.1.42 0 1.06-.67 1.91-2 .85-1.34 1.3-2.36 1.36-3.06.12-1.16-.33-1.74-1.36-1.74-.49 0-1 .11-1.51.34.99-3.27 2.9-4.86 5.71-4.77 2.09.06 3.07 1.41 2.94 4.05z"/>
@@ -1953,7 +2039,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div>
             <div class="cdv-contact-label">Telefone / WhatsApp</div>
-            <div class="cdv-contact-value"><a href="https://api.whatsapp.com/send?phone=551138662535&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener">+55 (11) 3866-2535</a></div>
+            <div class="cdv-contact-value"><a href="https://api.whatsapp.com/send?phone=551138662535&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento." target="_blank" rel="noopener noreferrer">+55 (11) 3866-2535</a></div>
           </div>
         </div>
         <div class="cdv-contact-item">
@@ -1966,15 +2052,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="cdv-social-row">
-          <a href="https://instagram.com/casadevideo" target="_blank" rel="noopener" class="cdv-social-btn" aria-label="Instagram">
+          <a href="https://instagram.com/casadevideo" target="_blank" rel="noopener noreferrer" class="cdv-social-btn" aria-label="Instagram">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
-          <a href="https://www.linkedin.com/company/casadevideo" target="_blank" rel="noopener" class="cdv-social-btn" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/company/casadevideo" target="_blank" rel="noopener noreferrer" class="cdv-social-btn" aria-label="LinkedIn">
             <svg width="16" height="16" viewBox="-10 -10 44 44" fill="currentColor">
               <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
             </svg>
           </a>
-          <a href="https://vimeo.com/casadevideo" target="_blank" rel="noopener" class="cdv-social-btn" aria-label="Vimeo">
+          <a href="https://vimeo.com/casadevideo" target="_blank" rel="noopener noreferrer" class="cdv-social-btn" aria-label="Vimeo">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7.42c-.09 2-1.48 4.73-4.17 8.2C15.04 19.2 12.72 21 10.76 21c-1.19 0-2.19-1.1-3.01-3.28L6.19 12.2C5.56 10.02 4.89 8.93 4.19 8.93c-.15 0-.68.32-1.59.97l-.95-1.22c1-.88 1.99-1.76 2.96-2.64C5.94 8.89 6.94 8.29 7.6 8.24c1.57-.15 2.54.92 2.9 3.22.39 2.47.66 4 .82 4.62.45 2.07.95 3.1 1.49 3.1.42 0 1.06-.67 1.91-2 .85-1.34 1.3-2.36 1.36-3.06.12-1.16-.33-1.74-1.36-1.74-.49 0-1 .11-1.51.34.99-3.27 2.9-4.86 5.71-4.77 2.09.06 3.07 1.41 2.94 4.05z"/></svg>
           </a>
         </div>
@@ -1996,7 +2082,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
        WHATSAPP FLOAT (Movido para dentro do #contato para controle de stickiness/pinning)
        ═══════════════════════════════════════════ -->
   <a href="https://api.whatsapp.com/send?phone=551138662535&text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
-     target="_blank" rel="noopener"
+     target="_blank" rel="noopener noreferrer"
      class="whatsapp-float" id="whatsappFloat"
      aria-label="Fale conosco pelo WhatsApp">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

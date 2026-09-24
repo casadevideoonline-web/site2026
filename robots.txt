@@ -1,0 +1,27 @@
+# robots.txt - Casa de Vídeo Produções Audiovisuais Ltda
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Directives for AI Crawlers and Search Agents (GEO Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# LLM Context File Location
+Sitemap: https://www.casadevideo.com.br/sitemap.xml
+# LLM Info: https://www.casadevideo.com.br/llms.txt
