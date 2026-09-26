@@ -71,7 +71,7 @@ Copie e cole o código abaixo dentro da tag `<head>` de todas as páginas princi
         "@type": "ContactPoint",
         "contactType": "Atendimento Comercial B2B",
         "telephone": "+55-11-99999-9999",
-        "email": "contato@casadevideo.com.br",
+        "email": "casadevideo@casadevideo.com.br",
         "availableLanguage": ["Portuguese", "English"]
       },
       "sameAs": [
