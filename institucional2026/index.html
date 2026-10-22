@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Casa de Vídeo — Apresentação Institucional 2026</title>
+<meta name="description" content="Produzir, contar, transformar. Conheça a Casa de Vídeo: pessoas, estrutura, clientes e nosso trabalho.">
+<meta name="theme-color" content="#0b0a08">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Casa de Vídeo">
+<meta property="og:title" content="Casa de Vídeo — Apresentação Institucional 2026">
+<meta property="og:description" content="O que você quer que aconteça depois do play? Conheça a Casa de Vídeo.">
+<meta property="og:url" content="https://casadevideo.com.br/institucional2026/">
+<meta property="og:image" content="https://casadevideo.com.br/institucional2026/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,500;112..125,700;112..125,800&family=Manrope:wght@400;500;600&display=swap">
+<style>
+body{margin:0}
+/* Layout: uma sala escura de projeção — faixas pretas com luz âmbar, alternando com faixas claras de "set" como no deck */
+:root {
+  color-scheme: dark;
+  --ink: #0b0a08;
+  --ink-2: #16130e;
+  --paper: #e9e8e5;
+  --paper-ink: #1a1814;
+  --text: #f3efe6;
+  --muted: #a69f90;
+  --muted-paper: #5b574f;
+  --gold: #f5a812;
+  --gold-soft: rgba(245, 168, 18, .16);
+  --line: rgba(243, 239, 230, .14);
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body { background: var(--ink); color: var(--text); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible, video:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+section { padding-block: clamp(72px, 11vw, 140px); }
+
+.eyebrow { font-family: var(--display); font-weight: 500; font-variation-settings: "wdth" 125; font-size: 13px; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 12px; }
+.eyebrow b { color: var(--gold); font-weight: 700; }
+.play3 { display: inline-flex; gap: 3px; }
+.play3 i { width: 0; height: 0; border-left: 8px solid var(--gold); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+h1, h2 { font-family: var(--display); font-weight: 800; font-variation-settings: "wdth" 118; text-transform: uppercase; letter-spacing: .02em; line-height: 1.04; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(32px, 5.2vw, 60px); }
+.mark { background: var(--gold); color: var(--ink); padding: .04em .22em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.lede { font-size: clamp(17px, 1.6vw, 20px); color: var(--muted); max-width: 34ch; margin: 0; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; padding-block: clamp(64px, 9vw, 120px) clamp(72px, 10vw, 130px); background: var(--ink) url("img/fundo.jpg") center / cover no-repeat; text-align: center; }
+.hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 55% at 50% 30%, var(--gold-soft), transparent 70%), linear-gradient(to bottom, rgba(11,10,8,.2), var(--ink)); pointer-events: none; }
+.hero .wrap { position: relative; display: grid; justify-items: center; gap: 28px; }
+.hero .logo { width: clamp(150px, 20vw, 210px); filter: drop-shadow(0 0 40px rgba(245,168,18,.35)); }
+.motto { font-family: var(--display); font-variation-settings: "wdth" 125; font-weight: 500; font-size: 12px; letter-spacing: .38em; text-transform: uppercase; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 14px; }
+.motto span:nth-child(3) { color: var(--gold); }
+.motto .play3 i { border-left-width: 6px; border-top-width: 4px; border-bottom-width: 4px; }
+.hero h1 { font-size: clamp(36px, 7vw, 86px); max-width: 15ch; }
+.hero .eyebrow { justify-content: center; }
+.scroll-cue { margin-top: 8px; font-size: 14px; color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+.scroll-cue:hover { color: var(--text); }
+
+/* Reel */
+.reel { background: var(--ink); padding-top: 0; }
+.frame { position: relative; border: 1px solid var(--line); background: #000; aspect-ratio: 16 / 9; width: 100%; }
+.frame video { width: 100%; height: 100%; object-fit: cover; }
+.caption { margin-top: 14px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+
+/* Faixas claras */
+.light { background: var(--paper); color: var(--paper-ink); }
+.light .eyebrow { color: var(--muted-paper); }
+.light .lede { color: var(--muted-paper); }
+.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.split > * { min-width: 0; }
+.stack { display: grid; gap: 24px; }
+.photo { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
+
+/* Estrutura */
+.place { font-family: var(--display); font-variation-settings: "wdth" 125; font-weight: 700; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; }
+.stats { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid rgba(26,24,20,.18); }
+.stats li { display: flex; align-items: baseline; gap: 18px; padding-block: 14px; border-bottom: 1px solid rgba(26,24,20,.18); }
+.stats .n { font-family: var(--display); font-weight: 800; font-variation-settings: "wdth" 112; font-size: clamp(34px, 4vw, 46px); line-height: 1; color: var(--paper-ink); font-variant-numeric: tabular-nums; min-width: 2.2ch; }
+.stats .l { font-family: var(--display); font-variation-settings: "wdth" 125; font-weight: 500; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; }
+.partners { background: var(--paper-ink); color: var(--paper); padding: 18px 20px; display: flex; gap: 14px; align-items: center; font-size: 15px; }
+.partners strong { color: var(--gold); font-family: var(--display); font-variation-settings: "wdth" 118; letter-spacing: .06em; text-transform: uppercase; font-size: 14px; }
+.light .frame { border-color: rgba(26,24,20,.2); }
+
+/* Nosso trabalho */
+.work { background: var(--ink-2); position: relative; overflow: hidden; }
+.work::after { content: ""; position: absolute; right: -10%; top: -30%; width: 60%; aspect-ratio: 1; background: radial-gradient(closest-side, var(--gold-soft), transparent); pointer-events: none; }
+.work .wrap { position: relative; display: grid; gap: 28px; }
+.work h2 { font-size: clamp(32px, 6vw, 76px); max-width: 16ch; }
+.work .lede { max-width: 42ch; }
+
+/* Clientes */
+.clients-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.clients-grid li { background: #fff; display: grid; place-items: center; aspect-ratio: 16 / 10; padding: clamp(14px, 2.4vw, 30px); }
+.clients-grid img { max-height: 76px; width: auto; object-fit: contain; }
+.clients-grid li.more { background: var(--ink); color: var(--muted); text-align: center; font-size: 14px; padding: 18px; }
+.clients-head { display: grid; gap: 22px; margin-bottom: clamp(32px, 4vw, 48px); }
+
+/* Relações */
+.collage { width: 100%; box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
+
+/* CTA */
+.cta { text-align: center; background: var(--ink) url("img/fundo.jpg") center / cover no-repeat; position: relative; }
+.cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(55% 60% at 50% 45%, var(--gold-soft), transparent 70%), rgba(11,10,8,.55); }
+.cta .wrap { position: relative; display: grid; justify-items: center; gap: 26px; }
+.cta .logo { width: 120px; }
+.cta h2 { font-size: clamp(34px, 6vw, 72px); }
+.cta .lede { max-width: 40ch; text-align: center; }
+.site { font-family: var(--display); font-variation-settings: "wdth" 125; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; font-size: 15px; color: var(--ink); background: var(--gold); padding: 16px 26px; text-decoration: none; transition: background .2s, transform .2s; }
+.site:hover { background: #ffc04a; transform: translateY(-1px); }
+
+footer { border-top: 1px solid var(--line); padding-block: 26px; color: var(--muted); font-size: 13px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
+footer .who { display: flex; align-items: center; gap: 12px; }
+footer img { width: 34px; }
+
+@media (max-width: 860px) {
+  .split { grid-template-columns: minmax(0, 1fr); }
+  .split.media-first > :first-child { order: 0; }
+  .clients-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  .eyebrow { letter-spacing: .22em; font-size: 12px; }
+  .stats .l { letter-spacing: .12em; font-size: 13px; }
+  .site { letter-spacing: .14em; font-size: 14px; padding: 14px 18px; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="logo" src="img/logo.png" alt="Casa de Vídeo">
+    <div class="motto" aria-label="Produzir, contar, transformar">
+      <span>Produzir</span><span class="play3"><i></i></span><span>Contar</span><span class="play3"><i></i></span><span>Transformar</span>
+    </div>
+    <p class="eyebrow">Toda produção começa com uma <b>intenção</b></p>
+    <h1>O que você quer que aconteça depois do play?</h1>
+    <a class="scroll-cue" href="#reel"><span class="play3"><i></i><i></i><i></i></span> Assista ao nosso reel</a>
+  </div>
+</header>
+
+<section class="reel" id="reel" aria-label="Reel">
+  <div class="wrap">
+    <div class="frame">
+      <video controls playsinline preload="metadata" poster="img/reel-poster.jpg">
+        <source src="reel.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="caption"><span>Reel Casa de Vídeo</span><span>2 min 11 s · aperte o play com som</span></div>
+  </div>
+</section>
+
+<section class="light" id="pessoas">
+  <div class="wrap split">
+    <div class="stack">
+      <p class="eyebrow"><span class="play3"><i></i><i></i><i></i></span> Pessoas</p>
+      <h2>Toda boa produção <span class="mark">é um trabalho de gente.</span></h2>
+      <p class="lede">Ideias crescem na troca. E ganham forma no cuidado com cada escolha.</p>
+    </div>
+    <img class="photo" src="img/equipe.jpg" alt="Equipe da Casa de Vídeo reunida no estúdio">
+  </div>
+</section>
+
+<section class="light" id="estrutura" style="padding-top: 0;">
+  <div class="wrap split">
+    <div class="stack">
+      <p class="eyebrow"><span class="play3"><i></i><i></i><i></i></span> Estrutura</p>
+      <h2>Espaço e <span class="mark">localização</span></h2>
+      <p class="place">São Paulo – Pacaembu</p>
+      <ul class="stats">
+        <li><span class="n">03</span><span class="l">Estúdios</span></li>
+        <li><span class="n">07</span><span class="l">Ilhas de edição</span></li>
+        <li><span class="n">02</span><span class="l">Estações de arte</span></li>
+        <li><span class="n">01</span><span class="l">Estúdio de áudio</span></li>
+      </ul>
+      <p class="partners"><strong>+ Brasil</strong> Produtoras parceiras espalhadas por todo o território nacional.</p>
+    </div>
+    <div class="frame">
+      <video controls playsinline muted loop autoplay preload="metadata" poster="estrutura.jpg">
+        <source src="estrutura.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="trabalho">
+  <div class="wrap">
+    <p class="eyebrow"><span class="play3"><i></i><i></i><i></i></span> Nosso trabalho</p>
+    <h2>A próxima ideia pode pedir <span class="mark">um jeito novo de produzir.</span></h2>
+    <p class="lede">Exploramos linguagens, formatos e tecnologias para ampliar o que conseguimos imaginar e realizar.</p>
+  </div>
+</section>
+
+<section id="clientes">
+  <div class="wrap">
+    <div class="clients-head">
+      <p class="eyebrow"><span class="play3"><i></i><i></i><i></i></span> Alguns clientes</p>
+      <h2>Histórias que já passaram pela casa.</h2>
+    </div>
+    <ul class="clients-grid">
+      <li><img src="img/cli-jj.png" alt="Johnson &amp; Johnson Innovative Medicine"></li>
+      <li><img src="img/cli-unilever.png" alt="Unilever"></li>
+      <li><img src="img/cli-syngenta.png" alt="Syngenta"></li>
+      <li><img src="img/cli-schneider.png" alt="Schneider Electric"></li>
+      <li><img src="img/cli-tim.png" alt="TIM"></li>
+      <li><img src="img/cli-ipiranga.png" alt="Ipiranga"></li>
+      <li><img src="img/cli-warner.png" alt="Warner Bros. Discovery"></li>
+      <li class="more">E muitas outras marcas que confiaram suas histórias à casa.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="light" id="relacoes">
+  <div class="wrap split">
+    <div class="stack">
+      <p class="eyebrow"><span class="play3"><i></i><i></i><i></i></span> Relações</p>
+      <h2>Uma boa entrega abre espaço <span class="mark">para a próxima conversa.</span></h2>
+      <p class="lede">É assim que construímos relações ao longo dos projetos.</p>
+    </div>
+    <img class="collage" src="img/relacoes.jpg" alt="Equipes de clientes e da Casa de Vídeo reunidas em gravações">
+  </div>
+</section>
+
+<section class="cta" id="contato">
+  <div class="wrap">
+    <img class="logo" src="img/logo.png" alt="">
+    <h2>E no seu próximo projeto?</h2>
+    <p class="lede">O que você quer que aconteça depois do play? Vamos começar por essa conversa.</p>
+    <a class="site" href="https://www.casadevideo.com.br" target="_blank" rel="noopener">www.casadevideo.com.br</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="who"><img src="img/logo.png" alt="">Casa de Vídeo · São Paulo, Pacaembu</span>
+    <span>Produzir · Contar · Transformar</span>
+  </div>
+</footer>
+
+</body>
+</html>
